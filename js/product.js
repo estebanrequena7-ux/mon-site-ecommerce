@@ -1,5 +1,5 @@
 /* =============================================
-   ORET — Product Page JS
+   Auré — Product Page JS
    ============================================= */
 
 document.addEventListener('DOMContentLoaded', () => {

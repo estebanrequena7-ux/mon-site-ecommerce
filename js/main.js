@@ -1,5 +1,5 @@
 /* =============================================
-   ORET — Main JavaScript
+   Auré — Main JavaScript
    ============================================= */
 
 // ─── SVG PRODUCT ILLUSTRATIONS ───────────────

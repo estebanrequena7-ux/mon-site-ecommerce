@@ -1,5 +1,5 @@
 /* =============================================
-   ORET — Shopify Storefront API Integration
+   Auré — Shopify Storefront API Integration
    Replace SHOPIFY_DOMAIN and SHOPIFY_TOKEN
    with your actual store credentials.
    ============================================= */
