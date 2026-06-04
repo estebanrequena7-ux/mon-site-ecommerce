@@ -3,621 +3,511 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Auré — Bijoux de Luxe</title>
-  <meta name="description" content="Auré — Bijoux minimalistes et luxueux. Colliers, bagues et bracelets en or et argent." />
+  <title>Esteban — Développeur Web Freelance</title>
+  <meta name="description" content="Esteban, développeur web freelance spécialisé dans les sites vitrines, e-commerce et applications web sur mesure." />
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/premium.css" />
+  <link rel="stylesheet" href="css/portfolio.css" />
 </head>
 <body>
 
-<!-- Scroll progress -->
-<div class="scroll-progress"></div>
-
 <!-- Custom cursor -->
-<div class="cursor">
-  <div class="cursor__dot"></div>
-  <div class="cursor__ring"></div>
-</div>
-
-<!-- Page transition -->
-<div class="page-transition"></div>
-
-<!-- Preloader -->
-<div class="preloader">
-  <div class="preloader__logo">
-    <span>A</span><span>u</span><span>r</span><span>é</span>
-  </div>
-  <div class="preloader__bar"><div class="preloader__bar-fill"></div></div>
-  <div class="preloader__label">Chargement</div>
-</div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursor-follower"></div>
 
 <!-- ─── HEADER ─────────────────────────────── -->
-<header class="header header--dark" id="header">
-  <nav class="nav">
-    <a href="index.html" class="nav__logo">Auré<span class="logo-dot">•</span></a>
+<header class="header" id="header">
+  <nav class="nav container">
+    <a href="#hero" class="nav__logo">E<span class="gold">steban</span></a>
 
-    <ul class="nav__links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="shop.html">Boutique</a></li>
-      <li><a href="about.html">À propos</a></li>
-      <li><a href="#contact">Contact</a></li>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#services" class="nav__link">Services</a></li>
+      <li><a href="#realisations" class="nav__link">Réalisations</a></li>
+      <li><a href="#tarifs" class="nav__link">Tarifs</a></li>
+      <li><a href="#contact" class="nav__cta">Démarrer un projet</a></li>
     </ul>
 
-    <div class="nav__actions">
-      <button class="nav__icon-btn" aria-label="Rechercher">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-      </button>
-      <button class="nav__icon-btn" aria-label="Mon compte">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      </button>
-      <button class="nav__icon-btn" aria-label="Panier" data-cart-open>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 0 1-8 0"/>
-        </svg>
-        <span class="cart-count" aria-label="articles dans le panier">0</span>
-      </button>
-      <button class="hamburger" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+    <button class="nav__burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 </header>
 
-<!-- ─── MOBILE MENU ─────────────────────────── -->
-<div class="mobile-menu">
-  <a href="index.html">Accueil</a>
-  <a href="shop.html">Boutique</a>
-  <a href="about.html">À propos</a>
-  <a href="#contact">Contact</a>
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#realisations" class="mobile-link">Réalisations</a>
+  <a href="#tarifs" class="mobile-link">Tarifs</a>
+  <a href="#contact" class="mobile-link mobile-link--cta">Démarrer un projet</a>
 </div>
 
-<!-- ─── HERO ────────────────────────────────── -->
-<section class="hero">
-  <div class="hero__bg"></div>
-  <div class="hero__spotlight"></div>
-  <div class="hero__particles"></div>
+<!-- ─── HERO ─────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero__bg-grid"></div>
+  <div class="hero__glow hero__glow--1"></div>
+  <div class="hero__glow hero__glow--2"></div>
 
-  <!-- Ambient orbs -->
-  <div class="hero__orb hero__orb--1"></div>
-  <div class="hero__orb hero__orb--2"></div>
+  <div class="container hero__content">
+    <p class="hero__eyebrow reveal">Développeur Web Freelance</p>
+    <h1 class="hero__title reveal reveal--delay-1">
+      Je conçois des sites qui<br>
+      <em class="gold-text">convertissent</em> vos visiteurs<br>
+      en clients.
+    </h1>
+    <p class="hero__sub reveal reveal--delay-2">
+      19 ans, passionné par le code et le design — je crée des expériences web<br>
+      sur mesure pour les marques qui veulent se démarquer.
+    </p>
+    <div class="hero__actions reveal reveal--delay-3">
+      <a href="#contact" class="btn btn--gold">Lancer mon projet</a>
+      <a href="#realisations" class="btn btn--ghost">Voir mes travaux</a>
+    </div>
 
-  <!-- Outer rotating ring -->
-  <svg class="hero__jewelry-deco" viewBox="0 0 500 500" fill="none" stroke="#c9a96e" stroke-width="0.5">
-    <circle cx="250" cy="250" r="220"/>
-    <circle cx="250" cy="250" r="180"/>
-    <circle cx="250" cy="250" r="140"/>
-    <ellipse cx="250" cy="250" rx="220" ry="80"/>
-    <ellipse cx="250" cy="250" rx="180" ry="65"/>
-    <line x1="30" y1="250" x2="470" y2="250"/>
-    <line x1="250" y1="30" x2="250" y2="470"/>
-    <circle cx="250" cy="250" r="12" fill="#c9a96e" opacity="0.4"/>
-    <circle cx="250" cy="30"  r="4" fill="#c9a96e" opacity="0.5"/>
-    <circle cx="250" cy="470" r="4" fill="#c9a96e" opacity="0.5"/>
-    <circle cx="30"  cy="250" r="4" fill="#c9a96e" opacity="0.5"/>
-    <circle cx="470" cy="250" r="4" fill="#c9a96e" opacity="0.5"/>
-  </svg>
-
-  <!-- Inner counter-rotating detail -->
-  <svg class="hero__jewelry-inner" viewBox="0 0 500 500" fill="none" stroke="#c9a96e" stroke-width="0.4">
-    <polygon points="250,60 290,180 420,180 318,258 360,380 250,302 140,380 182,258 80,180 210,180"/>
-    <circle cx="250" cy="250" r="100"/>
-    <ellipse cx="250" cy="250" rx="100" ry="38"/>
-  </svg>
-
-  <div class="hero__content container" style="position:relative;z-index:5">
-    <p class="hero__label">Collection 2025</p>
-    <h1 class="hero__title">L'élégance<br /><em>redéfinie</em></h1>
-    <p class="hero__subtitle">Des bijoux façonnés pour celles et ceux qui portent leur singularité avec discrétion.</p>
-    <div class="hero__actions">
-      <a href="shop.html" class="btn btn--ghost"><span>Découvrir la collection</span></a>
-      <a href="about.html" class="btn btn--ghost" style="background:transparent;border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.55)"><span>Notre histoire</span></a>
+    <div class="hero__stats reveal reveal--delay-4">
+      <div class="stat">
+        <span class="stat__num gold">10+</span>
+        <span class="stat__label">Projets livrés</span>
+      </div>
+      <div class="stat__sep"></div>
+      <div class="stat">
+        <span class="stat__num gold">100%</span>
+        <span class="stat__label">Clients satisfaits</span>
+      </div>
+      <div class="stat__sep"></div>
+      <div class="stat">
+        <span class="stat__num gold">48h</span>
+        <span class="stat__label">Délai de réponse</span>
+      </div>
     </div>
   </div>
 
-  <div class="hero__scroll" aria-hidden="true">
+  <div class="hero__scroll">
+    <span>Défiler</span>
     <div class="hero__scroll-line"></div>
-    <span>Scroll</span>
   </div>
 </section>
 
-<!-- ─── MARQUEE ─────────────────────────────── -->
-<div class="marquee-band" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Or Vermeil 18k</span><span class="dot">◆</span>
-    <span>Argent Sterling</span><span class="dot">◆</span>
-    <span>Fait à la main</span><span class="dot">◆</span>
-    <span>Livraison gratuite</span><span class="dot">◆</span>
-    <span>Or Jaune 14k</span><span class="dot">◆</span>
-    <span>Or Rose 14k</span><span class="dot">◆</span>
-    <span>Garantie à vie</span><span class="dot">◆</span>
-    <span>Bijoux durables</span><span class="dot">◆</span>
-    <!-- duplicate for seamless loop -->
-    <span>Or Vermeil 18k</span><span class="dot">◆</span>
-    <span>Argent Sterling</span><span class="dot">◆</span>
-    <span>Fait à la main</span><span class="dot">◆</span>
-    <span>Livraison gratuite</span><span class="dot">◆</span>
-    <span>Or Jaune 14k</span><span class="dot">◆</span>
-    <span>Or Rose 14k</span><span class="dot">◆</span>
-    <span>Garantie à vie</span><span class="dot">◆</span>
-    <span>Bijoux durables</span><span class="dot">◆</span>
-  </div>
-</div>
-
-<!-- ─── STATS BAND ───────────────────────────── -->
-<section class="stats-band-gold section--dark-noise">
+<!-- ─── SERVICES ─────────────────────────── -->
+<section class="section" id="services">
   <div class="container">
-    <div class="stats-band-gold__grid" data-stagger>
-      <div class="stats-band-gold__item" data-reveal="up">
-        <span class="stats-band-gold__value">2019</span>
-        <span class="stats-band-gold__label">Fondée en</span>
-      </div>
-      <div class="stats-band-gold__item" data-reveal="up" data-delay="0.1">
-        <span class="stats-band-gold__value">12 000+</span>
-        <span class="stats-band-gold__label">Clientes fidèles</span>
-      </div>
-      <div class="stats-band-gold__item" data-reveal="up" data-delay="0.2">
-        <span class="stats-band-gold__value">48</span>
-        <span class="stats-band-gold__label">Pièces uniques</span>
-      </div>
-      <div class="stats-band-gold__item" data-reveal="up" data-delay="0.3">
-        <span class="stats-band-gold__value">100%</span>
-        <span class="stats-band-gold__label">Artisanal</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── CATEGORIES ──────────────────────────── -->
-<section class="section">
-  <div class="container">
-    <div class="section__header section__header--center" data-reveal="up">
-      <span class="section-label">Nos collections</span>
-      <h2 class="section-title">Explorez l'univers Auré</h2>
-      <span class="gold-line gold-line--center"></span>
+    <div class="section__header reveal">
+      <p class="section__eyebrow">Ce que je fais</p>
+      <h2 class="section__title">Mes <em class="gold-text">Services</em></h2>
+      <p class="section__desc">Des solutions web adaptées à vos ambitions, de la conception au lancement.</p>
     </div>
 
-    <div class="categories" data-stagger>
-      <!-- Colliers -->
-      <a href="shop.html?cat=colliers" class="category-card category-card--colliers">
-        <div class="category-card__bg"></div>
-        <div class="category-card__illustration">
-          <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.8">
-            <ellipse cx="50" cy="30" rx="28" ry="20"/>
-            <path d="M22 30 Q10 70 50 95 Q90 70 78 30" stroke-linecap="round"/>
-            <circle cx="50" cy="95" r="6" fill="#c9a96e" opacity="0.4"/>
-            <circle cx="50" cy="95" r="2" fill="#c9a96e"/>
+    <div class="services__grid">
+
+      <div class="service-card reveal">
+        <div class="service-card__icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="8" width="40" height="28" rx="3" stroke="currentColor" stroke-width="2"/>
+            <line x1="4" y1="18" x2="44" y2="18" stroke="currentColor" stroke-width="2"/>
+            <circle cx="10" cy="13" r="2" fill="currentColor"/>
+            <circle cx="17" cy="13" r="2" fill="currentColor"/>
+            <line x1="16" y1="40" x2="32" y2="40" stroke="currentColor" stroke-width="2"/>
+            <line x1="24" y1="36" x2="24" y2="40" stroke="currentColor" stroke-width="2"/>
           </svg>
         </div>
-        <div class="category-card__overlay"></div>
-        <div class="category-card__content">
-          <p class="category-card__label">Collection</p>
-          <h3 class="category-card__name">Colliers</h3>
-          <span class="category-card__link">Voir les pièces</span>
-        </div>
-      </a>
+        <h3 class="service-card__title">Site Vitrine</h3>
+        <p class="service-card__desc">
+          Un site élégant et rapide qui présente votre activité et rassure vos prospects. Design soigné, animations modernes, compatible tous écrans.
+        </p>
+        <ul class="service-card__list">
+          <li>Design personnalisé & responsive</li>
+          <li>Optimisé SEO & performance</li>
+          <li>Formulaire de contact intégré</li>
+          <li>Livraison en 7 à 14 jours</li>
+        </ul>
+        <a href="#contact" class="service-card__link">En savoir plus <span>→</span></a>
+      </div>
 
-      <!-- Bagues -->
-      <a href="shop.html?cat=bagues" class="category-card category-card--bagues">
-        <div class="category-card__bg"></div>
-        <div class="category-card__illustration">
-          <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.8">
-            <ellipse cx="50" cy="55" rx="32" ry="18"/>
-            <ellipse cx="50" cy="44" rx="32" ry="18"/>
-            <line x1="18" y1="44" x2="18" y2="55"/>
-            <line x1="82" y1="44" x2="82" y2="55"/>
-            <path d="M36 38 L50 18 L64 38" stroke-width="0.6"/>
-            <polygon points="50,14 54,22 46,22" fill="#c9a96e" opacity="0.3"/>
+      <div class="service-card service-card--featured reveal reveal--delay-1">
+        <div class="service-card__badge">Populaire</div>
+        <div class="service-card__icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 12h32l-3 20H11L8 12z" stroke="currentColor" stroke-width="2"/>
+            <circle cx="18" cy="38" r="2" fill="currentColor"/>
+            <circle cx="30" cy="38" r="2" fill="currentColor"/>
+            <path d="M4 8h5l1 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M20 22h8M20 27h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="category-card__overlay"></div>
-        <div class="category-card__content">
-          <p class="category-card__label">Collection</p>
-          <h3 class="category-card__name">Bagues</h3>
-          <span class="category-card__link">Voir les pièces</span>
-        </div>
-      </a>
+        <h3 class="service-card__title">Site E-Commerce</h3>
+        <p class="service-card__desc">
+          Une boutique en ligne clé en main, pensée pour vendre. Catalogue produits, panier, paiement sécurisé — votre commerce ouvert 24h/24.
+        </p>
+        <ul class="service-card__list">
+          <li>Catalogue & gestion des stocks</li>
+          <li>Paiement Stripe / PayPal</li>
+          <li>Tableau de bord admin</li>
+          <li>Intégration Shopify disponible</li>
+        </ul>
+        <a href="#contact" class="service-card__link">En savoir plus <span>→</span></a>
+      </div>
 
-      <!-- Bracelets -->
-      <a href="shop.html?cat=bracelets" class="category-card category-card--bracelets">
-        <div class="category-card__bg"></div>
-        <div class="category-card__illustration">
-          <svg viewBox="0 0 100 80" fill="none" stroke="#c9a96e" stroke-width="0.8">
-            <ellipse cx="50" cy="40" rx="42" ry="24"/>
-            <path d="M8 40 Q10 60 50 64 Q90 60 92 40" stroke-dasharray="3 2"/>
-            <circle cx="24" cy="52" r="3" fill="#c9a96e" opacity="0.3"/>
-            <circle cx="50" cy="64" r="3" fill="#c9a96e" opacity="0.3"/>
-            <circle cx="76" cy="52" r="3" fill="#c9a96e" opacity="0.3"/>
+      <div class="service-card reveal reveal--delay-2">
+        <div class="service-card__icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 6L6 16v16l18 10 18-10V16L24 6z" stroke="currentColor" stroke-width="2"/>
+            <path d="M24 6v36M6 16l18 10 18-10" stroke="currentColor" stroke-width="2"/>
+            <circle cx="24" cy="26" r="4" fill="currentColor" opacity="0.4"/>
           </svg>
         </div>
-        <div class="category-card__overlay"></div>
-        <div class="category-card__content">
-          <p class="category-card__label">Collection</p>
-          <h3 class="category-card__name">Bracelets</h3>
-          <span class="category-card__link">Voir les pièces</span>
-        </div>
-      </a>
+        <h3 class="service-card__title">Maintenance & Évolution</h3>
+        <p class="service-card__desc">
+          Votre site vit avec votre activité. Mises à jour régulières, corrections, nouvelles fonctionnalités — je reste disponible sur le long terme.
+        </p>
+        <ul class="service-card__list">
+          <li>Mises à jour de contenu</li>
+          <li>Corrections de bugs</li>
+          <li>Ajout de fonctionnalités</li>
+          <li>Rapport de performance mensuel</li>
+        </ul>
+        <a href="#contact" class="service-card__link">En savoir plus <span>→</span></a>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ─── SHOWCASE HORIZONTAL ──────────────────── -->
-<section class="showcase-section section--dark-noise">
-  <div class="showcase-section__header container">
-    <span class="section-label" data-reveal="fade">Tous les univers</span>
-    <h2 class="section-title" style="color:var(--white)" data-reveal="up">La collection complète</h2>
-  </div>
-
-  <div class="showcase-scroll-wrapper">
-    <div class="showcase-track">
-      <!-- items duplicated for infinite loop feel -->
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="30" rx="28" ry="20"/><path d="M22 30 Q10 70 50 95 Q90 70 78 30" stroke-linecap="round"/><circle cx="50" cy="95" r="6" fill="#c9a96e" opacity="0.4"/><circle cx="50" cy="95" r="2" fill="#c9a96e"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Colliers</p>
-          <p class="showcase-item__name">Collier Lumière</p>
-          <p class="showcase-item__price">189 €</p>
-        </div>
-      </div>
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="55" rx="32" ry="18"/><ellipse cx="50" cy="44" rx="32" ry="18"/><line x1="18" y1="44" x2="18" y2="55"/><line x1="82" y1="44" x2="82" y2="55"/><path d="M36 38 L50 18 L64 38" stroke-width="0.7"/><polygon points="50,14 54,22 46,22" fill="#c9a96e" opacity="0.35"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Bagues</p>
-          <p class="showcase-item__name">Bague Solstice</p>
-          <p class="showcase-item__price">149 €</p>
-        </div>
-      </div>
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 80" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="40" rx="42" ry="24"/><path d="M8 40 Q10 60 50 64 Q90 60 92 40" stroke-dasharray="3 2"/><circle cx="24" cy="52" r="3" fill="#c9a96e" opacity="0.3"/><circle cx="50" cy="64" r="3" fill="#c9a96e" opacity="0.3"/><circle cx="76" cy="52" r="3" fill="#c9a96e" opacity="0.3"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Bracelets</p>
-          <p class="showcase-item__name">Bracelet Aube</p>
-          <p class="showcase-item__price">129 €</p>
-        </div>
-      </div>
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="28" rx="22" ry="16"/><path d="M28 28 Q18 65 50 88 Q82 65 72 28" stroke-linecap="round"/><path d="M36 45 Q50 52 64 45" stroke-dasharray="2 2"/><circle cx="50" cy="88" r="8" fill="none" stroke="#c9a96e"/><circle cx="50" cy="88" r="3" fill="#c9a96e" opacity="0.6"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Colliers</p>
-          <p class="showcase-item__name">Collier Étoile</p>
-          <p class="showcase-item__price">219 €</p>
-        </div>
-      </div>
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.9"><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="8" fill="#c9a96e" opacity="0.2"/><circle cx="50" cy="20" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="50" cy="80" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="20" cy="50" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="80" cy="50" r="3" fill="#c9a96e" opacity="0.5"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Bagues</p>
-          <p class="showcase-item__name">Bague Pleine Lune</p>
-          <p class="showcase-item__price">169 €</p>
-        </div>
-      </div>
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 80" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="38" rx="38" ry="22"/><line x1="12" y1="38" x2="12" y2="50"/><line x1="88" y1="38" x2="88" y2="50"/><ellipse cx="50" cy="50" rx="38" ry="22"/><path d="M30 30 Q50 20 70 30" stroke-dasharray="2 2"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Bracelets</p>
-          <p class="showcase-item__name">Bracelet Constellation</p>
-          <p class="showcase-item__price">159 €</p>
-        </div>
-      </div>
-      <!-- Duplicate set for seamless loop -->
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="30" rx="28" ry="20"/><path d="M22 30 Q10 70 50 95 Q90 70 78 30" stroke-linecap="round"/><circle cx="50" cy="95" r="6" fill="#c9a96e" opacity="0.4"/><circle cx="50" cy="95" r="2" fill="#c9a96e"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Colliers</p>
-          <p class="showcase-item__name">Collier Lumière</p>
-          <p class="showcase-item__price">189 €</p>
-        </div>
-      </div>
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="55" rx="32" ry="18"/><ellipse cx="50" cy="44" rx="32" ry="18"/><line x1="18" y1="44" x2="18" y2="55"/><line x1="82" y1="44" x2="82" y2="55"/><path d="M36 38 L50 18 L64 38" stroke-width="0.7"/><polygon points="50,14 54,22 46,22" fill="#c9a96e" opacity="0.35"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Bagues</p>
-          <p class="showcase-item__name">Bague Solstice</p>
-          <p class="showcase-item__price">149 €</p>
-        </div>
-      </div>
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 80" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="40" rx="42" ry="24"/><path d="M8 40 Q10 60 50 64 Q90 60 92 40" stroke-dasharray="3 2"/><circle cx="24" cy="52" r="3" fill="#c9a96e" opacity="0.3"/><circle cx="50" cy="64" r="3" fill="#c9a96e" opacity="0.3"/><circle cx="76" cy="52" r="3" fill="#c9a96e" opacity="0.3"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Bracelets</p>
-          <p class="showcase-item__name">Bracelet Aube</p>
-          <p class="showcase-item__price">129 €</p>
-        </div>
-      </div>
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="28" rx="22" ry="16"/><path d="M28 28 Q18 65 50 88 Q82 65 72 28" stroke-linecap="round"/><path d="M36 45 Q50 52 64 45" stroke-dasharray="2 2"/><circle cx="50" cy="88" r="8" fill="none" stroke="#c9a96e"/><circle cx="50" cy="88" r="3" fill="#c9a96e" opacity="0.6"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Colliers</p>
-          <p class="showcase-item__name">Collier Étoile</p>
-          <p class="showcase-item__price">219 €</p>
-        </div>
-      </div>
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.9"><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="8" fill="#c9a96e" opacity="0.2"/><circle cx="50" cy="20" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="50" cy="80" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="20" cy="50" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="80" cy="50" r="3" fill="#c9a96e" opacity="0.5"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Bagues</p>
-          <p class="showcase-item__name">Bague Pleine Lune</p>
-          <p class="showcase-item__price">169 €</p>
-        </div>
-      </div>
-      <div class="showcase-item">
-        <div class="showcase-item__visual">
-          <svg viewBox="0 0 100 80" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="38" rx="38" ry="22"/><line x1="12" y1="38" x2="12" y2="50"/><line x1="88" y1="38" x2="88" y2="50"/><ellipse cx="50" cy="50" rx="38" ry="22"/><path d="M30 30 Q50 20 70 30" stroke-dasharray="2 2"/></svg>
-        </div>
-        <div class="showcase-item__info">
-          <p class="showcase-item__label">Bracelets</p>
-          <p class="showcase-item__name">Bracelet Constellation</p>
-          <p class="showcase-item__price">159 €</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="showcase-hint">Glissez pour explorer</div>
-</section>
-
-<div class="glow-divider"></div>
-
-<!-- ─── FEATURED PRODUCTS ───────────────────── -->
-<section class="section section--cream">
+<!-- ─── RÉALISATIONS ──────────────────────── -->
+<section class="section section--dark" id="realisations">
   <div class="container">
-    <div class="section__header" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem">
-      <div>
-        <span class="section-label" style="display:block;margin-bottom:0.7rem">Sélection</span>
-        <h2 class="section-title">Pièces phares</h2>
-      </div>
-      <a href="shop.html" class="btn btn--outline"><span>Voir tout</span></a>
+    <div class="section__header reveal">
+      <p class="section__eyebrow">Portfolio</p>
+      <h2 class="section__title">Mes <em class="gold-text">Réalisations</em></h2>
+      <p class="section__desc">Quelques projets qui illustrent mon savoir-faire.</p>
     </div>
 
-    <div class="products-grid featured-grid"></div>
+    <div class="projects__grid">
+
+      <article class="project-card reveal">
+        <div class="project-card__visual">
+          <div class="project-card__mockup project-card__mockup--aure">
+            <div class="mockup__browser">
+              <div class="mockup__bar">
+                <span></span><span></span><span></span>
+                <div class="mockup__url">aure-bijoux.fr</div>
+              </div>
+              <div class="mockup__screen">
+                <div class="mockup__nav-sim"></div>
+                <div class="mockup__hero-sim">
+                  <div class="mockup__text-sim mockup__text-sim--lg"></div>
+                  <div class="mockup__text-sim mockup__text-sim--sm"></div>
+                  <div class="mockup__btn-sim"></div>
+                </div>
+                <div class="mockup__grid-sim">
+                  <div class="mockup__card-sim"></div>
+                  <div class="mockup__card-sim"></div>
+                  <div class="mockup__card-sim"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-card__overlay">
+            <a href="#contact" class="project-card__cta">Voir le projet</a>
+          </div>
+        </div>
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag">E-Commerce</span>
+            <span class="tag">Design Luxe</span>
+            <span class="tag">Animation</span>
+          </div>
+          <h3 class="project-card__title">Auré — Bijoux de Luxe</h3>
+          <p class="project-card__desc">
+            Site e-commerce haut de gamme pour une marque de bijoux minimalistes. Interface premium avec curseur personnalisé, animations 3D, effet spotlight et showcase horizontal. Expérience immersive de bout en bout.
+          </p>
+          <div class="project-card__tech">
+            <span>HTML/CSS</span>
+            <span>JavaScript Vanilla</span>
+            <span>Animations CSS3</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card project-card--placeholder reveal reveal--delay-1">
+        <div class="project-card__visual project-card__visual--next">
+          <div class="project-next">
+            <div class="project-next__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <line x1="24" y1="14" x2="24" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="14" y1="24" x2="34" y2="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class="project-next__label">Votre projet ici</p>
+            <p class="project-next__sub">Rejoignez mes clients satisfaits</p>
+          </div>
+        </div>
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag tag--ghost">Votre secteur</span>
+          </div>
+          <h3 class="project-card__title">Prochaine réalisation</h3>
+          <p class="project-card__desc">
+            Je travaille actuellement sur de nouveaux projets. Vous pourriez être le prochain ! Contactez-moi pour discuter de votre projet.
+          </p>
+          <a href="#contact" class="btn btn--gold btn--sm">Démarrer maintenant</a>
+        </div>
+      </article>
+
+    </div>
   </div>
 </section>
 
-<!-- ─── EDITORIAL DUO ──────────────────────────── -->
-<div class="editorial-duo">
-  <!-- Dark panel -->
-  <div class="editorial-duo__panel editorial-duo__panel--dark section--dark-noise">
-    <div class="editorial-duo__bg-visual">
-      <svg viewBox="0 0 400 400" fill="none" stroke="#c9a96e" stroke-width="0.5">
-        <circle cx="200" cy="200" r="160"/><circle cx="200" cy="200" r="110"/><circle cx="200" cy="200" r="60"/>
-        <ellipse cx="200" cy="200" rx="160" ry="60"/><ellipse cx="200" cy="200" rx="110" ry="42"/>
-        <line x1="40" y1="200" x2="360" y2="200"/><line x1="200" y1="40" x2="200" y2="360"/>
-        <circle cx="200" cy="200" r="10" fill="#c9a96e" opacity="0.5"/>
+<!-- ─── TARIFS ────────────────────────────── -->
+<section class="section" id="tarifs">
+  <div class="container">
+    <div class="section__header reveal">
+      <p class="section__eyebrow">Investissement</p>
+      <h2 class="section__title">Des <em class="gold-text">Tarifs</em> clairs</h2>
+      <p class="section__desc">Pas de surprise. Voici ce que vous obtenez pour chaque formule.</p>
+    </div>
+
+    <div class="pricing__grid">
+
+      <div class="pricing-card reveal">
+        <div class="pricing-card__header">
+          <h3 class="pricing-card__name">Vitrine</h3>
+          <p class="pricing-card__tagline">Parfait pour démarrer</p>
+        </div>
+        <div class="pricing-card__price">
+          <span class="pricing-card__amount">À partir de</span>
+          <div class="pricing-card__num"><span class="gold">500</span> €</div>
+          <span class="pricing-card__period">projet unique</span>
+        </div>
+        <ul class="pricing-card__features">
+          <li class="included">1 à 5 pages sur mesure</li>
+          <li class="included">Design responsive (mobile)</li>
+          <li class="included">Formulaire de contact</li>
+          <li class="included">Optimisation SEO de base</li>
+          <li class="included">Mise en ligne incluse</li>
+          <li class="not-included">Boutique en ligne</li>
+          <li class="not-included">Espace admin</li>
+        </ul>
+        <a href="#contact" class="btn btn--ghost btn--full">Demander un devis</a>
+      </div>
+
+      <div class="pricing-card pricing-card--featured reveal reveal--delay-1">
+        <div class="pricing-card__ribbon">Recommandé</div>
+        <div class="pricing-card__header">
+          <h3 class="pricing-card__name">E-Commerce</h3>
+          <p class="pricing-card__tagline">Pour vendre en ligne</p>
+        </div>
+        <div class="pricing-card__price">
+          <span class="pricing-card__amount">À partir de</span>
+          <div class="pricing-card__num"><span class="gold">1 200</span> €</div>
+          <span class="pricing-card__period">projet unique</span>
+        </div>
+        <ul class="pricing-card__features">
+          <li class="included">Tout du forfait Vitrine</li>
+          <li class="included">Boutique & catalogue produits</li>
+          <li class="included">Panier & paiement sécurisé</li>
+          <li class="included">Tableau de bord admin</li>
+          <li class="included">Gestion des commandes</li>
+          <li class="included">Intégration Shopify (option)</li>
+          <li class="included">Formation à la prise en main</li>
+        </ul>
+        <a href="#contact" class="btn btn--gold btn--full">Démarrer mon projet</a>
+      </div>
+
+      <div class="pricing-card reveal reveal--delay-2">
+        <div class="pricing-card__header">
+          <h3 class="pricing-card__name">Maintenance</h3>
+          <p class="pricing-card__tagline">Pour rester à jour</p>
+        </div>
+        <div class="pricing-card__price">
+          <span class="pricing-card__amount">À partir de</span>
+          <div class="pricing-card__num"><span class="gold">80</span> €</div>
+          <span class="pricing-card__period">par mois</span>
+        </div>
+        <ul class="pricing-card__features">
+          <li class="included">Mises à jour de contenu</li>
+          <li class="included">Corrections de bugs</li>
+          <li class="included">Sauvegardes régulières</li>
+          <li class="included">Rapport mensuel</li>
+          <li class="included">Support prioritaire</li>
+          <li class="not-included">Nouvelles pages (en option)</li>
+          <li class="not-included">Refonte design</li>
+        </ul>
+        <a href="#contact" class="btn btn--ghost btn--full">Me contacter</a>
+      </div>
+
+    </div>
+
+    <div class="pricing__note reveal">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
-    </div>
-    <div class="editorial-duo__content" data-reveal="left">
-      <span class="editorial-duo__eyebrow">Savoir-faire</span>
-      <h2 class="editorial-duo__title">Chaque pièce<br />raconte une histoire</h2>
-      <p class="editorial-duo__body">Façonnés par des artisans passionnés, nos bijoux allient l'expertise traditionnelle aux formes contemporaines. Des matériaux nobles sélectionnés avec soin pour une durabilité sans compromis.</p>
-      <a href="about.html" class="btn btn--ghost"><span>Découvrir l'atelier</span></a>
-    </div>
-  </div>
-  <!-- Light panel -->
-  <div class="editorial-duo__panel editorial-duo__panel--light">
-    <div class="editorial-duo__bg-visual">
-      <svg viewBox="0 0 400 500" fill="none" stroke="#c9a96e" stroke-width="0.5">
-        <ellipse cx="200" cy="130" rx="90" ry="65"/><path d="M110 130 Q60 280 200 370 Q340 280 290 130" stroke-linecap="round"/>
-        <path d="M140 180 Q200 205 260 180" stroke-dasharray="3 3"/>
-        <circle cx="200" cy="370" r="20" fill="none"/><circle cx="200" cy="370" r="6" fill="#c9a96e" opacity="0.5"/>
-      </svg>
-    </div>
-    <div class="editorial-duo__content" data-reveal="right">
-      <span class="editorial-duo__eyebrow">Matériaux nobles</span>
-      <h2 class="editorial-duo__title" style="color:var(--black)">L'or à l'état<br />de perfection</h2>
-      <p class="editorial-duo__body" style="color:var(--gray)">Or vermeil 18 carats, argent sterling, or jaune 14 carats. Chaque métal est choisi pour ses qualités intrinsèques et sa capacité à traverser le temps.</p>
-      <a href="shop.html" class="btn btn--primary"><span>Voir la collection</span></a>
-    </div>
-  </div>
-</div>
-
-<!-- ─── TESTIMONIALS ─────────────────────────── -->
-<section class="section">
-  <div class="container">
-    <div class="section__header section__header--center" style="margin-bottom:3rem">
-      <span class="section-label">Témoignages</span>
-      <h2 class="section-title">Ce qu'elles disent</h2>
-      <span class="gold-line gold-line--center"></span>
-    </div>
-
-    <div class="testimonials-track" data-stagger>
-      <div class="testimonial fade-up">
-        <div class="testimonial__text">
-          "Mon collier Auré est devenu ma pièce signature. La qualité de l'or vermeil est exceptionnelle, je ne le quitte plus."
-        </div>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">S</div>
-          <div>
-            <div class="testimonial__name">Sophie M.</div>
-            <div class="testimonial__stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial fade-up">
-        <div class="testimonial__text">
-          "Le packaging est à la hauteur du bijou : sobre, élégant. Un cadeau parfait. Je recommande sans hésitation."
-        </div>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">C</div>
-          <div>
-            <div class="testimonial__name">Clara D.</div>
-            <div class="testimonial__stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial fade-up">
-        <div class="testimonial__text">
-          "Enfin une marque de bijoux minimalistes qui ne sacrifie pas la durabilité. Ma bague porte la même brillance un an après."
-        </div>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">L</div>
-          <div>
-            <div class="testimonial__name">Léa P.</div>
-            <div class="testimonial__stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
+      <p>Chaque projet est unique. Ces tarifs sont indicatifs — je vous fournis un devis personnalisé et sans engagement après notre premier échange.</p>
     </div>
   </div>
 </section>
 
-<!-- ─── NEWSLETTER ───────────────────────────── -->
-<section class="newsletter">
+<!-- ─── CONTACT ───────────────────────────── -->
+<section class="section section--dark" id="contact">
   <div class="container">
-    <span class="section-label">Rejoignez-nous</span>
-    <h2>Accès exclusif</h2>
-    <p>Nouvelles collections, éditions limitées et offres privées — directement dans votre boîte mail.</p>
-    <form class="newsletter-form" novalidate>
-      <input type="email" placeholder="votre@email.com" required autocomplete="email" />
-      <button type="submit">S'inscrire</button>
-    </form>
-  </div>
-</section>
+    <div class="contact__layout">
 
-<!-- ─── FOOTER ───────────────────────────────── -->
-<footer class="footer" id="contact">
-  <div class="container">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <a href="index.html" class="nav__logo">Auré<span class="logo-dot">•</span></a>
-        <p>Des bijoux minimalistes et luxueux, conçus pour durer et raconter votre histoire.</p>
-        <div class="footer__socials">
-          <a href="#" class="footer__social" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="2" width="20" height="20" rx="5"/>
-              <circle cx="12" cy="12" r="5"/>
-              <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+      <div class="contact__info reveal">
+        <p class="section__eyebrow">Contact</p>
+        <h2 class="section__title">Parlons de votre<br><em class="gold-text">projet</em></h2>
+        <p class="contact__desc">
+          Une idée, un projet, une question ? Je réponds sous 48h. Démarrons ensemble quelque chose d'ambitieux.
+        </p>
+
+        <div class="contact__details">
+          <div class="contact__detail">
+            <div class="contact__detail-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5"/>
+                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div>
+              <span class="contact__detail-label">Email</span>
+              <a href="mailto:estebanrequena7@gmail.com" class="contact__detail-value">estebanrequena7@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact__detail">
+            <div class="contact__detail-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div>
+              <span class="contact__detail-label">Localisation</span>
+              <span class="contact__detail-value">France — disponible partout</span>
+            </div>
+          </div>
+
+          <div class="contact__detail">
+            <div class="contact__detail-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div>
+              <span class="contact__detail-label">Disponibilité</span>
+              <span class="contact__detail-value">Ouvert aux nouveaux projets</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact__social">
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/>
             </svg>
           </a>
-          <a href="#" class="footer__social" aria-label="Pinterest">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.03-2.83.19-.77 1.27-5.38 1.27-5.38s-.33-.65-.33-1.62c0-1.52.88-2.65 1.97-2.65.93 0 1.38.7 1.38 1.54 0 .94-.6 2.35-.9 3.65-.26 1.09.54 1.97 1.61 1.97 1.93 0 3.22-2.46 3.22-5.37 0-2.21-1.49-3.76-4.12-3.76-2.99 0-4.83 2.24-4.83 4.74 0 .86.24 1.46.62 1.93"/>
+          <a href="#" class="social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <a href="#" class="footer__social" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </a>
         </div>
       </div>
 
-      <div class="footer__col">
-        <h4>Boutique</h4>
-        <ul>
-          <li><a href="shop.html?cat=colliers">Colliers</a></li>
-          <li><a href="shop.html?cat=bagues">Bagues</a></li>
-          <li><a href="shop.html?cat=bracelets">Bracelets</a></li>
-          <li><a href="shop.html">Nouveautés</a></li>
-          <li><a href="shop.html">Éditions limitées</a></li>
-        </ul>
-      </div>
+      <form class="contact__form reveal reveal--delay-1" id="contact-form" novalidate>
+        <div class="form__row">
+          <div class="form__group">
+            <label for="prenom" class="form__label">Prénom</label>
+            <input type="text" id="prenom" name="prenom" class="form__input" placeholder="Jean" required />
+          </div>
+          <div class="form__group">
+            <label for="nom" class="form__label">Nom</label>
+            <input type="text" id="nom" name="nom" class="form__input" placeholder="Dupont" required />
+          </div>
+        </div>
 
-      <div class="footer__col">
-        <h4>Informations</h4>
-        <ul>
-          <li><a href="about.html">Notre histoire</a></li>
-          <li><a href="#">Nos matériaux</a></li>
-          <li><a href="#">Guide des tailles</a></li>
-          <li><a href="#">Entretien des bijoux</a></li>
-        </ul>
-      </div>
+        <div class="form__group">
+          <label for="email" class="form__label">Email</label>
+          <input type="email" id="email" name="email" class="form__input" placeholder="jean@exemple.fr" required />
+        </div>
 
-      <div class="footer__col">
-        <h4>Service</h4>
-        <ul>
-          <li><a href="#">Livraison & retours</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Mentions légales</a></li>
-        </ul>
-      </div>
+        <div class="form__group">
+          <label for="service" class="form__label">Service souhaité</label>
+          <select id="service" name="service" class="form__input form__select">
+            <option value="" disabled selected>Choisissez un service…</option>
+            <option value="vitrine">Site Vitrine</option>
+            <option value="ecommerce">Site E-Commerce</option>
+            <option value="maintenance">Maintenance</option>
+            <option value="autre">Autre / Je ne sais pas encore</option>
+          </select>
+        </div>
+
+        <div class="form__group">
+          <label for="budget" class="form__label">Budget indicatif</label>
+          <select id="budget" name="budget" class="form__input form__select">
+            <option value="" disabled selected>Fourchette de budget…</option>
+            <option value="500-1000">500 € – 1 000 €</option>
+            <option value="1000-2000">1 000 € – 2 000 €</option>
+            <option value="2000+">+ de 2 000 €</option>
+            <option value="discuss">À discuter</option>
+          </select>
+        </div>
+
+        <div class="form__group">
+          <label for="message" class="form__label">Décrivez votre projet</label>
+          <textarea id="message" name="message" class="form__input form__textarea" placeholder="Parlez-moi de votre activité, vos objectifs, vos délais…" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--gold btn--full form__submit">
+          <span class="form__submit-text">Envoyer ma demande</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <line x1="22" y1="2" x2="11" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="form__success" id="form-success">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            <polyline points="9 12 11 14 15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Message envoyé ! Je vous réponds sous 48h.
+        </div>
+      </form>
+
     </div>
+  </div>
+</section>
 
-    <div class="footer__bottom">
-      <p class="footer__legal">© 2025 Auré. Tous droits réservés.</p>
-      <div class="footer__payments">
-        <span class="payment-icon">Visa</span>
-        <span class="payment-icon">MC</span>
-        <span class="payment-icon">Amex</span>
-        <span class="payment-icon">PayPal</span>
-        <span class="payment-icon">Apple Pay</span>
-      </div>
+<!-- ─── FOOTER ────────────────────────────── -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a href="#hero" class="nav__logo">E<span class="gold">steban</span></a>
+      <p class="footer__tagline">Développeur web freelance — Des sites qui vous ressemblent.</p>
     </div>
+    <div class="footer__links">
+      <a href="#services">Services</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p class="footer__copy">© 2025 Esteban. Tous droits réservés.</p>
   </div>
 </footer>
 
-<!-- ─── CART DRAWER ──────────────────────────── -->
-<div class="cart-overlay"></div>
-<aside class="cart-drawer" role="dialog" aria-label="Votre panier">
-  <div class="cart-drawer__header">
-    <h2 class="cart-drawer__title">Panier</h2>
-    <button class="cart-drawer__close" aria-label="Fermer le panier">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M18 6 6 18M6 6l12 12"/>
-      </svg>
-    </button>
-  </div>
-  <div class="cart-drawer__body"></div>
-  <div class="cart-drawer__footer">
-    <div class="cart-subtotal">
-      <span>Sous-total</span>
-      <span class="cart-subtotal-amount">0,00 €</span>
-    </div>
-    <p class="cart-shipping-note">Livraison offerte dès 150 €</p>
-    <a href="#" class="btn btn--primary" style="display:flex;justify-content:center"><span>Finaliser la commande</span></a>
-    <button class="btn btn--outline" style="width:100%;justify-content:center" onclick="document.querySelector('.cart-overlay').click()"><span>Continuer mes achats</span></button>
-  </div>
-</aside>
-
-<!-- Floating cart FAB -->
-<button class="cart-fab" aria-label="Panier">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-  <span class="cart-fab-count">0</span>
-</button>
-
-<!-- Product image follower -->
-<div class="product-follow-img">
-  <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="1"><ellipse cx="50" cy="30" rx="28" ry="20"/><path d="M22 30 Q10 70 50 95 Q90 70 78 30" stroke-linecap="round"/><circle cx="50" cy="95" r="5" fill="#c9a96e" opacity="0.5"/></svg>
-</div>
-
-<script src="js/main.js"></script>
-<script src="js/animations.js"></script>
-<script src="js/premium.js"></script>
+<script src="js/portfolio.js"></script>
 </body>
 </html>
