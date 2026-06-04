@@ -1,0 +1,325 @@
+/* =============================================
+   Auré — Animations & Dynamic UI
+   Custom cursor · Reveals · Parallax · Counters
+   ============================================= */
+
+/* ─── CUSTOM CURSOR ──────────────────────────── */
+*, *::before, *::after { cursor: none !important; }
+
+.cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+}
+.cursor__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--white);
+  position: fixed;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+  will-change: transform;
+}
+.cursor__ring {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.7);
+  position: fixed;
+  transform: translate(-50%, -50%);
+  transition: width 0.35s ease, height 0.35s ease, border-color 0.3s ease, background 0.3s ease;
+  will-change: transform;
+}
+/* States */
+.cursor--hover .cursor__dot { width: 4px; height: 4px; opacity: 0.5; }
+.cursor--hover .cursor__ring { width: 56px; height: 56px; border-color: var(--gold); background: rgba(201,169,110,0.06); }
+.cursor--click .cursor__dot { width: 12px; height: 12px; }
+.cursor--click .cursor__ring { width: 28px; height: 28px; }
+.cursor--hidden .cursor__dot,
+.cursor--hidden .cursor__ring { opacity: 0; }
+.cursor--text .cursor__ring {
+  width: 80px; height: 80px;
+  background: var(--white);
+  mix-blend-mode: difference;
+  border-color: transparent;
+}
+.cursor--text .cursor__dot { opacity: 0; }
+
+/* ─── PAGE PRELOADER ─────────────────────────── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 99998;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader__logo {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.preloader__logo span {
+  display: inline-block;
+  transform: translateY(100%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.preloader__logo span.visible { transform: translateY(0); }
+.preloader__bar {
+  width: 120px; height: 1px;
+  background: rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+.preloader__bar-fill {
+  height: 100%;
+  background: var(--gold);
+  width: 0%;
+  transition: width 0.05s linear;
+}
+.preloader__label {
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ─── SCROLL REVEAL STATES ───────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="up"]    { transform: translateY(50px); }
+[data-reveal="down"]  { transform: translateY(-30px); }
+[data-reveal="left"]  { transform: translateX(-50px); }
+[data-reveal="right"] { transform: translateX(50px); }
+[data-reveal="scale"] { transform: scale(0.92); }
+[data-reveal="fade"]  { transform: none; }
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none !important;
+}
+
+/* Stagger children */
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-stagger].revealed > *:nth-child(1)  { transition-delay: 0.05s; }
+[data-stagger].revealed > *:nth-child(2)  { transition-delay: 0.12s; }
+[data-stagger].revealed > *:nth-child(3)  { transition-delay: 0.19s; }
+[data-stagger].revealed > *:nth-child(4)  { transition-delay: 0.26s; }
+[data-stagger].revealed > *:nth-child(5)  { transition-delay: 0.33s; }
+[data-stagger].revealed > *:nth-child(6)  { transition-delay: 0.40s; }
+[data-stagger].revealed > *:nth-child(7)  { transition-delay: 0.47s; }
+[data-stagger].revealed > *:nth-child(8)  { transition-delay: 0.54s; }
+[data-stagger].revealed > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── SPLIT TEXT HEADINGS ────────────────────── */
+.split-text .word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.split-text .word .char {
+  display: inline-block;
+  transform: translateY(100%);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.split-text.revealed .word .char { transform: translateY(0); }
+
+/* ─── HERO PARALLAX ──────────────────────────── */
+.hero__bg { will-change: transform; }
+
+/* ─── LINE DRAW ANIMATION ────────────────────── */
+.draw-line {
+  width: 0;
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.draw-line.revealed { width: 40px; }
+
+/* ─── MAGNETIC BUTTONS ───────────────────────── */
+.btn { will-change: transform; transition: transform 0.3s ease, background var(--transition), color var(--transition), border-color var(--transition); }
+
+/* ─── COUNTER ANIMATION ──────────────────────── */
+.counter-num { display: inline-block; }
+
+/* ─── IMAGE REVEAL (clip) ────────────────────── */
+.clip-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.clip-reveal.revealed { clip-path: inset(0 0% 0 0); }
+
+/* ─── MARQUEE PAUSE ON HOVER ─────────────────── */
+.marquee-band:hover .marquee-track { animation-play-state: paused; }
+
+/* ─── PRODUCT CARD ENHANCED ──────────────────── */
+.product-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.product-card:hover { transform: translateY(-6px); }
+.product-card__image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.04));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.product-card:hover .product-card__image-wrap::after { opacity: 1; }
+
+/* ─── CATEGORY CARD ENHANCED ─────────────────── */
+.category-card__name {
+  transform: translateY(8px);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.category-card:hover .category-card__name { transform: translateY(0); }
+
+/* ─── NAV LINK ANIMATED DOT ──────────────────── */
+.nav__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ─── HERO TITLE STAGGER ─────────────────────── */
+.hero__label { opacity: 0; transform: translateX(-20px); transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s; }
+.hero__title { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease 0.5s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s; }
+.hero__subtitle { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease 0.75s, transform 0.8s ease 0.75s; }
+.hero__actions { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease 0.95s, transform 0.8s ease 0.95s; }
+.hero__scroll { opacity: 0; transition: opacity 0.8s ease 1.3s; }
+
+.hero--loaded .hero__label,
+.hero--loaded .hero__title,
+.hero--loaded .hero__subtitle,
+.hero--loaded .hero__actions,
+.hero--loaded .hero__scroll { opacity: 1; transform: none; }
+
+/* ─── PAGE TRANSITION ────────────────────────── */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 99990;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.6s cubic-bezier(0.87, 0, 0.13, 1);
+}
+.page-transition.enter {
+  transform: scaleY(1);
+  transform-origin: bottom;
+}
+.page-transition.leave {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+/* ─── SCROLL PROGRESS BAR ────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--gold);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ─── FLOATING CART INDICATOR ────────────────── */
+.cart-fab {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  width: 56px; height: 56px;
+  background: var(--black);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  cursor: none;
+  z-index: 500;
+  transform: scale(0) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+  opacity: 0;
+}
+.cart-fab.visible { transform: scale(1) translateY(0); opacity: 1; }
+.cart-fab:hover { background: var(--gold); }
+.cart-fab svg { width: 22px; height: 22px; stroke: white; }
+.cart-fab .cart-fab-count {
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 18px; height: 18px;
+  background: var(--gold);
+  border-radius: 50%;
+  font-size: 0.6rem;
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600;
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.2s ease;
+}
+.cart-fab .cart-fab-count.visible { opacity: 1; transform: scale(1); }
+.cart-fab:hover .cart-fab-count { background: white; color: var(--gold); }
+
+/* ─── HOVER IMAGE FOLLOW ─────────────────────── */
+.product-follow-img {
+  position: fixed;
+  width: 180px; height: 230px;
+  background: var(--off-white);
+  pointer-events: none;
+  z-index: 800;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transform: scale(0.85) rotate(-3deg);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: transform;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+.product-follow-img.visible { opacity: 1; transform: scale(1) rotate(-1deg); }
+.product-follow-img svg { width: 60%; height: 60%; }
+
+/* ─── NOISE TEXTURE OVERLAY ──────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99997;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── SECTION HIGHLIGHT LINE ─────────────────── */
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin-right: 0.8rem;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section-label.revealed::before { width: 20px; }
+
+/* ─── MOBILE HIDE ────────────────────────────── */
+@media (max-width: 1024px) {
+  .cursor__dot, .cursor__ring { display: none; }
+  *, *::before, *::after { cursor: auto !important; }
+  .product-follow-img { display: none; }
+}

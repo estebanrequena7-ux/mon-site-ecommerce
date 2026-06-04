@@ -12,8 +12,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body>
+
+<!-- Scroll progress -->
+<div class="scroll-progress"></div>
+
+<!-- Custom cursor -->
+<div class="cursor">
+  <div class="cursor__dot"></div>
+  <div class="cursor__ring"></div>
+</div>
+
+<!-- Page transition -->
+<div class="page-transition"></div>
+
+<!-- Preloader -->
+<div class="preloader">
+  <div class="preloader__logo">
+    <span>A</span><span>u</span><span>r</span><span>é</span>
+  </div>
+  <div class="preloader__bar"><div class="preloader__bar-fill"></div></div>
+  <div class="preloader__label">Chargement</div>
+</div>
 
 <!-- ─── HEADER ─────────────────────────────── -->
 <header class="header header--dark" id="header">
@@ -119,13 +141,13 @@
 <!-- ─── CATEGORIES ──────────────────────────── -->
 <section class="section">
   <div class="container">
-    <div class="section__header section__header--center">
+    <div class="section__header section__header--center" data-reveal="up">
       <span class="section-label">Nos collections</span>
       <h2 class="section-title">Explorez l'univers Auré</h2>
       <span class="gold-line gold-line--center"></span>
     </div>
 
-    <div class="categories">
+    <div class="categories" data-stagger>
       <!-- Colliers -->
       <a href="shop.html?cat=colliers" class="category-card category-card--colliers">
         <div class="category-card__bg"></div>
@@ -389,6 +411,18 @@
   </div>
 </aside>
 
+<!-- Floating cart FAB -->
+<button class="cart-fab" aria-label="Panier">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  <span class="cart-fab-count">0</span>
+</button>
+
+<!-- Product image follower -->
+<div class="product-follow-img">
+  <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="1"><ellipse cx="50" cy="30" rx="28" ry="20"/><path d="M22 30 Q10 70 50 95 Q90 70 78 30" stroke-linecap="round"/><circle cx="50" cy="95" r="5" fill="#c9a96e" opacity="0.5"/></svg>
+</div>
+
 <script src="js/main.js"></script>
+<script src="js/animations.js"></script>
 </body>
 </html>
