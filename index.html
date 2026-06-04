@@ -13,6 +13,7 @@
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/premium.css" />
 </head>
 <body>
 
@@ -87,25 +88,43 @@
 <!-- ─── HERO ────────────────────────────────── -->
 <section class="hero">
   <div class="hero__bg"></div>
+  <div class="hero__spotlight"></div>
+  <div class="hero__particles"></div>
 
-  <!-- Decorative SVG jewelry -->
-  <svg style="position:absolute;right:5%;top:50%;transform:translateY(-50%);width:min(480px,45vw);height:auto;opacity:0.06;pointer-events:none" viewBox="0 0 400 400" fill="none" stroke="#c9a96e" stroke-width="0.6">
-    <circle cx="200" cy="200" r="160"/>
-    <circle cx="200" cy="200" r="120"/>
-    <circle cx="200" cy="200" r="80"/>
-    <ellipse cx="200" cy="200" rx="160" ry="60"/>
-    <ellipse cx="200" cy="200" rx="120" ry="45"/>
-    <line x1="40" y1="200" x2="360" y2="200"/>
-    <line x1="200" y1="40" x2="200" y2="360"/>
+  <!-- Ambient orbs -->
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+
+  <!-- Outer rotating ring -->
+  <svg class="hero__jewelry-deco" viewBox="0 0 500 500" fill="none" stroke="#c9a96e" stroke-width="0.5">
+    <circle cx="250" cy="250" r="220"/>
+    <circle cx="250" cy="250" r="180"/>
+    <circle cx="250" cy="250" r="140"/>
+    <ellipse cx="250" cy="250" rx="220" ry="80"/>
+    <ellipse cx="250" cy="250" rx="180" ry="65"/>
+    <line x1="30" y1="250" x2="470" y2="250"/>
+    <line x1="250" y1="30" x2="250" y2="470"/>
+    <circle cx="250" cy="250" r="12" fill="#c9a96e" opacity="0.4"/>
+    <circle cx="250" cy="30"  r="4" fill="#c9a96e" opacity="0.5"/>
+    <circle cx="250" cy="470" r="4" fill="#c9a96e" opacity="0.5"/>
+    <circle cx="30"  cy="250" r="4" fill="#c9a96e" opacity="0.5"/>
+    <circle cx="470" cy="250" r="4" fill="#c9a96e" opacity="0.5"/>
   </svg>
 
-  <div class="hero__content container">
+  <!-- Inner counter-rotating detail -->
+  <svg class="hero__jewelry-inner" viewBox="0 0 500 500" fill="none" stroke="#c9a96e" stroke-width="0.4">
+    <polygon points="250,60 290,180 420,180 318,258 360,380 250,302 140,380 182,258 80,180 210,180"/>
+    <circle cx="250" cy="250" r="100"/>
+    <ellipse cx="250" cy="250" rx="100" ry="38"/>
+  </svg>
+
+  <div class="hero__content container" style="position:relative;z-index:5">
     <p class="hero__label">Collection 2025</p>
     <h1 class="hero__title">L'élégance<br /><em>redéfinie</em></h1>
     <p class="hero__subtitle">Des bijoux façonnés pour celles et ceux qui portent leur singularité avec discrétion.</p>
     <div class="hero__actions">
       <a href="shop.html" class="btn btn--ghost"><span>Découvrir la collection</span></a>
-      <a href="about.html" class="btn btn--ghost" style="background:transparent;border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)"><span>Notre histoire</span></a>
+      <a href="about.html" class="btn btn--ghost" style="background:transparent;border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.55)"><span>Notre histoire</span></a>
     </div>
   </div>
 
@@ -137,6 +156,30 @@
     <span>Bijoux durables</span><span class="dot">◆</span>
   </div>
 </div>
+
+<!-- ─── STATS BAND ───────────────────────────── -->
+<section class="stats-band-gold section--dark-noise">
+  <div class="container">
+    <div class="stats-band-gold__grid" data-stagger>
+      <div class="stats-band-gold__item" data-reveal="up">
+        <span class="stats-band-gold__value">2019</span>
+        <span class="stats-band-gold__label">Fondée en</span>
+      </div>
+      <div class="stats-band-gold__item" data-reveal="up" data-delay="0.1">
+        <span class="stats-band-gold__value">12 000+</span>
+        <span class="stats-band-gold__label">Clientes fidèles</span>
+      </div>
+      <div class="stats-band-gold__item" data-reveal="up" data-delay="0.2">
+        <span class="stats-band-gold__value">48</span>
+        <span class="stats-band-gold__label">Pièces uniques</span>
+      </div>
+      <div class="stats-band-gold__item" data-reveal="up" data-delay="0.3">
+        <span class="stats-band-gold__value">100%</span>
+        <span class="stats-band-gold__label">Artisanal</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ─── CATEGORIES ──────────────────────────── -->
 <section class="section">
@@ -211,6 +254,144 @@
   </div>
 </section>
 
+<!-- ─── SHOWCASE HORIZONTAL ──────────────────── -->
+<section class="showcase-section section--dark-noise">
+  <div class="showcase-section__header container">
+    <span class="section-label" data-reveal="fade">Tous les univers</span>
+    <h2 class="section-title" style="color:var(--white)" data-reveal="up">La collection complète</h2>
+  </div>
+
+  <div class="showcase-scroll-wrapper">
+    <div class="showcase-track">
+      <!-- items duplicated for infinite loop feel -->
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="30" rx="28" ry="20"/><path d="M22 30 Q10 70 50 95 Q90 70 78 30" stroke-linecap="round"/><circle cx="50" cy="95" r="6" fill="#c9a96e" opacity="0.4"/><circle cx="50" cy="95" r="2" fill="#c9a96e"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Colliers</p>
+          <p class="showcase-item__name">Collier Lumière</p>
+          <p class="showcase-item__price">189 €</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="55" rx="32" ry="18"/><ellipse cx="50" cy="44" rx="32" ry="18"/><line x1="18" y1="44" x2="18" y2="55"/><line x1="82" y1="44" x2="82" y2="55"/><path d="M36 38 L50 18 L64 38" stroke-width="0.7"/><polygon points="50,14 54,22 46,22" fill="#c9a96e" opacity="0.35"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Bagues</p>
+          <p class="showcase-item__name">Bague Solstice</p>
+          <p class="showcase-item__price">149 €</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 80" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="40" rx="42" ry="24"/><path d="M8 40 Q10 60 50 64 Q90 60 92 40" stroke-dasharray="3 2"/><circle cx="24" cy="52" r="3" fill="#c9a96e" opacity="0.3"/><circle cx="50" cy="64" r="3" fill="#c9a96e" opacity="0.3"/><circle cx="76" cy="52" r="3" fill="#c9a96e" opacity="0.3"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Bracelets</p>
+          <p class="showcase-item__name">Bracelet Aube</p>
+          <p class="showcase-item__price">129 €</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="28" rx="22" ry="16"/><path d="M28 28 Q18 65 50 88 Q82 65 72 28" stroke-linecap="round"/><path d="M36 45 Q50 52 64 45" stroke-dasharray="2 2"/><circle cx="50" cy="88" r="8" fill="none" stroke="#c9a96e"/><circle cx="50" cy="88" r="3" fill="#c9a96e" opacity="0.6"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Colliers</p>
+          <p class="showcase-item__name">Collier Étoile</p>
+          <p class="showcase-item__price">219 €</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.9"><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="8" fill="#c9a96e" opacity="0.2"/><circle cx="50" cy="20" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="50" cy="80" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="20" cy="50" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="80" cy="50" r="3" fill="#c9a96e" opacity="0.5"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Bagues</p>
+          <p class="showcase-item__name">Bague Pleine Lune</p>
+          <p class="showcase-item__price">169 €</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 80" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="38" rx="38" ry="22"/><line x1="12" y1="38" x2="12" y2="50"/><line x1="88" y1="38" x2="88" y2="50"/><ellipse cx="50" cy="50" rx="38" ry="22"/><path d="M30 30 Q50 20 70 30" stroke-dasharray="2 2"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Bracelets</p>
+          <p class="showcase-item__name">Bracelet Constellation</p>
+          <p class="showcase-item__price">159 €</p>
+        </div>
+      </div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="30" rx="28" ry="20"/><path d="M22 30 Q10 70 50 95 Q90 70 78 30" stroke-linecap="round"/><circle cx="50" cy="95" r="6" fill="#c9a96e" opacity="0.4"/><circle cx="50" cy="95" r="2" fill="#c9a96e"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Colliers</p>
+          <p class="showcase-item__name">Collier Lumière</p>
+          <p class="showcase-item__price">189 €</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="55" rx="32" ry="18"/><ellipse cx="50" cy="44" rx="32" ry="18"/><line x1="18" y1="44" x2="18" y2="55"/><line x1="82" y1="44" x2="82" y2="55"/><path d="M36 38 L50 18 L64 38" stroke-width="0.7"/><polygon points="50,14 54,22 46,22" fill="#c9a96e" opacity="0.35"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Bagues</p>
+          <p class="showcase-item__name">Bague Solstice</p>
+          <p class="showcase-item__price">149 €</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 80" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="40" rx="42" ry="24"/><path d="M8 40 Q10 60 50 64 Q90 60 92 40" stroke-dasharray="3 2"/><circle cx="24" cy="52" r="3" fill="#c9a96e" opacity="0.3"/><circle cx="50" cy="64" r="3" fill="#c9a96e" opacity="0.3"/><circle cx="76" cy="52" r="3" fill="#c9a96e" opacity="0.3"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Bracelets</p>
+          <p class="showcase-item__name">Bracelet Aube</p>
+          <p class="showcase-item__price">129 €</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="28" rx="22" ry="16"/><path d="M28 28 Q18 65 50 88 Q82 65 72 28" stroke-linecap="round"/><path d="M36 45 Q50 52 64 45" stroke-dasharray="2 2"/><circle cx="50" cy="88" r="8" fill="none" stroke="#c9a96e"/><circle cx="50" cy="88" r="3" fill="#c9a96e" opacity="0.6"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Colliers</p>
+          <p class="showcase-item__name">Collier Étoile</p>
+          <p class="showcase-item__price">219 €</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.9"><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="8" fill="#c9a96e" opacity="0.2"/><circle cx="50" cy="20" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="50" cy="80" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="20" cy="50" r="3" fill="#c9a96e" opacity="0.5"/><circle cx="80" cy="50" r="3" fill="#c9a96e" opacity="0.5"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Bagues</p>
+          <p class="showcase-item__name">Bague Pleine Lune</p>
+          <p class="showcase-item__price">169 €</p>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-item__visual">
+          <svg viewBox="0 0 100 80" fill="none" stroke="#c9a96e" stroke-width="0.9"><ellipse cx="50" cy="38" rx="38" ry="22"/><line x1="12" y1="38" x2="12" y2="50"/><line x1="88" y1="38" x2="88" y2="50"/><ellipse cx="50" cy="50" rx="38" ry="22"/><path d="M30 30 Q50 20 70 30" stroke-dasharray="2 2"/></svg>
+        </div>
+        <div class="showcase-item__info">
+          <p class="showcase-item__label">Bracelets</p>
+          <p class="showcase-item__name">Bracelet Constellation</p>
+          <p class="showcase-item__price">159 €</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="showcase-hint">Glissez pour explorer</div>
+</section>
+
+<div class="glow-divider"></div>
+
 <!-- ─── FEATURED PRODUCTS ───────────────────── -->
 <section class="section section--cream">
   <div class="container">
@@ -226,26 +407,39 @@
   </div>
 </section>
 
-<!-- ─── EDITORIAL BANNER ─────────────────────── -->
-<div class="editorial-banner">
-  <div class="editorial-banner__bg"></div>
-  <div class="editorial-banner__content">
-    <div class="editorial-banner__text">
-      <span class="section-label">Savoir-faire</span>
-      <h2 class="editorial-banner__title">Chaque pièce<br />raconte une histoire</h2>
-      <p class="editorial-banner__desc">Façonnés par des artisans passionnés, nos bijoux allient l'expertise traditionnelle aux formes contemporaines. Des matériaux nobles sélectionnés avec soin pour une durabilité sans compromis.</p>
+<!-- ─── EDITORIAL DUO ──────────────────────────── -->
+<div class="editorial-duo">
+  <!-- Dark panel -->
+  <div class="editorial-duo__panel editorial-duo__panel--dark section--dark-noise">
+    <div class="editorial-duo__bg-visual">
+      <svg viewBox="0 0 400 400" fill="none" stroke="#c9a96e" stroke-width="0.5">
+        <circle cx="200" cy="200" r="160"/><circle cx="200" cy="200" r="110"/><circle cx="200" cy="200" r="60"/>
+        <ellipse cx="200" cy="200" rx="160" ry="60"/><ellipse cx="200" cy="200" rx="110" ry="42"/>
+        <line x1="40" y1="200" x2="360" y2="200"/><line x1="200" y1="40" x2="200" y2="360"/>
+        <circle cx="200" cy="200" r="10" fill="#c9a96e" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="editorial-duo__content" data-reveal="left">
+      <span class="editorial-duo__eyebrow">Savoir-faire</span>
+      <h2 class="editorial-duo__title">Chaque pièce<br />raconte une histoire</h2>
+      <p class="editorial-duo__body">Façonnés par des artisans passionnés, nos bijoux allient l'expertise traditionnelle aux formes contemporaines. Des matériaux nobles sélectionnés avec soin pour une durabilité sans compromis.</p>
       <a href="about.html" class="btn btn--ghost"><span>Découvrir l'atelier</span></a>
     </div>
-    <div class="editorial-banner__visual">
-      <div class="editorial-circle">
-        <svg viewBox="0 0 200 200" fill="none" stroke="#c9a96e" stroke-width="0.6">
-          <circle cx="100" cy="100" r="70"/>
-          <ellipse cx="100" cy="100" rx="70" ry="28"/>
-          <line x1="30" y1="100" x2="170" y2="100"/>
-          <circle cx="100" cy="100" r="8" fill="#c9a96e" opacity="0.2"/>
-          <circle cx="100" cy="100" r="3" fill="#c9a96e" opacity="0.5"/>
-        </svg>
-      </div>
+  </div>
+  <!-- Light panel -->
+  <div class="editorial-duo__panel editorial-duo__panel--light">
+    <div class="editorial-duo__bg-visual">
+      <svg viewBox="0 0 400 500" fill="none" stroke="#c9a96e" stroke-width="0.5">
+        <ellipse cx="200" cy="130" rx="90" ry="65"/><path d="M110 130 Q60 280 200 370 Q340 280 290 130" stroke-linecap="round"/>
+        <path d="M140 180 Q200 205 260 180" stroke-dasharray="3 3"/>
+        <circle cx="200" cy="370" r="20" fill="none"/><circle cx="200" cy="370" r="6" fill="#c9a96e" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="editorial-duo__content" data-reveal="right">
+      <span class="editorial-duo__eyebrow">Matériaux nobles</span>
+      <h2 class="editorial-duo__title" style="color:var(--black)">L'or à l'état<br />de perfection</h2>
+      <p class="editorial-duo__body" style="color:var(--gray)">Or vermeil 18 carats, argent sterling, or jaune 14 carats. Chaque métal est choisi pour ses qualités intrinsèques et sa capacité à traverser le temps.</p>
+      <a href="shop.html" class="btn btn--primary"><span>Voir la collection</span></a>
     </div>
   </div>
 </div>
@@ -259,7 +453,7 @@
       <span class="gold-line gold-line--center"></span>
     </div>
 
-    <div class="testimonials-track">
+    <div class="testimonials-track" data-stagger>
       <div class="testimonial fade-up">
         <div class="testimonial__text">
           "Mon collier Auré est devenu ma pièce signature. La qualité de l'or vermeil est exceptionnelle, je ne le quitte plus."
@@ -424,5 +618,6 @@
 
 <script src="js/main.js"></script>
 <script src="js/animations.js"></script>
+<script src="js/premium.js"></script>
 </body>
 </html>
