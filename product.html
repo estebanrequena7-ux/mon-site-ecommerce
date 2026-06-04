@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collier Lumière — ORET</title>
+  <meta name="description" content="Collier Lumière en or vermeil 18k — ORET Bijoux de luxe minimaliste." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/product.css" />
+</head>
+<body>
+
+<header class="header" id="header">
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">ORET<span class="logo-dot">•</span></a>
+    <ul class="nav__links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="shop.html" class="active">Boutique</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="nav__icon-btn" aria-label="Mon compte">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <button class="nav__icon-btn" aria-label="Panier" data-cart-open>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">0</span>
+      </button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="shop.html">Boutique</a>
+  <a href="about.html">À propos</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ─── BREADCRUMB ───────────────────────────── -->
+<div class="breadcrumb">
+  <div class="container">
+    <nav aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span>/</span>
+      <a href="shop.html">Boutique</a>
+      <span>/</span>
+      <a href="shop.html?cat=Colliers">Colliers</a>
+      <span>/</span>
+      <span>Collier Lumière</span>
+    </nav>
+  </div>
+</div>
+
+<!-- ─── PRODUCT MAIN ─────────────────────────── -->
+<main class="product-page">
+  <div class="container">
+    <div class="product-layout">
+
+      <!-- Gallery -->
+      <div class="product-gallery">
+        <div class="product-gallery__thumbs">
+          <button class="thumb thumb--active" data-index="0" aria-label="Vue 1">
+            <div class="thumb__inner">
+              <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.8">
+                <ellipse cx="50" cy="30" rx="28" ry="20"/>
+                <path d="M22 30 Q10 70 50 95 Q90 70 78 30" stroke-linecap="round"/>
+                <circle cx="50" cy="95" r="6" fill="#c9a96e" opacity="0.4"/>
+                <circle cx="50" cy="95" r="2" fill="#c9a96e"/>
+              </svg>
+            </div>
+          </button>
+          <button class="thumb" data-index="1" aria-label="Vue 2">
+            <div class="thumb__inner">
+              <svg viewBox="0 0 100 120" fill="none" stroke="#c9a96e" stroke-width="0.8">
+                <path d="M20 25 Q50 15 80 25 Q90 60 70 90 Q50 105 30 90 Q10 60 20 25"/>
+                <circle cx="50" cy="65" r="12" fill="#c9a96e" opacity="0.1"/>
+              </svg>
+            </div>
+          </button>
+          <button class="thumb" data-index="2" aria-label="Vue 3">
+            <div class="thumb__inner">
+              <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.8">
+                <circle cx="50" cy="50" r="35"/>
+                <circle cx="50" cy="50" r="20" fill="#c9a96e" opacity="0.08"/>
+                <path d="M50 15 Q65 30 65 50 Q65 70 50 85 Q35 70 35 50 Q35 30 50 15"/>
+              </svg>
+            </div>
+          </button>
+          <button class="thumb" data-index="3" aria-label="Vue 4">
+            <div class="thumb__inner">
+              <svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.8">
+                <ellipse cx="50" cy="50" rx="40" ry="25"/>
+                <path d="M10 50 Q20 70 50 72 Q80 70 90 50" stroke-dasharray="3 2"/>
+                <circle cx="50" cy="72" r="4" fill="#c9a96e" opacity="0.5"/>
+              </svg>
+            </div>
+          </button>
+        </div>
+
+        <div class="product-gallery__main">
+          <div class="gallery-slide active" data-index="0">
+            <svg viewBox="0 0 300 360" fill="none" stroke="#c9a96e" stroke-width="0.8">
+              <ellipse cx="150" cy="90" rx="84" ry="60"/>
+              <path d="M66 90 Q30 210 150 285 Q270 210 234 90" stroke-linecap="round" stroke-width="1"/>
+              <circle cx="150" cy="285" r="18" fill="#c9a96e" opacity="0.15"/>
+              <circle cx="150" cy="285" r="10" fill="#c9a96e" opacity="0.25"/>
+              <circle cx="150" cy="285" r="4" fill="#c9a96e" opacity="0.6"/>
+              <path d="M66 90 Q68 88 70 90" stroke-width="0.5"/>
+              <path d="M234 90 Q236 88 238 90" stroke-width="0.5"/>
+            </svg>
+          </div>
+          <div class="gallery-slide" data-index="1">
+            <svg viewBox="0 0 300 360" fill="none" stroke="#c9a96e" stroke-width="0.8">
+              <path d="M60 75 Q150 45 240 75 Q270 180 210 270 Q150 315 90 270 Q30 180 60 75"/>
+              <path d="M120 264 L150 300 L180 264" stroke-width="0.6"/>
+              <circle cx="150" cy="180" r="30" fill="#c9a96e" opacity="0.05"/>
+            </svg>
+          </div>
+          <div class="gallery-slide" data-index="2">
+            <svg viewBox="0 0 300 300" fill="none" stroke="#c9a96e" stroke-width="0.8">
+              <circle cx="150" cy="150" r="105"/>
+              <circle cx="150" cy="150" r="60" fill="#c9a96e" opacity="0.05"/>
+              <path d="M150 45 Q195 90 195 150 Q195 210 150 255 Q105 210 105 150 Q105 90 150 45"/>
+              <circle cx="150" cy="45" r="6" fill="#c9a96e" opacity="0.4"/>
+              <circle cx="150" cy="255" r="6" fill="#c9a96e" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="gallery-slide" data-index="3">
+            <svg viewBox="0 0 300 200" fill="none" stroke="#c9a96e" stroke-width="0.8">
+              <ellipse cx="150" cy="100" rx="120" ry="60"/>
+              <path d="M30 100 Q45 160 150 166 Q255 160 270 100" stroke-dasharray="6 3"/>
+              <circle cx="72" cy="138" r="7" fill="#c9a96e" opacity="0.25"/>
+              <circle cx="150" cy="166" r="7" fill="#c9a96e" opacity="0.25"/>
+              <circle cx="228" cy="138" r="7" fill="#c9a96e" opacity="0.25"/>
+            </svg>
+          </div>
+
+          <!-- Nav arrows -->
+          <button class="gallery-arrow gallery-arrow--prev" aria-label="Précédent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button class="gallery-arrow gallery-arrow--next" aria-label="Suivant">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+
+          <!-- Badge -->
+          <div class="product-badge-overlay">Nouveau</div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="product-info">
+        <div class="product-info__header">
+          <span class="section-label">Colliers</span>
+          <h1 class="product-info__title">Collier Lumière</h1>
+          <div class="product-info__rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-count">47 avis</span>
+          </div>
+        </div>
+
+        <div class="product-info__price">
+          <span class="price-main">189 €</span>
+          <span class="price-note">Taxes incluses · Livraison gratuite</span>
+        </div>
+
+        <div class="product-info__divider"></div>
+
+        <!-- Material selector -->
+        <div class="product-option">
+          <div class="product-option__label">
+            Matière — <strong id="selected-material">Or Vermeil 18k</strong>
+          </div>
+          <div class="option-pills">
+            <button class="pill pill--active" data-value="Or Vermeil 18k" data-price="189">
+              <span class="pill__swatch" style="background:linear-gradient(135deg,#c9a96e,#e2c98a)"></span>
+              Or Vermeil 18k
+            </button>
+            <button class="pill" data-value="Or Jaune 14k" data-price="245">
+              <span class="pill__swatch" style="background:linear-gradient(135deg,#d4a017,#f0c040)"></span>
+              Or Jaune 14k
+            </button>
+            <button class="pill" data-value="Argent Sterling" data-price="145">
+              <span class="pill__swatch" style="background:linear-gradient(135deg,#a8a8a8,#d4d4d4)"></span>
+              Argent Sterling
+            </button>
+          </div>
+        </div>
+
+        <!-- Length selector -->
+        <div class="product-option">
+          <div class="product-option__label">
+            Longueur — <strong id="selected-length">40 cm</strong>
+            <a href="#" class="guide-link">Guide des tailles</a>
+          </div>
+          <div class="option-pills">
+            <button class="size-pill" data-size="36 cm">36 cm</button>
+            <button class="size-pill size-pill--active" data-size="40 cm">40 cm</button>
+            <button class="size-pill" data-size="45 cm">45 cm</button>
+            <button class="size-pill" data-size="50 cm">50 cm</button>
+          </div>
+        </div>
+
+        <div class="product-info__divider"></div>
+
+        <!-- Actions -->
+        <div class="product-actions">
+          <div class="qty-selector">
+            <button class="qty-btn" id="qty-minus">−</button>
+            <span id="qty-display">1</span>
+            <button class="qty-btn" id="qty-plus">+</button>
+          </div>
+          <button class="btn btn--primary product-add-btn" id="add-to-cart-btn">
+            <span>Ajouter au panier</span>
+          </button>
+        </div>
+
+        <button class="btn btn--outline wishlist-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span>Ajouter à ma liste</span>
+        </button>
+
+        <div class="product-info__divider"></div>
+
+        <!-- Trust signals -->
+        <div class="trust-signals">
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.2" width="18" height="18">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+            <span>Livraison offerte dès 150 €</span>
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.2" width="18" height="18">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Retours gratuits sous 30 jours</span>
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.2" width="18" height="18">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span>Garantie à vie sur la structure</span>
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.2" width="18" height="18">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+            <span>Paiement 3x sans frais</span>
+          </div>
+        </div>
+
+        <!-- Description accordion -->
+        <div class="product-accordion">
+          <div class="accordion-item accordion-item--open">
+            <button class="accordion-trigger" aria-expanded="true">
+              <span>Description</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m18 15-6-6-6 6"/></svg>
+            </button>
+            <div class="accordion-body">
+              <p>Le Collier Lumière capture l'essence du minimalisme raffiné. Sa chaîne délicate en or vermeil 18 carats porte un pendentif en forme de gouttelette polie, symbole de pureté et de mouvement.</p>
+              <p>Conçu pour être porté seul ou en superposition, il s'adapte à toutes les occasions — du quotidien aux instants d'exception.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span>Matières & finitions</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="accordion-body" style="display:none">
+              <ul>
+                <li>Or vermeil 18 carats (couche d'or ≥ 2,5 microns sur argent sterling 925)</li>
+                <li>Fermoir mousqueton doré</li>
+                <li>Finition polie à la main</li>
+                <li>Sans nickel, sans plomb, hypoallergénique</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span>Entretien</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="accordion-body" style="display:none">
+              <ul>
+                <li>Évitez le contact avec l'eau, la sueur et les parfums</li>
+                <li>Rangez dans la pochette fournie à l'abri de la lumière</li>
+                <li>Essuyez délicatement avec un chiffon doux après port</li>
+                <li>Ne pas nettoyer avec des produits abrasifs</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span>Livraison & retours</span>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="accordion-body" style="display:none">
+              <ul>
+                <li>Livraison standard : 3–5 jours ouvrés (gratuite dès 150 €)</li>
+                <li>Livraison express : 1–2 jours ouvrés (9,90 €)</li>
+                <li>Retours gratuits sous 30 jours</li>
+                <li>Emballage cadeau offert sur demande</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ─── REVIEWS ───────────────────────────────── -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label" style="display:block;margin-bottom:0.5rem">Avis clients</span>
+        <h2 class="section-title">Ce qu'ils en disent</h2>
+      </div>
+      <div class="reviews-score">
+        <div class="score-big">4.9</div>
+        <div class="score-stars">★★★★★</div>
+        <div class="score-count">47 avis vérifiés</div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Absolument magnifique. La finition est parfaite, la chaîne est fine sans être fragile. Je l'ai reçu dans une belle pochette noire. Parfait pour offrir."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Marie-Claire B.</div>
+            <div class="review-date">Il y a 2 semaines · Achat vérifié</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Je l'ai commandé pour me faire un cadeau et je ne regrette pas. La qualité est au rendez-vous, l'or vermeil est vraiment beau. Je l'ai pris en 45 cm et c'est parfait."</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Amandine T.</div>
+            <div class="review-date">Il y a 1 mois · Achat vérifié</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">"Très joli collier, discret et élégant. Je l'associe avec d'autres colliers ORET. Livraison rapide, packaging soigné. Je recommande !"</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">Julia R.</div>
+            <div class="review-date">Il y a 3 semaines · Achat vérifié</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RELATED PRODUCTS ──────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <span class="section-label" style="display:block;margin-bottom:0.5rem">Vous aimerez aussi</span>
+        <h2 class="section-title">Dans la même collection</h2>
+      </div>
+      <a href="shop.html" class="btn btn--outline"><span>Voir tout</span></a>
+    </div>
+    <div class="products-grid featured-grid"></div>
+  </div>
+</section>
+
+<!-- ─── NEWSLETTER ───────────────────────────── -->
+<section class="newsletter">
+  <div class="container">
+    <span class="section-label">Rejoignez-nous</span>
+    <h2>Accès exclusif</h2>
+    <p>Nouvelles collections, éditions limitées et offres privées.</p>
+    <form class="newsletter-form" novalidate>
+      <input type="email" placeholder="votre@email.com" required />
+      <button type="submit">S'inscrire</button>
+    </form>
+  </div>
+</section>
+
+<!-- ─── FOOTER ───────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo">ORET<span class="logo-dot">•</span></a>
+        <p>Des bijoux minimalistes et luxueux, conçus pour durer.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>Boutique</h4><ul><li><a href="shop.html?cat=colliers">Colliers</a></li><li><a href="shop.html?cat=bagues">Bagues</a></li><li><a href="shop.html?cat=bracelets">Bracelets</a></li></ul></div>
+      <div class="footer__col"><h4>Aide</h4><ul><li><a href="#">Livraison</a></li><li><a href="#">Retours</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer__col"><h4>ORET</h4><ul><li><a href="about.html">Notre histoire</a></li><li><a href="#">Matériaux</a></li><li><a href="#">Guide tailles</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__legal">© 2025 ORET. Tous droits réservés.</p>
+      <div class="footer__payments"><span class="payment-icon">Visa</span><span class="payment-icon">MC</span><span class="payment-icon">PayPal</span><span class="payment-icon">Apple Pay</span></div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay"></div>
+<aside class="cart-drawer" role="dialog" aria-label="Votre panier">
+  <div class="cart-drawer__header">
+    <h2 class="cart-drawer__title">Panier</h2>
+    <button class="cart-drawer__close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="cart-drawer__body"></div>
+  <div class="cart-drawer__footer">
+    <div class="cart-subtotal"><span>Sous-total</span><span class="cart-subtotal-amount">0,00 €</span></div>
+    <p class="cart-shipping-note">Livraison offerte dès 150 €</p>
+    <a href="#" class="btn btn--primary" style="display:flex;justify-content:center"><span>Finaliser la commande</span></a>
+    <button class="btn btn--outline" style="width:100%;justify-content:center" onclick="document.querySelector('.cart-overlay').click()"><span>Continuer mes achats</span></button>
+  </div>
+</aside>
+
+<script src="js/main.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>

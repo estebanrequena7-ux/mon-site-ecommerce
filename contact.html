@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — ORET</title>
+  <meta name="description" content="Contactez l'équipe ORET — bijoux de luxe minimalistes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Contact page styles ── */
+    .contact-hero {
+      min-height: 40vh;
+      display: flex;
+      align-items: flex-end;
+      background: var(--off-black);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero__bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #0a0a0a 0%, #1a1510 50%, #0a0a0a 100%);
+    }
+    .contact-hero__bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 60% 40%, rgba(201,169,110,0.1) 0%, transparent 60%);
+    }
+    .contact-hero__content {
+      position: relative; z-index: 2;
+      padding: 0 2rem 5rem;
+      max-width: 1280px; margin: 0 auto; width: 100%;
+    }
+    .contact-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+      margin: 0.8rem 0 0.5rem;
+    }
+    .contact-hero__sub {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+    }
+
+    .contact-section { padding: 6rem 0; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* Info column */
+    .contact-info { }
+    .contact-info .section-label { display: block; margin-bottom: 1.2rem; }
+    .contact-info h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .contact-info p {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-methods { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 3rem; }
+    .contact-method {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.2rem;
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: border-color var(--transition-fast);
+    }
+    .contact-method:hover { border-color: var(--gold); }
+    .contact-method__icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border: 1px solid rgba(201,169,110,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-method__icon svg { width: 18px; height: 18px; }
+    .contact-method__label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .contact-method__value {
+      font-size: 0.88rem;
+      color: var(--black);
+      margin-bottom: 0.15rem;
+    }
+    .contact-method__note { font-size: 0.72rem; color: var(--gray-light); }
+
+    .contact-socials { display: flex; gap: 0.7rem; }
+    .contact-social {
+      width: 38px; height: 38px;
+      border: 1px solid rgba(0,0,0,0.1);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color var(--transition-fast), color var(--transition-fast);
+    }
+    .contact-social:hover { border-color: var(--gold); color: var(--gold); }
+    .contact-social svg { width: 16px; height: 16px; }
+
+    /* Form column */
+    .contact-form-wrap { }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0,0,0,0.1);
+      margin: -1px 0 0 -1px;
+      padding: 1.2rem 1.4rem 0.8rem;
+      position: relative;
+      transition: border-color var(--transition-fast);
+    }
+    .form-field:focus-within { border-color: var(--gold); z-index: 1; }
+
+    .form-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: none;
+      border: none;
+      outline: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--black);
+      width: 100%;
+      padding: 0;
+      resize: none;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--gray-light); }
+    .form-select { cursor: pointer; appearance: none; }
+    .form-select option { color: var(--black); background: var(--white); }
+
+    .form-textarea { min-height: 120px; line-height: 1.7; }
+
+    .form-submit {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .form-note { font-size: 0.72rem; color: var(--gray-light); letter-spacing: 0.04em; }
+    .form-submit .btn { min-width: 200px; justify-content: center; }
+
+    /* FAQ */
+    .faq-section {
+      background: var(--off-white);
+      padding: 5rem 0;
+    }
+    .faq-section .section__header--center { margin-bottom: 3rem; }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(0,0,0,0.07);
+    }
+    .faq-item {
+      background: var(--off-white);
+      padding: 2rem;
+    }
+    .faq-item__q {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 0.7rem;
+    }
+    .faq-item__a {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header header--dark" id="header">
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">ORET<span class="logo-dot">•</span></a>
+    <ul class="nav__links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="shop.html">Boutique</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="nav__icon-btn" aria-label="Rechercher"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+      <button class="nav__icon-btn" aria-label="Mon compte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+      <button class="nav__icon-btn" aria-label="Panier" data-cart-open>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">0</span>
+      </button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="shop.html">Boutique</a>
+  <a href="about.html">À propos</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ─── HERO ──────────────────────────────── -->
+<section class="contact-hero">
+  <div class="contact-hero__bg"></div>
+  <div class="contact-hero__content">
+    <span class="section-label">Nous sommes là</span>
+    <h1 class="contact-hero__title">Parlons-nous</h1>
+    <p class="contact-hero__sub">Notre équipe répond sous 24h en jours ouvrés.</p>
+  </div>
+</section>
+
+<!-- ─── CONTACT SECTION ───────────────────── -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Info -->
+      <div class="contact-info">
+        <span class="section-label">Nous contacter</span>
+        <h2>Votre satisfaction,<br />notre priorité</h2>
+        <p>Pour toute question sur vos commandes, nos produits ou notre marque, notre équipe est à votre disposition du lundi au vendredi, de 9h à 18h.</p>
+
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-method__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-method__label">Email</div>
+              <div class="contact-method__value">bonjour@oret-bijoux.com</div>
+              <div class="contact-method__note">Réponse sous 24h</div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 15z"/></svg>
+            </div>
+            <div>
+              <div class="contact-method__label">Téléphone</div>
+              <div class="contact-method__value">+33 1 23 45 67 89</div>
+              <div class="contact-method__note">Lun–Ven, 9h–18h</div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-method__label">Showroom</div>
+              <div class="contact-method__value">12 rue de la Paix, 75002 Paris</div>
+              <div class="contact-method__note">Sur rendez-vous uniquement</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-socials">
+          <a href="#" class="contact-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="contact-social" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 0 1 8 0c0 2-2 5-2 5s-2-3-2-5"/></svg>
+          </a>
+          <a href="#" class="contact-social" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label" for="f-prenom">Prénom</label>
+              <input class="form-input" id="f-prenom" type="text" placeholder="Marie" required />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="f-nom">Nom</label>
+              <input class="form-input" id="f-nom" type="text" placeholder="Dupont" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-email">Email</label>
+            <input class="form-input" id="f-email" type="email" placeholder="marie@email.com" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-sujet">Sujet</label>
+            <select class="form-select form-input" id="f-sujet">
+              <option value="">Sélectionnez un sujet</option>
+              <option>Question sur une commande</option>
+              <option>Retour / Échange</option>
+              <option>Question produit</option>
+              <option>Partenariat / Presse</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-commande">Numéro de commande <span style="color:var(--gray-light);text-transform:none;letter-spacing:0">(optionnel)</span></label>
+            <input class="form-input" id="f-commande" type="text" placeholder="ORET-00123" />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-message">Message</label>
+            <textarea class="form-textarea" id="f-message" placeholder="Décrivez votre demande en détail..." required></textarea>
+          </div>
+          <div class="form-submit">
+            <p class="form-note">Réponse garantie sous 24h ouvrées.</p>
+            <button type="submit" class="btn btn--primary"><span>Envoyer le message</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ──────────────────────────────── -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section__header section__header--center">
+      <span class="section-label">Questions fréquentes</span>
+      <h2 class="section-title">Tout ce que vous devez savoir</h2>
+      <span class="gold-line gold-line--center"></span>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <p class="faq-item__q">Quels sont les délais de livraison ?</p>
+        <p class="faq-item__a">La livraison standard est gratuite dès 150 € et prend 3 à 5 jours ouvrés. Une livraison express en 1–2 jours est disponible pour 9,90 €.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-item__q">Comment retourner un article ?</p>
+        <p class="faq-item__a">Les retours sont gratuits sous 30 jours après réception. Contactez-nous et nous vous enverrons une étiquette prépayée.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-item__q">Vos bijoux sont-ils hypoallergéniques ?</p>
+        <p class="faq-item__a">Oui. Tous nos bijoux sont sans nickel et sans plomb. L'or vermeil est déposé sur de l'argent sterling 925 certifié.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-item__q">Proposez-vous des gravures personnalisées ?</p>
+        <p class="faq-item__a">Sur certaines pièces, oui. Contactez-nous avant de passer commande. La gravure est réalisée en 3 à 5 jours supplémentaires.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-item__q">Comment entretenir mes bijoux ORET ?</p>
+        <p class="faq-item__a">Évitez le contact avec l'eau, les parfums et la sueur. Rangez-les dans la pochette fournie. Un chiffon doux suffit pour le nettoyage.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-item__q">Quelles tailles de bagues proposez-vous ?</p>
+        <p class="faq-item__a">Du 48 au 62, avec un guide des tailles disponible sur chaque fiche produit pour vous aider à choisir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ───────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo">ORET<span class="logo-dot">•</span></a>
+        <p>Des bijoux minimalistes et luxueux, conçus pour durer.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>Boutique</h4><ul><li><a href="shop.html?cat=colliers">Colliers</a></li><li><a href="shop.html?cat=bagues">Bagues</a></li><li><a href="shop.html?cat=bracelets">Bracelets</a></li></ul></div>
+      <div class="footer__col"><h4>Aide</h4><ul><li><a href="#">Livraison</a></li><li><a href="#">Retours</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer__col"><h4>ORET</h4><ul><li><a href="about.html">Notre histoire</a></li><li><a href="#">Matériaux</a></li><li><a href="#">Guide tailles</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__legal">© 2025 ORET. Tous droits réservés.</p>
+      <div class="footer__payments"><span class="payment-icon">Visa</span><span class="payment-icon">MC</span><span class="payment-icon">PayPal</span><span class="payment-icon">Apple Pay</span></div>
+    </div>
+  </div>
+</footer>
+
+<div class="cart-overlay"></div>
+<aside class="cart-drawer" role="dialog" aria-label="Votre panier">
+  <div class="cart-drawer__header">
+    <h2 class="cart-drawer__title">Panier</h2>
+    <button class="cart-drawer__close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="cart-drawer__body"></div>
+  <div class="cart-drawer__footer">
+    <div class="cart-subtotal"><span>Sous-total</span><span class="cart-subtotal-amount">0,00 €</span></div>
+    <p class="cart-shipping-note">Livraison offerte dès 150 €</p>
+    <a href="#" class="btn btn--primary" style="display:flex;justify-content:center"><span>Finaliser la commande</span></a>
+    <button class="btn btn--outline" style="width:100%;justify-content:center" onclick="document.querySelector('.cart-overlay').click()"><span>Continuer mes achats</span></button>
+  </div>
+</aside>
+
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('contact-form')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = e.target.querySelector('[type="submit"] span');
+    btn.textContent = 'Message envoyé ✓';
+    e.target.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(el => el.value = '');
+    showToast('Message envoyé — réponse sous 24h');
+    setTimeout(() => { btn.textContent = 'Envoyer le message'; }, 3000);
+  });
+</script>
+</body>
+</html>
