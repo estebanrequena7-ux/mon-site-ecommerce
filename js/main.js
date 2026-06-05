@@ -39,6 +39,104 @@ function svgProduct(type) {
       <circle cx="26" cy="56" r="3" fill="#c9a96e" opacity="0.3"/>
       <circle cx="50" cy="70" r="3" fill="#c9a96e" opacity="0.3"/>
       <circle cx="74" cy="56" r="3" fill="#c9a96e" opacity="0.3"/>
+    </svg>`,
+
+    /* ── Nouveaux bracelets gagnants ── */
+
+    bracelet_cuff_slim: `<svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e">
+      <path d="M10 68 C14 36 50 18 90 36" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M10 75 C14 45 50 27 90 43" stroke-linecap="round" stroke-width="1.1"/>
+      <line x1="10" y1="68" x2="10" y2="75" stroke-linecap="round" stroke-width="1.8"/>
+      <line x1="90" y1="36" x2="90" y2="43" stroke-linecap="round" stroke-width="1.8"/>
+      <path d="M18 71 C22 40 50 23 84 39" stroke-width="0.35" opacity="0.45" stroke-dasharray="28 80"/>
+    </svg>`,
+
+    bracelet_paperclip: `<svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="1">
+      <ellipse cx="50" cy="68" rx="42" ry="20" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.28"/>
+      <ellipse cx="18" cy="42" rx="8.5" ry="4" transform="rotate(-30 18 42)"/>
+      <ellipse cx="33" cy="32" rx="8.5" ry="4" transform="rotate(-14 33 32)"/>
+      <ellipse cx="50" cy="29" rx="8.5" ry="4"/>
+      <ellipse cx="67" cy="32" rx="8.5" ry="4" transform="rotate(14 67 32)"/>
+      <ellipse cx="82" cy="42" rx="8.5" ry="4" transform="rotate(30 82 42)"/>
+      <line x1="25.5" y1="39" x2="25.5" y2="40.5" stroke-width="0.7" opacity="0.6"/>
+      <line x1="41" y1="31" x2="41" y2="32.5" stroke-width="0.7" opacity="0.6"/>
+      <line x1="59" y1="31" x2="59" y2="32.5" stroke-width="0.7" opacity="0.6"/>
+      <line x1="74.5" y1="39" x2="74.5" y2="40.5" stroke-width="0.7" opacity="0.6"/>
+    </svg>`,
+
+    bracelet_tennis: `<svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="1">
+      <ellipse cx="50" cy="68" rx="42" ry="20" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.28"/>
+      <path d="M12 52 Q16 42 23 36 Q31 29 40 26 Q50 24 60 26 Q69 29 77 36 Q84 42 88 52"
+            stroke-width="0.5" opacity="0.4"/>
+      <circle cx="12" cy="52" r="4"/><circle cx="12" cy="52" r="1.5" fill="#c9a96e" opacity="0.55"/>
+      <circle cx="22" cy="38" r="4"/><circle cx="22" cy="38" r="1.5" fill="#c9a96e" opacity="0.55"/>
+      <circle cx="33" cy="30" r="4"/><circle cx="33" cy="30" r="1.5" fill="#c9a96e" opacity="0.55"/>
+      <circle cx="46" cy="26" r="4"/><circle cx="46" cy="26" r="1.5" fill="#c9a96e" opacity="0.55"/>
+      <circle cx="59" cy="26" r="4"/><circle cx="59" cy="26" r="1.5" fill="#c9a96e" opacity="0.55"/>
+      <circle cx="72" cy="30" r="4"/><circle cx="72" cy="30" r="1.5" fill="#c9a96e" opacity="0.55"/>
+      <circle cx="83" cy="38" r="4"/><circle cx="83" cy="38" r="1.5" fill="#c9a96e" opacity="0.55"/>
+      <circle cx="88" cy="52" r="4"/><circle cx="88" cy="52" r="1.5" fill="#c9a96e" opacity="0.55"/>
+    </svg>`,
+
+    bracelet_herringbone: `<svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e">
+      <path d="M10 42 Q50 31 90 42" stroke-width="1.4"/>
+      <path d="M10 53 Q50 42 90 53" stroke-width="1.4"/>
+      <line x1="10" y1="42" x2="10" y2="53" stroke-linecap="round" stroke-width="1.8"/>
+      <line x1="90" y1="42" x2="90" y2="53" stroke-linecap="round" stroke-width="1.8"/>
+      <polyline points="13,51 17,44 21,51" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85"/>
+      <polyline points="21,51 25,44 29,51" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85"/>
+      <polyline points="29,51 33,44 37,51" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85"/>
+      <polyline points="37,51 41,44 45,51" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85"/>
+      <polyline points="45,51 49,44 53,51" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85"/>
+      <polyline points="53,51 57,44 61,51" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85"/>
+      <polyline points="61,51 65,44 69,51" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85"/>
+      <polyline points="69,51 73,44 77,51" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85"/>
+      <polyline points="77,51 81,44 85,51" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.85"/>
+    </svg>`,
+
+    bracelet_box_chain: `<svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="0.9">
+      <ellipse cx="50" cy="68" rx="42" ry="20" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.28"/>
+      <rect x="11" y="35" width="9" height="9" rx="1.2"/>
+      <rect x="23" y="28" width="9" height="9" rx="1.2"/>
+      <rect x="36" y="24" width="9" height="9" rx="1.2"/>
+      <rect x="50" y="22" width="9" height="9" rx="1.2"/>
+      <rect x="64" y="24" width="9" height="9" rx="1.2"/>
+      <rect x="77" y="28" width="9" height="9" rx="1.2"/>
+      <rect x="89" y="35" width="9" height="9" rx="1.2"/>
+      <line x1="20" y1="39.5" x2="23" y2="38.5" stroke-width="0.65" opacity="0.65"/>
+      <line x1="33" y1="34.5" x2="36" y2="32.5" stroke-width="0.65" opacity="0.65"/>
+      <line x1="47" y1="29.5" x2="50" y2="28.5" stroke-width="0.65" opacity="0.65"/>
+      <line x1="61" y1="28.5" x2="64" y2="28.5" stroke-width="0.65" opacity="0.65"/>
+      <line x1="75" y1="32.5" x2="77" y2="31.5" stroke-width="0.65" opacity="0.65"/>
+      <line x1="88" y1="36.5" x2="89" y2="37" stroke-width="0.65" opacity="0.65"/>
+    </svg>`,
+
+    bracelet_spheres: `<svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e" stroke-width="1">
+      <ellipse cx="50" cy="68" rx="42" ry="20" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.28"/>
+      <circle cx="14" cy="50" r="5.5"/>
+      <circle cx="14" cy="50" r="2.5" fill="#c9a96e" opacity="0.22"/>
+      <circle cx="31" cy="36" r="5.5"/>
+      <circle cx="31" cy="36" r="2.5" fill="#c9a96e" opacity="0.22"/>
+      <circle cx="50" cy="30" r="5.5"/>
+      <circle cx="50" cy="30" r="2.5" fill="#c9a96e" opacity="0.22"/>
+      <circle cx="69" cy="36" r="5.5"/>
+      <circle cx="69" cy="36" r="2.5" fill="#c9a96e" opacity="0.22"/>
+      <circle cx="86" cy="50" r="5.5"/>
+      <circle cx="86" cy="50" r="2.5" fill="#c9a96e" opacity="0.22"/>
+      <ellipse cx="22.5" cy="43" rx="3.5" ry="1.8" transform="rotate(-38 22.5 43)" stroke-width="0.75"/>
+      <ellipse cx="40.5" cy="33" rx="3.5" ry="1.8" transform="rotate(-16 40.5 33)" stroke-width="0.75"/>
+      <ellipse cx="59.5" cy="33" rx="3.5" ry="1.8" transform="rotate(16 59.5 33)" stroke-width="0.75"/>
+      <ellipse cx="77.5" cy="43" rx="3.5" ry="1.8" transform="rotate(38 77.5 43)" stroke-width="0.75"/>
+    </svg>`,
+
+    bracelet_cuff_wide: `<svg viewBox="0 0 100 100" fill="none" stroke="#c9a96e">
+      <path d="M8 52 C12 20 50 6 92 26" stroke-width="3" stroke-linecap="round"/>
+      <path d="M8 64 C12 34 50 20 92 38" stroke-linecap="round" stroke-width="1.8"/>
+      <path d="M8 73 C12 44 50 30 92 47" stroke-linecap="round" stroke-width="1"/>
+      <line x1="8" y1="52" x2="8" y2="73" stroke-linecap="round" stroke-width="2.2"/>
+      <line x1="92" y1="26" x2="92" y2="47" stroke-linecap="round" stroke-width="2.2"/>
+      <path d="M16 56 C20 26 50 12 86 30" stroke-width="0.35" opacity="0.38" stroke-dasharray="50 5"/>
+      <path d="M16 68 C20 38 50 25 86 42" stroke-width="0.35" opacity="0.28" stroke-dasharray="50 5"/>
     </svg>`
   };
   return paths[type] || paths.ring;
@@ -205,6 +303,82 @@ const products = [
     badge: 'Nouveau',
     badgeType: 'new',
     svg: svgProduct('ring')
+  },
+
+  /* ── Bracelets gagnants 2025 ── */
+  {
+    id: 'bra-003',
+    name: 'Manchette Auré',
+    category: 'Bracelets',
+    material: 'Or vermeil 18k',
+    price: 165,
+    badge: 'Nouveau',
+    badgeType: 'new',
+    description: 'Manchette sculptural ouverte, légèrement effilée aux extrémités. Forme épurée, esprit architectural.',
+    svg: svgProduct('bracelet_cuff_slim')
+  },
+  {
+    id: 'bra-004',
+    name: 'Bracelet Lumière Dorée',
+    category: 'Bracelets',
+    material: 'Or vermeil 18k',
+    price: 145,
+    badge: 'Bestseller',
+    badgeType: 'new',
+    description: 'Maillons ovales allongés et plats qui s'entrelacent — le type de chaîne le plus recherché de 2025. Empilable.',
+    svg: svgProduct('bracelet_paperclip')
+  },
+  {
+    id: 'bra-005',
+    name: 'Bracelet Céleste',
+    category: 'Bracelets',
+    material: 'Or vermeil 18k · Topaze blanche',
+    price: 195,
+    badge: null,
+    description: 'Ligne continue de pierres serties en clos, profil ultra-fin 2 mm. Élégance intemporelle.',
+    svg: svgProduct('bracelet_tennis')
+  },
+  {
+    id: 'bra-006',
+    name: 'Bracelet Sillage',
+    category: 'Bracelets',
+    material: 'Or vermeil 18k',
+    price: 155,
+    badge: null,
+    description: 'Chaîne plate en chevron — la texture herringbone qui réfléchit la lumière avec intensité.',
+    svg: svgProduct('bracelet_herringbone')
+  },
+  {
+    id: 'bra-007',
+    name: 'Bracelet Linéaire',
+    category: 'Bracelets',
+    material: 'Argent sterling',
+    price: 130,
+    badge: '2-en-1',
+    badgeType: 'new',
+    description: 'Chaîne boîte à maillons carrés, fermeture coulissante. Se porte en bracelet ou cheville.',
+    svg: svgProduct('bracelet_box_chain')
+  },
+  {
+    id: 'bra-008',
+    name: 'Bracelet Perles d\'Or',
+    category: 'Bracelets',
+    material: 'Or vermeil 18k',
+    price: 140,
+    badge: null,
+    description: 'Micro-sphères lisses alternées de maillons fins. Texture délicate, rythme géométrique parfait.',
+    svg: svgProduct('bracelet_spheres')
+  },
+  {
+    id: 'bra-009',
+    name: 'Manchette Solstice',
+    category: 'Bracelets',
+    material: 'Argent sterling',
+    price: 185,
+    badge: 'Nouveau',
+    badgeType: 'new',
+    description: 'Manchette large à surface plane, finition brossée mate. Forme architecturale, pièce signature.',
+    svg: svgProduct('bracelet_cuff_wide')
   }
 ];
 
