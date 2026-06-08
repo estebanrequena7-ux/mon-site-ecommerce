@@ -637,6 +637,166 @@ ul { list-style: none; }
 .map__wrapper iframe { display: block; }
 
 /* ============================================================
+   RESERVATION FORM
+   ============================================================ */
+.reservation { background: var(--ink); }
+.reservation .section__eyebrow { color: var(--gold); }
+.reservation .section__title { color: var(--cream); }
+.reservation .section__desc { color: rgba(255,255,255,.5); }
+
+.reservation__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+.reservation__header { text-align: center; max-width: 560px; }
+
+/* Form layout */
+.resa-form {
+  width: 100%;
+  max-width: 760px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  padding: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.resa-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.resa-form__row--full { grid-template-columns: 1fr; }
+
+/* Fields */
+.resa-field { display: flex; flex-direction: column; gap: .4rem; }
+.resa-field__label {
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+.resa-field__label span { color: var(--gold); margin-left: .1em; }
+
+.resa-field__input {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: .9375rem;
+  padding: .75rem 1rem;
+  outline: none;
+  transition: border-color .25s var(--ease-out), background .25s, box-shadow .25s;
+  width: 100%;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.resa-field__input::placeholder { color: rgba(255,255,255,.25); }
+.resa-field__input:focus {
+  border-color: var(--gold);
+  background: rgba(201,169,110,.07);
+  box-shadow: 0 0 0 3px rgba(201,169,110,.12);
+}
+.resa-field__input.error { border-color: #e07070; }
+.resa-field__input::-webkit-calendar-picker-indicator { filter: invert(.7) sepia(1) hue-rotate(5deg) saturate(2); cursor: pointer; }
+
+/* Select wrapper */
+.resa-field__select-wrap { position: relative; }
+.resa-field__select {
+  cursor: pointer;
+  padding-right: 2.5rem;
+}
+.resa-field__select option { background: #1a1815; color: var(--cream); }
+.resa-field__chevron {
+  position: absolute;
+  right: .875rem; top: 50%;
+  transform: translateY(-50%);
+  width: 18px; height: 18px;
+  color: var(--gold);
+  pointer-events: none;
+}
+
+/* Textarea */
+.resa-field__textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+
+/* Error messages */
+.resa-field__error {
+  font-size: .75rem;
+  color: #e07070;
+  min-height: 1em;
+  display: block;
+}
+
+/* Footer row */
+.resa-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: .5rem;
+}
+.resa-form__mention {
+  font-size: .75rem;
+  color: rgba(255,255,255,.3);
+  line-height: 1.6;
+  flex: 1 1 200px;
+}
+.resa-form__submit {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  flex-shrink: 0;
+}
+.resa-form__submit-icon { width: 18px; height: 18px; transition: transform .3s var(--ease-out); }
+.resa-form__submit:hover .resa-form__submit-icon { transform: translateX(4px); }
+.resa-form__submit.loading { opacity: .7; pointer-events: none; }
+.resa-form__submit.loading .resa-form__submit-label::after {
+  content: '…';
+  animation: dots 1.2s steps(3, end) infinite;
+}
+@keyframes dots {
+  0%   { content: '.'; }
+  33%  { content: '..'; }
+  66%  { content: '…'; }
+}
+
+/* Confirmation state */
+.resa-confirm {
+  width: 100%;
+  max-width: 760px;
+  text-align: center;
+  padding: clamp(2.5rem, 5vw, 4rem) 2rem;
+  border: 1px solid rgba(201,169,110,.25);
+  background: rgba(201,169,110,.05);
+  animation: fadeUp .6s var(--ease-out) both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+.resa-confirm__icon { width: 64px; height: 64px; margin: 0 auto 1.5rem; }
+.resa-confirm__title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: .75rem;
+}
+.resa-confirm__text {
+  font-size: .9375rem;
+  color: rgba(255,255,255,.55);
+  line-height: 1.8;
+  max-width: 440px;
+  margin: 0 auto 2rem;
+}
+.resa-confirm__text strong { color: var(--gold-light); }
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .footer {
@@ -738,6 +898,8 @@ ul { list-style: none; }
   .hero__actions { flex-direction: column; align-items: center; }
   .services__grid { grid-template-columns: 1fr; }
   .avis__grid { grid-template-columns: 1fr; }
+  .resa-form__row { grid-template-columns: 1fr; }
+  .resa-form__footer { flex-direction: column; align-items: flex-start; }
   .footer__inner { grid-template-columns: 1fr; }
   .footer__brand { grid-column: 1; }
   .apropos__badge { right: 0; }

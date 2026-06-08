@@ -66,7 +66,7 @@
         <li><a href="#apropos" class="nav__link">À propos</a></li>
         <li><a href="#contact" class="nav__link">Contact</a></li>
         <li>
-          <a href="https://www.planity.com/aydo-maison-de-coiffure-69410-champagne-au-mont-d-or" target="_blank" rel="noopener" class="btn btn--nav">Réserver</a>
+          <a href="#reservation" class="btn btn--nav">Réserver</a>
         </li>
       </ul>
     </div>
@@ -409,6 +409,113 @@
         </div>
         <a href="https://www.planity.com/aydo-maison-de-coiffure-69410-champagne-au-mont-d-or" target="_blank" rel="noopener" class="btn btn--gold">Prendre rendez-vous</a>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== FORMULAIRE DE RÉSERVATION ===== -->
+  <section class="section reservation" id="reservation">
+    <div class="container reservation__inner">
+
+      <div class="reservation__header reveal">
+        <p class="section__eyebrow">Disponibilités en ligne</p>
+        <h2 class="section__title">Réservez votre prestation</h2>
+        <p class="section__desc">Choisissez votre prestation, votre créneau et laissez-nous vos coordonnées. Nous vous confirmons le rendez-vous dans les plus brefs délais.</p>
+      </div>
+
+      <form class="resa-form reveal" id="resaForm" novalidate>
+
+        <!-- Ligne 1 : Nom + Téléphone -->
+        <div class="resa-form__row">
+          <div class="resa-field">
+            <label class="resa-field__label" for="rf-nom">Nom &amp; Prénom <span aria-hidden="true">*</span></label>
+            <input class="resa-field__input" type="text" id="rf-nom" name="nom" placeholder="Ex : Marie Dupont" autocomplete="name" required />
+            <span class="resa-field__error" id="err-nom"></span>
+          </div>
+          <div class="resa-field">
+            <label class="resa-field__label" for="rf-tel">Téléphone <span aria-hidden="true">*</span></label>
+            <input class="resa-field__input" type="tel" id="rf-tel" name="tel" placeholder="06 00 00 00 00" autocomplete="tel" required />
+            <span class="resa-field__error" id="err-tel"></span>
+          </div>
+        </div>
+
+        <!-- Ligne 2 : Prestation -->
+        <div class="resa-form__row resa-form__row--full">
+          <div class="resa-field">
+            <label class="resa-field__label" for="rf-prestation">Prestation souhaitée <span aria-hidden="true">*</span></label>
+            <div class="resa-field__select-wrap">
+              <select class="resa-field__input resa-field__select" id="rf-prestation" name="prestation" required>
+                <option value="" disabled selected>— Choisir une prestation —</option>
+                <optgroup label="Femmes">
+                  <option value="Coupe Femme">Coupe Femme</option>
+                  <option value="Brushing">Brushing</option>
+                  <option value="Coupe + Brushing">Coupe + Brushing</option>
+                  <option value="Coloration">Coloration</option>
+                  <option value="Balayage">Balayage</option>
+                  <option value="Mèches">Mèches</option>
+                  <option value="Soin Brésilien">Soin Brésilien</option>
+                  <option value="Botox Capillaire">Botox Capillaire</option>
+                </optgroup>
+                <optgroup label="Hommes">
+                  <option value="Coupe Homme">Coupe Homme</option>
+                  <option value="Coupe + Barbe">Coupe + Barbe</option>
+                </optgroup>
+                <optgroup label="Enfants">
+                  <option value="Coupe Enfant (moins de 12 ans)">Coupe Enfant (moins de 12 ans)</option>
+                </optgroup>
+              </select>
+              <svg class="resa-field__chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="resa-field__error" id="err-prestation"></span>
+          </div>
+        </div>
+
+        <!-- Ligne 3 : Date + Heure -->
+        <div class="resa-form__row">
+          <div class="resa-field">
+            <label class="resa-field__label" for="rf-date">Date souhaitée <span aria-hidden="true">*</span></label>
+            <input class="resa-field__input" type="date" id="rf-date" name="date" required />
+            <span class="resa-field__error" id="err-date"></span>
+          </div>
+          <div class="resa-field">
+            <label class="resa-field__label" for="rf-heure">Heure souhaitée <span aria-hidden="true">*</span></label>
+            <div class="resa-field__select-wrap">
+              <select class="resa-field__input resa-field__select" id="rf-heure" name="heure" required>
+                <option value="" disabled selected>— Choisir un créneau —</option>
+              </select>
+              <svg class="resa-field__chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="resa-field__error" id="err-heure"></span>
+          </div>
+        </div>
+
+        <!-- Ligne 4 : Message optionnel -->
+        <div class="resa-form__row resa-form__row--full">
+          <div class="resa-field">
+            <label class="resa-field__label" for="rf-message">Message (optionnel)</label>
+            <textarea class="resa-field__input resa-field__textarea" id="rf-message" name="message" placeholder="Précisions sur votre demande, longueur, couleur souhaitée…" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="resa-form__footer">
+          <p class="resa-form__mention">* Champs obligatoires. Votre rendez-vous sera confirmé par téléphone sous 24h.</p>
+          <button type="submit" class="btn btn--gold btn--lg resa-form__submit" id="resaSubmit">
+            <span class="resa-form__submit-label">Envoyer ma demande</span>
+            <svg class="resa-form__submit-icon" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Confirmation -->
+      <div class="resa-confirm" id="resaConfirm" aria-live="polite" hidden>
+        <div class="resa-confirm__icon">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#C9A96E" stroke-width="1.5"/><path d="M14 24l7 7 13-14" stroke="#C9A96E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="resa-confirm__title">Demande envoyée !</h3>
+        <p class="resa-confirm__text" id="resaConfirmText"></p>
+        <button class="btn btn--outline resa-confirm__btn" id="resaNewBtn">Nouvelle réservation</button>
+      </div>
+
     </div>
   </section>
 
