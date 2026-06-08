@@ -138,32 +138,60 @@
     return valid;
   }
 
-  resaForm.addEventListener('submit', e => {
+  const resaError = document.getElementById('resaError');
+
+  resaForm.addEventListener('submit', async e => {
     e.preventDefault();
     if (!validateForm()) return;
 
     const btn = document.getElementById('resaSubmit');
     btn.classList.add('loading');
+    resaError.hidden = true;
 
-    /* Simulate async send */
-    setTimeout(() => {
+    const nom        = document.getElementById('rf-nom').value.trim();
+    const prestation = document.getElementById('rf-prestation').value;
+    const date       = new Date(document.getElementById('rf-date').value);
+    const heure      = document.getElementById('rf-heure').value;
+    const message    = document.getElementById('rf-message').value.trim();
+
+    const jours = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+    const mois  = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+    const dateStr = `${jours[date.getUTCDay()]} ${date.getUTCDate()} ${mois[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+
+    const payload = {
+      nom,
+      telephone: document.getElementById('rf-tel').value.trim(),
+      prestation,
+      date: dateStr,
+      heure,
+      ...(message && { message }),
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/contact@aydo.fr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
       btn.classList.remove('loading');
-      const nom        = document.getElementById('rf-nom').value.trim();
-      const prestation = document.getElementById('rf-prestation').value;
-      const date       = new Date(document.getElementById('rf-date').value);
-      const heure      = document.getElementById('rf-heure').value;
-      const jours = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
-      const mois  = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
-      const dateStr = `${jours[date.getUTCDay()]} ${date.getUTCDate()} ${mois[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
 
-      document.getElementById('resaConfirmText').innerHTML =
-        `Merci <strong>${nom}</strong> ! Votre demande pour un·e <strong>${prestation}</strong> ` +
-        `le <strong>${dateStr} à ${heure}</strong> a bien été reçue.<br/>` +
-        `Nous vous confirmons votre rendez-vous par téléphone sous 24h.`;
-
-      resaForm.hidden = true;
-      resaConfirm.hidden = false;
-    }, 900);
+      if (res.ok) {
+        document.getElementById('resaConfirmText').innerHTML =
+          `Merci <strong>${nom}</strong> ! Votre demande pour un·e <strong>${prestation}</strong> ` +
+          `le <strong>${dateStr} à ${heure}</strong> a bien été reçue.<br/>` +
+          `Nous vous confirmons votre rendez-vous par téléphone sous 24h.`;
+        resaForm.hidden = true;
+        resaConfirm.hidden = false;
+      } else {
+        resaError.hidden = false;
+        resaError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } catch {
+      btn.classList.remove('loading');
+      resaError.hidden = false;
+      resaError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   });
 
   resaNewBtn && resaNewBtn.addEventListener('click', () => {

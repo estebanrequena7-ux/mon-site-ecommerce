@@ -422,7 +422,12 @@
         <p class="section__desc">Choisissez votre prestation, votre créneau et laissez-nous vos coordonnées. Nous vous confirmons le rendez-vous dans les plus brefs délais.</p>
       </div>
 
-      <form class="resa-form reveal" id="resaForm" novalidate>
+      <form class="resa-form reveal" id="resaForm" novalidate
+            action="https://formspree.io/f/contact@aydo.fr"
+            method="POST">
+        <!-- Champs Formspree -->
+        <input type="hidden" name="_subject" value="Nouvelle demande de RDV — Aydo Maison de Coiffure" />
+        <input type="hidden" name="_language" value="fr" />
 
         <!-- Ligne 1 : Nom + Téléphone -->
         <div class="resa-form__row">
@@ -505,6 +510,11 @@
         </div>
 
       </form>
+
+      <!-- Erreur réseau -->
+      <p class="resa-error" id="resaError" hidden>
+        Une erreur est survenue lors de l'envoi. Veuillez réessayer ou nous appeler au <a href="tel:+33474261019">04 74 26 10 19</a>.
+      </p>
 
       <!-- Confirmation -->
       <div class="resa-confirm" id="resaConfirm" aria-live="polite" hidden>

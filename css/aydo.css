@@ -765,6 +765,20 @@ ul { list-style: none; }
   66%  { content: '…'; }
 }
 
+/* Network error */
+.resa-error {
+  width: 100%;
+  max-width: 760px;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(224,112,112,.35);
+  background: rgba(224,112,112,.08);
+  color: #e09090;
+  font-size: .875rem;
+  line-height: 1.6;
+  text-align: center;
+}
+.resa-error a { color: var(--gold); text-decoration: underline; }
+
 /* Confirmation state */
 .resa-confirm {
   width: 100%;
