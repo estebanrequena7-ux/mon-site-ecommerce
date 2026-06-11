@@ -54,7 +54,7 @@
   </header>
 
   <section class="hero">
-    <div class="hero__content reveal">
+    <div class="hero__content">
       <p class="hero__eyebrow">Boutique — {{VILLE}}</p>
       <h1 class="hero__title">{{NOM}}</h1>
       <p class="hero__subtitle">Une sélection pensée avec soin, pour les curieux et les passionnés.</p>
@@ -69,7 +69,7 @@
   <section class="section" id="boutique">
     <div class="section__inner section__inner--split">
       <div class="reveal">
-        <p class="section__eyebrow">La boutique</p>
+        <p class="section__eyebrow"><span class="section__num">01</span>La boutique</p>
         <h2 class="section__title">Bienvenue chez {{NOM}}</h2>
         <p class="section__text">
           Au cœur de {{VILLE}}, {{NOM}} vous propose une sélection soignée de produits,
@@ -94,7 +94,7 @@
   <section class="section section--alt" id="produits">
     <div class="section__inner">
       <div class="section__head reveal">
-        <p class="section__eyebrow">Nos produits</p>
+        <p class="section__eyebrow"><span class="section__num">02</span>Nos produits</p>
         <h2 class="section__title">Une sélection pour vous</h2>
         <p class="section__text">Retrouvez nos produits en boutique. Contactez-nous pour vérifier la disponibilité.</p>
       </div>
@@ -107,16 +107,16 @@
   <section class="section" id="galerie">
     <div class="section__inner">
       <div class="section__head reveal">
-        <p class="section__eyebrow">Galerie</p>
+        <p class="section__eyebrow"><span class="section__num">03</span>Galerie</p>
         <h2 class="section__title">Dans la boutique</h2>
       </div>
       <div class="gallery reveal">
-        <img src="images/photo-2.svg" alt="Produit en boutique — {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500">
-        <img src="images/photo-3.svg" alt="Vitrine de la boutique {{NOM}}" loading="lazy" width="400" height="500">
-        <img src="images/photo-4.svg" alt="Sélection produits {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500">
-        <img src="images/photo-5.svg" alt="Rayon boutique {{NOM}}" loading="lazy" width="400" height="500">
-        <img src="images/photo-6.svg" alt="Ambiance boutique {{NOM}} à {{VILLE}}" loading="lazy" width="400" height="500">
-        <img src="images/photo-7.svg" alt="Détail produit — {{NOM}}" loading="lazy" width="400" height="500">
+        <div class="gallery__item"><img src="images/photo-2.svg" alt="Produit en boutique — {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500"></div>
+        <div class="gallery__item"><img src="images/photo-3.svg" alt="Vitrine de la boutique {{NOM}}" loading="lazy" width="400" height="500"></div>
+        <div class="gallery__item"><img src="images/photo-4.svg" alt="Sélection produits {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500"></div>
+        <div class="gallery__item"><img src="images/photo-5.svg" alt="Rayon boutique {{NOM}}" loading="lazy" width="400" height="500"></div>
+        <div class="gallery__item"><img src="images/photo-6.svg" alt="Ambiance boutique {{NOM}} à {{VILLE}}" loading="lazy" width="400" height="500"></div>
+        <div class="gallery__item"><img src="images/photo-7.svg" alt="Détail produit — {{NOM}}" loading="lazy" width="400" height="500"></div>
       </div>
     </div>
   </section>
@@ -124,7 +124,7 @@
   <section class="section section--alt" id="avis">
     <div class="section__inner">
       <div class="section__head reveal">
-        <p class="section__eyebrow">Avis</p>
+        <p class="section__eyebrow"><span class="section__num">04</span>Avis</p>
         <h2 class="section__title">Ce qu'ils en pensent</h2>
       </div>
       <div class="reviews" id="reviewsList"></div>
@@ -143,7 +143,7 @@
   <section class="section" id="contact">
     <div class="section__inner section__inner--split">
       <div class="reveal">
-        <p class="section__eyebrow">Contact</p>
+        <p class="section__eyebrow"><span class="section__num">05</span>Contact</p>
         <h2 class="section__title">On vous répond vite</h2>
         <ul class="contact-info">
           <li><strong>Adresse</strong>{{ADRESSE}}, {{VILLE}}</li>

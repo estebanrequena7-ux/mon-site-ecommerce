@@ -43,8 +43,9 @@
       /* Produits */
       var productsEl = document.getElementById('productsList');
       if (productsEl && Array.isArray(cfg.produits)) {
-        productsEl.innerHTML = cfg.produits.map(function (p) {
-          return '<div class="product reveal">' +
+        productsEl.innerHTML = cfg.produits.map(function (p, i) {
+          var delay = (i * 0.08).toFixed(2) + 's';
+          return '<div class="product reveal" style="transition-delay:' + delay + '">' +
             '<div class="product__img"><img src="' + esc(p.image || 'images/photo-2.svg') +
             '" alt="' + esc(p.nom) + ' — ' + esc(cfg.nom || '') + '" loading="lazy"></div>' +
             '<div class="product__body">' +
@@ -60,9 +61,10 @@
       /* Avis */
       var reviewsEl = document.getElementById('reviewsList');
       if (reviewsEl && Array.isArray(cfg.avis)) {
-        reviewsEl.innerHTML = cfg.avis.map(function (a) {
+        reviewsEl.innerHTML = cfg.avis.map(function (a, i) {
+          var delay = (i * 0.1).toFixed(2) + 's';
           var stars = '★★★★★'.slice(0, Math.max(1, Math.min(5, a.note || 5)));
-          return '<div class="review reveal">' +
+          return '<div class="review reveal" style="transition-delay:' + delay + '">' +
             '<div class="review__stars" aria-label="' + esc(a.note || 5) + ' étoiles sur 5">' + stars + '</div>' +
             '<p class="review__text">« ' + esc(a.texte) + ' »</p>' +
             '<p class="review__author">' + esc(a.auteur) + '</p></div>';

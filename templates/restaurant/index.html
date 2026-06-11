@@ -56,7 +56,7 @@
   </header>
 
   <section class="hero">
-    <div class="hero__content reveal">
+    <div class="hero__content">
       <p class="hero__eyebrow">Restaurant — {{VILLE}}</p>
       <h1 class="hero__title">{{NOM}}</h1>
       <p class="hero__subtitle">Une cuisine sincère, des produits du terroir, une table où l'on revient.</p>
@@ -71,7 +71,7 @@
   <section class="section" id="histoire">
     <div class="section__inner section__inner--split">
       <div class="reveal">
-        <p class="section__eyebrow">Notre histoire</p>
+        <p class="section__eyebrow"><span class="section__num">01</span>Notre histoire</p>
         <h2 class="section__title">Une cuisine faite avec passion</h2>
         <p class="section__text">
           Niché au cœur de {{VILLE}}, {{NOM}} est né d'une envie simple : cuisiner des produits frais,
@@ -96,7 +96,7 @@
   <section class="section section--alt" id="menu">
     <div class="section__inner">
       <div class="section__head reveal">
-        <p class="section__eyebrow">Menu</p>
+        <p class="section__eyebrow"><span class="section__num">02</span>Menu</p>
         <h2 class="section__title">Ce qu'on vous propose</h2>
         <p class="section__text">Carte indicative — contactez-nous pour le menu du jour.</p>
       </div>
@@ -109,16 +109,16 @@
   <section class="section" id="galerie">
     <div class="section__inner">
       <div class="section__head reveal">
-        <p class="section__eyebrow">Galerie</p>
+        <p class="section__eyebrow"><span class="section__num">03</span>Galerie</p>
         <h2 class="section__title">Nos assiettes</h2>
       </div>
       <div class="gallery reveal">
-        <img src="images/photo-2.svg" alt="Plat du chef — {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500">
-        <img src="images/photo-3.svg" alt="Entrée maison — restaurant {{NOM}}" loading="lazy" width="400" height="500">
-        <img src="images/photo-4.svg" alt="Dessert fait maison — {{NOM}}" loading="lazy" width="400" height="500">
-        <img src="images/photo-5.svg" alt="Table dressée au restaurant {{NOM}}" loading="lazy" width="400" height="500">
-        <img src="images/photo-6.svg" alt="Salle du restaurant {{NOM}} à {{VILLE}}" loading="lazy" width="400" height="500">
-        <img src="images/photo-7.svg" alt="Terrasse du restaurant {{NOM}}" loading="lazy" width="400" height="500">
+        <div class="gallery__item"><img src="images/photo-2.svg" alt="Plat du chef — {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500"></div>
+        <div class="gallery__item"><img src="images/photo-3.svg" alt="Entrée maison — restaurant {{NOM}}" loading="lazy" width="400" height="500"></div>
+        <div class="gallery__item"><img src="images/photo-4.svg" alt="Dessert fait maison — {{NOM}}" loading="lazy" width="400" height="500"></div>
+        <div class="gallery__item"><img src="images/photo-5.svg" alt="Table dressée au restaurant {{NOM}}" loading="lazy" width="400" height="500"></div>
+        <div class="gallery__item"><img src="images/photo-6.svg" alt="Salle du restaurant {{NOM}} à {{VILLE}}" loading="lazy" width="400" height="500"></div>
+        <div class="gallery__item"><img src="images/photo-7.svg" alt="Terrasse du restaurant {{NOM}}" loading="lazy" width="400" height="500"></div>
       </div>
     </div>
   </section>
@@ -126,7 +126,7 @@
   <section class="section section--alt" id="avis">
     <div class="section__inner">
       <div class="section__head reveal">
-        <p class="section__eyebrow">Avis</p>
+        <p class="section__eyebrow"><span class="section__num">04</span>Avis</p>
         <h2 class="section__title">Ce que disent nos clients</h2>
       </div>
       <div class="reviews" id="reviewsList"></div>
@@ -145,7 +145,7 @@
   <section class="section" id="contact">
     <div class="section__inner section__inner--split">
       <div class="reveal">
-        <p class="section__eyebrow">Contact</p>
+        <p class="section__eyebrow"><span class="section__num">05</span>Contact</p>
         <h2 class="section__title">Nous trouver</h2>
         <ul class="contact-info">
           <li><strong>Adresse</strong>{{ADRESSE}}, {{VILLE}}</li>

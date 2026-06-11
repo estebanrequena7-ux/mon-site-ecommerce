@@ -43,14 +43,16 @@
       /* Menu par catégories */
       var menuEl = document.getElementById('menuList');
       if (menuEl && Array.isArray(cfg.menu)) {
-        menuEl.innerHTML = cfg.menu.map(function (cat) {
-          var items = (cat.items || []).map(function (it) {
-            return '<div class="menu-item reveal">' +
+        menuEl.innerHTML = cfg.menu.map(function (cat, ci) {
+          var catDelay = (ci * 0.1).toFixed(2) + 's';
+          var items = (cat.items || []).map(function (it, ii) {
+            var itemDelay = (ci * 0.1 + ii * 0.06).toFixed(2) + 's';
+            return '<div class="menu-item reveal" style="transition-delay:' + itemDelay + '">' +
               '<div><div class="menu-item__name">' + esc(it.nom) + '</div>' +
               (it.description ? '<div class="menu-item__desc">' + esc(it.description) + '</div>' : '') +
               '</div><div class="menu-item__price">' + esc(it.prix) + '</div></div>';
           }).join('');
-          return '<div class="menu-category reveal">' +
+          return '<div class="menu-category reveal" style="transition-delay:' + catDelay + '">' +
             '<h3 class="menu-category__title">' + esc(cat.categorie) + '</h3>' +
             '<div class="menu-items">' + items + '</div></div>';
         }).join('');
@@ -60,9 +62,10 @@
       /* Avis */
       var reviewsEl = document.getElementById('reviewsList');
       if (reviewsEl && Array.isArray(cfg.avis)) {
-        reviewsEl.innerHTML = cfg.avis.map(function (a) {
+        reviewsEl.innerHTML = cfg.avis.map(function (a, i) {
+          var delay = (i * 0.1).toFixed(2) + 's';
           var stars = '★★★★★'.slice(0, Math.max(1, Math.min(5, a.note || 5)));
-          return '<div class="review reveal">' +
+          return '<div class="review reveal" style="transition-delay:' + delay + '">' +
             '<div class="review__stars" aria-label="' + esc(a.note || 5) + ' étoiles sur 5">' + stars + '</div>' +
             '<p class="review__text">« ' + esc(a.texte) + ' »</p>' +
             '<p class="review__author">' + esc(a.auteur) + '</p></div>';
