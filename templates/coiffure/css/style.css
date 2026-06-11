@@ -43,9 +43,12 @@ a { color: inherit; }
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 0.3s ease,
+              border-color 0.3s ease;
 }
-.btn:hover { transform: translateY(-2px); }
+.btn:hover { transform: translateY(-3px); }
 .btn--primary {
   background: var(--primary);
   color: var(--white);
@@ -157,6 +160,8 @@ a { color: inherit; }
   color: var(--primary);
   font-weight: 500;
   margin-bottom: 1rem;
+  animation: fadeUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: 0.1s;
 }
 .hero__title {
   font-family: var(--font-title);
@@ -164,24 +169,46 @@ a { color: inherit; }
   font-weight: 600;
   line-height: 1.05;
   color: var(--secondary);
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.4s;
 }
 .hero__subtitle {
   font-size: clamp(1.05rem, 2.5vw, 1.3rem);
   color: var(--text-soft);
   max-width: 36ch;
   margin: 1.25rem auto 2.25rem;
+  animation: fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: 0.75s;
 }
-.hero__actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  animation: fadeUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: 1.05s;
+}
 .hero__scroll {
   position: absolute;
   bottom: 2rem; left: 50%;
   transform: translateX(-50%);
+  animation: fadeIn 0.8s ease both;
+  animation-delay: 1.6s;
 }
 .hero__scroll span {
   display: block;
   width: 1px; height: 48px;
   background: linear-gradient(var(--text-soft), transparent);
   animation: scrollHint 2s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 @keyframes scrollHint {
   0%, 100% { opacity: .3; transform: scaleY(.7); transform-origin: top; }
@@ -258,9 +285,10 @@ a { color: inherit; }
   justify-content: space-between;
   gap: 1rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, .04);
-  transition: transform .25s ease, box-shadow .25s ease;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.service:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.service:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 0, 0, .1); }
 .service__name { font-weight: 500; font-size: 1.05rem; }
 .service__desc { font-size: .88rem; color: var(--text-soft); margin-top: .15rem; }
 .service__price {
@@ -277,14 +305,18 @@ a { color: inherit; }
   grid-template-columns: repeat(2, 1fr);
   gap: .75rem;
 }
-.gallery img {
+.gallery__item {
   border-radius: var(--radius);
+  overflow: hidden;
+}
+.gallery img {
   aspect-ratio: 4/5;
   object-fit: cover;
   width: 100%;
-  transition: transform .35s ease;
+  display: block;
+  transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.gallery img:hover { transform: scale(1.025); }
+.gallery img:hover { transform: scale(1.06); }
 
 /* ---------- Avis ---------- */
 .reviews { display: grid; gap: 1.25rem; }
@@ -293,7 +325,10 @@ a { color: inherit; }
   border-radius: var(--radius);
   padding: 1.75rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, .04);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+.review:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0, 0, 0, .08); }
 .review__stars { color: var(--primary); letter-spacing: .2em; margin-bottom: .75rem; }
 .review__text { font-style: italic; color: var(--text-soft); margin-bottom: 1rem; }
 .review__author { font-weight: 500; font-size: .9rem; }
@@ -416,14 +451,17 @@ a { color: inherit; }
 /* ---------- Animations au scroll ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .7s ease, transform .7s ease;
+  transform: translateY(36px);
+  transition: opacity 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.reveal--delay { transition-delay: .15s; }
+.reveal--delay  { transition-delay: 0.15s; }
+.reveal--delay2 { transition-delay: 0.3s; }
 .reveal--visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
 

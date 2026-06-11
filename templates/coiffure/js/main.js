@@ -52,8 +52,9 @@
       /* Services */
       var servicesEl = document.getElementById('servicesList');
       if (servicesEl && Array.isArray(cfg.services)) {
-        servicesEl.innerHTML = cfg.services.map(function (s) {
-          return '<div class="service reveal">' +
+        servicesEl.innerHTML = cfg.services.map(function (s, i) {
+          var delay = (i * 0.08).toFixed(2) + 's';
+          return '<div class="service reveal" style="transition-delay:' + delay + '">' +
             '<div><div class="service__name">' + esc(s.nom) + '</div>' +
             (s.description ? '<div class="service__desc">' + esc(s.description) + '</div>' : '') +
             '</div><div class="service__price">' + esc(s.prix) + '</div></div>';
@@ -64,9 +65,10 @@
       /* Avis */
       var reviewsEl = document.getElementById('reviewsList');
       if (reviewsEl && Array.isArray(cfg.avis)) {
-        reviewsEl.innerHTML = cfg.avis.map(function (a) {
+        reviewsEl.innerHTML = cfg.avis.map(function (a, i) {
+          var delay = (i * 0.1).toFixed(2) + 's';
           var stars = '★★★★★'.slice(0, Math.max(1, Math.min(5, a.note || 5)));
-          return '<div class="review reveal">' +
+          return '<div class="review reveal" style="transition-delay:' + delay + '">' +
             '<div class="review__stars" aria-label="' + esc(a.note || 5) + ' étoiles sur 5">' + stars + '</div>' +
             '<p class="review__text">« ' + esc(a.texte) + ' »</p>' +
             '<p class="review__author">' + esc(a.auteur) + '</p></div>';
