@@ -1,0 +1,40 @@
+{
+  "nom": "{{NOM}}",
+  "ville": "{{VILLE}}",
+  "telephone": "{{TELEPHONE}}",
+  "instagram": "{{INSTAGRAM}}",
+  "tiktok": "{{TIKTOK}}",
+  "reservation_url": "",
+  "menu": [
+    {
+      "categorie": "Entrées",
+      "items": [
+        { "nom": "Soupe du moment", "prix": "8€", "description": "Selon le marché du jour" },
+        { "nom": "Tartare de légumes", "prix": "11€", "description": "Légumes de saison, vinaigrette maison" },
+        { "nom": "Planche mixte", "prix": "14€", "description": "Charcuterie et fromages locaux" }
+      ]
+    },
+    {
+      "categorie": "Plats",
+      "items": [
+        { "nom": "Plat du jour", "prix": "15€", "description": "Demandez-nous, ça change chaque jour !" },
+        { "nom": "Burger maison", "prix": "17€", "description": "Steak haché, comté, condiments maison" },
+        { "nom": "Poisson du marché", "prix": "19€", "description": "Selon arrivage, légumes rôtis" },
+        { "nom": "Risotto aux champignons", "prix": "16€", "description": "Champignons de saison, parmesan, truffe" }
+      ]
+    },
+    {
+      "categorie": "Desserts",
+      "items": [
+        { "nom": "Fondant au chocolat", "prix": "7€", "description": "Coulant maison, crème anglaise" },
+        { "nom": "Tarte du jour", "prix": "6€", "description": "Selon les fruits de saison" },
+        { "nom": "Assiette de fromages", "prix": "9€", "description": "Sélection du fromager local" }
+      ]
+    }
+  ],
+  "avis": [
+    { "auteur": "Camille D.", "note": 5, "texte": "Un vrai coup de cœur. La cuisine est généreuse et le cadre super sympa. On reviendra !" },
+    { "auteur": "Pierre M.", "note": 5, "texte": "Le plat du jour était excellent. Des produits frais, une cuisine honnête. Bravo." },
+    { "auteur": "Nadia F.", "note": 5, "texte": "Meilleur restaurant de {{VILLE}} à mon goût. Accueil chaleureux, prix raisonnables." }
+  ]
+}

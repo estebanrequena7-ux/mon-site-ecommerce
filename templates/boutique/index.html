@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{NOM}} — Boutique à {{VILLE}}</title>
+  <meta name="description" content="{{NOM}}, boutique à {{VILLE}}. Découvrez notre sélection de produits uniques. Venez nous rendre visite ou contactez-nous.">
+
+  <meta property="og:type" content="business.business">
+  <meta property="og:title" content="{{NOM}} — Boutique à {{VILLE}}">
+  <meta property="og:description" content="Boutique à {{VILLE}} — découvrez la sélection {{NOM}}.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="images/photo-1.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "{{NOM}}",
+    "description": "Boutique à {{VILLE}}",
+    "telephone": "{{TELEPHONE}}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ADRESSE}}",
+      "addressLocality": "{{VILLE}}",
+      "addressCountry": "FR"
+    },
+    "openingHours": "{{HORAIRES}}"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">{{NOM}}</a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#boutique">La boutique</a>
+        <a href="#produits">Nos produits</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn--small">Nous contacter</a>
+      </nav>
+      <button class="nav__burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__content reveal">
+      <p class="hero__eyebrow">Boutique — {{VILLE}}</p>
+      <h1 class="hero__title">{{NOM}}</h1>
+      <p class="hero__subtitle">Une sélection pensée avec soin, pour les curieux et les passionnés.</p>
+      <div class="hero__actions">
+        <a href="#produits" class="btn btn--primary">Voir nos produits</a>
+        <a href="#contact" class="btn btn--ghost">Nous contacter</a>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true"><span></span></div>
+  </section>
+
+  <section class="section" id="boutique">
+    <div class="section__inner section__inner--split">
+      <div class="reveal">
+        <p class="section__eyebrow">La boutique</p>
+        <h2 class="section__title">Bienvenue chez {{NOM}}</h2>
+        <p class="section__text">
+          Au cœur de {{VILLE}}, {{NOM}} vous propose une sélection soignée de produits,
+          choisis pour leur qualité et leur caractère. Chaque pièce a été pensée pour vous.
+        </p>
+        <p class="section__text">
+          Une boutique à taille humaine, où on prend le temps de vous conseiller
+          et de vous aider à trouver ce qu'il vous faut vraiment.
+        </p>
+        <ul class="features">
+          <li>Produits sélectionnés à la main</li>
+          <li>Conseils personnalisés en boutique</li>
+          <li>Livraison possible sur demande</li>
+        </ul>
+      </div>
+      <div class="reveal reveal--delay">
+        <img src="images/photo-1.svg" alt="Intérieur de la boutique {{NOM}} à {{VILLE}}" class="img-card" loading="lazy" width="600" height="720">
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="produits">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Nos produits</p>
+        <h2 class="section__title">Une sélection pour vous</h2>
+        <p class="section__text">Retrouvez nos produits en boutique. Contactez-nous pour vérifier la disponibilité.</p>
+      </div>
+      <div class="products" id="productsList">
+        <!-- Rempli depuis config.json -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="galerie">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Galerie</p>
+        <h2 class="section__title">Dans la boutique</h2>
+      </div>
+      <div class="gallery reveal">
+        <img src="images/photo-2.svg" alt="Produit en boutique — {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-3.svg" alt="Vitrine de la boutique {{NOM}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-4.svg" alt="Sélection produits {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-5.svg" alt="Rayon boutique {{NOM}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-6.svg" alt="Ambiance boutique {{NOM}} à {{VILLE}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-7.svg" alt="Détail produit — {{NOM}}" loading="lazy" width="400" height="500">
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="avis">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Avis</p>
+        <h2 class="section__title">Ce qu'ils en pensent</h2>
+      </div>
+      <div class="reviews" id="reviewsList"></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta__inner reveal">
+      <h2 class="cta__title">Venez nous rendre visite</h2>
+      <p class="cta__text">On vous accueille à {{VILLE}} ou répondons à vos questions en ligne.</p>
+      <a href="#contact" class="btn btn--light">Nous contacter</a>
+      <p class="cta__phone">ou appelez-nous au <a href="tel:{{TELEPHONE}}">{{TELEPHONE}}</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section__inner section__inner--split">
+      <div class="reveal">
+        <p class="section__eyebrow">Contact</p>
+        <h2 class="section__title">On vous répond vite</h2>
+        <ul class="contact-info">
+          <li><strong>Adresse</strong>{{ADRESSE}}, {{VILLE}}</li>
+          <li><strong>Téléphone</strong><a href="tel:{{TELEPHONE}}">{{TELEPHONE}}</a></li>
+          <li><strong>Horaires</strong>{{HORAIRES}}</li>
+        </ul>
+        <div class="socials" id="socials"></div>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden"><label>Ne pas remplir : <input name="bot-field"></label></p>
+          <div class="form__row">
+            <label for="f-nom">Votre nom</label>
+            <input type="text" id="f-nom" name="nom" required autocomplete="name">
+          </div>
+          <div class="form__row">
+            <label for="f-tel">Téléphone ou email</label>
+            <input type="text" id="f-tel" name="contact" required>
+          </div>
+          <div class="form__row">
+            <label for="f-msg">Votre message</label>
+            <textarea id="f-msg" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Envoyer</button>
+        </form>
+      </div>
+      <div class="reveal reveal--delay">
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps?q={{ADRESSE_URL}}&output=embed"
+            title="Localisation de {{NOM}} à {{VILLE}}"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">{{NOM}}</p>
+        <p>{{ADRESSE}}, {{VILLE}}<br><a href="tel:{{TELEPHONE}}">{{TELEPHONE}}</a></p>
+      </div>
+      <div>
+        <p class="footer__heading">Horaires</p>
+        <p>{{HORAIRES}}</p>
+      </div>
+      <div>
+        <p class="footer__heading">Mentions légales</p>
+        <p class="footer__legal">
+          Site édité par {{NOM}} — {{ADRESSE}}, {{VILLE}}.<br>
+          Hébergement : Netlify, Inc. — 512 2nd Street, San Francisco, CA 94107, USA.<br>
+          Les informations recueillies via le formulaire sont utilisées uniquement pour répondre à votre demande et ne sont jamais transmises à des tiers.
+        </p>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> {{NOM}} — Tous droits réservés</p>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{NOM}} — Restaurant à {{VILLE}}</title>
+  <meta name="description" content="{{NOM}}, restaurant à {{VILLE}}. Cuisine faite maison, produits frais et ambiance chaleureuse. Réservez votre table en ligne.">
+
+  <meta property="og:type" content="restaurant">
+  <meta property="og:title" content="{{NOM}} — Restaurant à {{VILLE}}">
+  <meta property="og:description" content="Cuisine faite maison à {{VILLE}}. Réservez votre table chez {{NOM}}.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="images/photo-1.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "{{NOM}}",
+    "description": "Restaurant à {{VILLE}}",
+    "telephone": "{{TELEPHONE}}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ADRESSE}}",
+      "addressLocality": "{{VILLE}}",
+      "addressCountry": "FR"
+    },
+    "openingHours": "{{HORAIRES}}",
+    "priceRange": "€€",
+    "servesCuisine": "Française"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">{{NOM}}</a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#histoire">Notre histoire</a>
+        <a href="#menu">Menu</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="btn btn--small" id="navReservation">Réserver une table</a>
+      </nav>
+      <button class="nav__burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__content reveal">
+      <p class="hero__eyebrow">Restaurant — {{VILLE}}</p>
+      <h1 class="hero__title">{{NOM}}</h1>
+      <p class="hero__subtitle">Une cuisine sincère, des produits du terroir, une table où l'on revient.</p>
+      <div class="hero__actions">
+        <a href="#" class="btn btn--primary" id="heroReservation">Réserver une table</a>
+        <a href="#menu" class="btn btn--ghost">Voir le menu</a>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true"><span></span></div>
+  </section>
+
+  <section class="section" id="histoire">
+    <div class="section__inner section__inner--split">
+      <div class="reveal">
+        <p class="section__eyebrow">Notre histoire</p>
+        <h2 class="section__title">Une cuisine faite avec passion</h2>
+        <p class="section__text">
+          Niché au cœur de {{VILLE}}, {{NOM}} est né d'une envie simple : cuisiner des produits frais,
+          sourcés localement, dans des assiettes généreuses et honnêtes.
+        </p>
+        <p class="section__text">
+          Chaque semaine, la carte évolue au rythme des saisons et des producteurs de la région.
+          Ici, pas de plats sous vide ni de grands discours — juste de la bonne cuisine.
+        </p>
+        <ul class="features">
+          <li>Produits frais et locaux</li>
+          <li>Carte courte qui change selon les saisons</li>
+          <li>Fait maison de A à Z</li>
+        </ul>
+      </div>
+      <div class="reveal reveal--delay">
+        <img src="images/photo-1.svg" alt="Intérieur du restaurant {{NOM}} à {{VILLE}}" class="img-card" loading="lazy" width="600" height="720">
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="menu">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Menu</p>
+        <h2 class="section__title">Ce qu'on vous propose</h2>
+        <p class="section__text">Carte indicative — contactez-nous pour le menu du jour.</p>
+      </div>
+      <div class="menu" id="menuList">
+        <!-- Rempli depuis config.json -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="galerie">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Galerie</p>
+        <h2 class="section__title">Nos assiettes</h2>
+      </div>
+      <div class="gallery reveal">
+        <img src="images/photo-2.svg" alt="Plat du chef — {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-3.svg" alt="Entrée maison — restaurant {{NOM}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-4.svg" alt="Dessert fait maison — {{NOM}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-5.svg" alt="Table dressée au restaurant {{NOM}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-6.svg" alt="Salle du restaurant {{NOM}} à {{VILLE}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-7.svg" alt="Terrasse du restaurant {{NOM}}" loading="lazy" width="400" height="500">
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="avis">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Avis</p>
+        <h2 class="section__title">Ce que disent nos clients</h2>
+      </div>
+      <div class="reviews" id="reviewsList"></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta__inner reveal">
+      <h2 class="cta__title">Une envie de bonne table ?</h2>
+      <p class="cta__text">Réservez votre table en quelques secondes.</p>
+      <a href="#" class="btn btn--light" id="ctaReservation">Réserver maintenant</a>
+      <p class="cta__phone">ou appelez-nous au <a href="tel:{{TELEPHONE}}">{{TELEPHONE}}</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section__inner section__inner--split">
+      <div class="reveal">
+        <p class="section__eyebrow">Contact</p>
+        <h2 class="section__title">Nous trouver</h2>
+        <ul class="contact-info">
+          <li><strong>Adresse</strong>{{ADRESSE}}, {{VILLE}}</li>
+          <li><strong>Téléphone</strong><a href="tel:{{TELEPHONE}}">{{TELEPHONE}}</a></li>
+          <li><strong>Horaires</strong>{{HORAIRES}}</li>
+        </ul>
+        <div class="socials" id="socials"></div>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden"><label>Ne pas remplir : <input name="bot-field"></label></p>
+          <div class="form__row">
+            <label for="f-nom">Votre nom</label>
+            <input type="text" id="f-nom" name="nom" required autocomplete="name">
+          </div>
+          <div class="form__row">
+            <label for="f-tel">Téléphone ou email</label>
+            <input type="text" id="f-tel" name="contact" required>
+          </div>
+          <div class="form__row">
+            <label for="f-msg">Votre message ou demande de réservation</label>
+            <textarea id="f-msg" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Envoyer</button>
+        </form>
+      </div>
+      <div class="reveal reveal--delay">
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps?q={{ADRESSE_URL}}&output=embed"
+            title="Localisation de {{NOM}} à {{VILLE}}"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">{{NOM}}</p>
+        <p>{{ADRESSE}}, {{VILLE}}<br><a href="tel:{{TELEPHONE}}">{{TELEPHONE}}</a></p>
+      </div>
+      <div>
+        <p class="footer__heading">Horaires</p>
+        <p>{{HORAIRES}}</p>
+      </div>
+      <div>
+        <p class="footer__heading">Mentions légales</p>
+        <p class="footer__legal">
+          Site édité par {{NOM}} — {{ADRESSE}}, {{VILLE}}.<br>
+          Hébergement : Netlify, Inc. — 512 2nd Street, San Francisco, CA 94107, USA.<br>
+          Les informations recueillies via le formulaire sont utilisées uniquement pour répondre à votre demande et ne sont jamais transmises à des tiers.
+        </p>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> {{NOM}} — Tous droits réservés</p>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

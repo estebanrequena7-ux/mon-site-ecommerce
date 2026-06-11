@@ -1,0 +1,20 @@
+{
+  "nom": "{{NOM}}",
+  "ville": "{{VILLE}}",
+  "telephone": "{{TELEPHONE}}",
+  "instagram": "{{INSTAGRAM}}",
+  "tiktok": "{{TIKTOK}}",
+  "produits": [
+    { "nom": "Produit phare 1", "prix": "29€", "description": "Description courte du produit, matières ou caractéristiques clés.", "badge": "Coup de cœur", "image": "images/photo-2.svg" },
+    { "nom": "Produit phare 2", "prix": "45€", "description": "Description courte du produit, matières ou caractéristiques clés.", "badge": "", "image": "images/photo-3.svg" },
+    { "nom": "Produit phare 3", "prix": "19€", "description": "Description courte du produit, matières ou caractéristiques clés.", "badge": "Nouveau", "image": "images/photo-4.svg" },
+    { "nom": "Produit phare 4", "prix": "35€", "description": "Description courte du produit, matières ou caractéristiques clés.", "badge": "", "image": "images/photo-5.svg" },
+    { "nom": "Produit phare 5", "prix": "55€", "description": "Description courte du produit, matières ou caractéristiques clés.", "badge": "Exclusif", "image": "images/photo-6.svg" },
+    { "nom": "Produit phare 6", "prix": "22€", "description": "Description courte du produit, matières ou caractéristiques clés.", "badge": "", "image": "images/photo-7.svg" }
+  ],
+  "avis": [
+    { "auteur": "Julie P.", "note": 5, "texte": "Une boutique pleine de trouvailles, on ressort toujours avec quelque chose. Qualité irréprochable." },
+    { "auteur": "Marc T.", "note": 5, "texte": "Des produits vraiment originaux qu'on ne trouve nulle part ailleurs à {{VILLE}}. Je recommande à 100%." },
+    { "auteur": "Emma R.", "note": 5, "texte": "Accueil super sympa, conseils avisés. Exactement ce que j'attendais d'une boutique de quartier." }
+  ]
+}
