@@ -1,0 +1,21 @@
+{
+  "nom": "{{NOM}}",
+  "ville": "{{VILLE}}",
+  "telephone": "{{TELEPHONE}}",
+  "instagram": "{{INSTAGRAM}}",
+  "tiktok": "{{TIKTOK}}",
+  "reservation_url": "",
+  "services": [
+    { "nom": "Coupe femme", "prix": "39€", "description": "Shampoing, coupe et brushing" },
+    { "nom": "Coupe homme", "prix": "24€", "description": "Shampoing, coupe et coiffage" },
+    { "nom": "Coloration", "prix": "65€", "description": "Couleur complète, produits professionnels" },
+    { "nom": "Balayage / Mèches", "prix": "85€", "description": "Technique sur mesure selon vos envies" },
+    { "nom": "Soin profond", "prix": "29€", "description": "Soin réparateur adapté à vos cheveux" },
+    { "nom": "Coiffure événement", "prix": "sur devis", "description": "Mariage, soirée, shooting" }
+  ],
+  "avis": [
+    { "auteur": "Marie L.", "note": 5, "texte": "Un accueil chaleureux et une coupe parfaite. Je ne vais plus nulle part ailleurs !" },
+    { "auteur": "Thomas R.", "note": 5, "texte": "Toujours à l'écoute, résultat impeccable à chaque fois. Je recommande vivement." },
+    { "auteur": "Sofia M.", "note": 5, "texte": "Mon balayage est exactement ce que je voulais. Une vraie expertise couleur." }
+  ]
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{NOM}} — Salon de coiffure à {{VILLE}}</title>
+  <meta name="description" content="{{NOM}}, votre salon de coiffure à {{VILLE}}. Coupes, colorations et soins par des professionnels passionnés. Réservez votre rendez-vous en ligne ou par téléphone.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:title" content="{{NOM}} — Salon de coiffure à {{VILLE}}">
+  <meta property="og:description" content="Coupes, colorations et soins à {{VILLE}}. Réservez votre rendez-vous chez {{NOM}}.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="images/photo-1.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Données structurées schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "{{NOM}}",
+    "description": "Salon de coiffure à {{VILLE}}",
+    "telephone": "{{TELEPHONE}}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ADRESSE}}",
+      "addressLocality": "{{VILLE}}",
+      "addressCountry": "FR"
+    },
+    "openingHours": "{{HORAIRES}}",
+    "priceRange": "€€"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">{{NOM}}</a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#presentation">Le salon</a>
+        <a href="#services">Prestations</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="btn btn--small" id="navReservation">Réserver</a>
+      </nav>
+      <button class="nav__burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__content reveal">
+      <p class="hero__eyebrow">Salon de coiffure — {{VILLE}}</p>
+      <h1 class="hero__title">{{NOM}}</h1>
+      <p class="hero__subtitle">L'art de révéler votre style, entre savoir-faire et écoute.</p>
+      <div class="hero__actions">
+        <a href="#" class="btn btn--primary" id="heroReservation">Réserver un rendez-vous</a>
+        <a href="#services" class="btn btn--ghost">Voir les prestations</a>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- Présentation -->
+  <section class="section" id="presentation">
+    <div class="section__inner section__inner--split">
+      <div class="reveal">
+        <p class="section__eyebrow">Le salon</p>
+        <h2 class="section__title">Un moment rien que pour vous</h2>
+        <p class="section__text">
+          Au cœur de {{VILLE}}, {{NOM}} vous accueille dans un cadre chaleureux et apaisant.
+          Notre équipe prend le temps de vous écouter pour créer la coupe ou la couleur qui
+          vous ressemble vraiment.
+        </p>
+        <p class="section__text">
+          Produits professionnels, techniques actuelles et conseils personnalisés :
+          chaque visite est pensée comme une parenthèse bien-être.
+        </p>
+        <ul class="features">
+          <li>Diagnostic capillaire offert</li>
+          <li>Produits professionnels sélectionnés</li>
+          <li>Avec ou sans rendez-vous</li>
+        </ul>
+      </div>
+      <div class="reveal reveal--delay">
+        <img src="images/photo-1.svg" alt="Intérieur du salon {{NOM}} à {{VILLE}}" class="img-card" loading="lazy" width="600" height="720">
+      </div>
+    </div>
+  </section>
+
+  <!-- Services / Prestations -->
+  <section class="section section--alt" id="services">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Prestations</p>
+        <h2 class="section__title">Nos services & tarifs</h2>
+        <p class="section__text">Des prestations sur mesure, aux prix transparents.</p>
+      </div>
+      <div class="services" id="servicesList">
+        <!-- Rempli automatiquement depuis config.json -->
+      </div>
+      <p class="section__note reveal">Les tarifs peuvent varier selon la longueur et la densité des cheveux. Devis offert sur place.</p>
+    </div>
+  </section>
+
+  <!-- Galerie -->
+  <section class="section" id="galerie">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Galerie</p>
+        <h2 class="section__title">Nos réalisations</h2>
+      </div>
+      <div class="gallery reveal">
+        <img src="images/photo-2.svg" alt="Réalisation coiffure — {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-3.svg" alt="Coupe et brushing — {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-4.svg" alt="Coloration réalisée au salon {{NOM}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-5.svg" alt="Coiffure événementielle — {{NOM}} {{VILLE}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-6.svg" alt="Soin capillaire au salon {{NOM}}" loading="lazy" width="400" height="500">
+        <img src="images/photo-7.svg" alt="Espace coiffage du salon {{NOM}} à {{VILLE}}" loading="lazy" width="400" height="500">
+      </div>
+    </div>
+  </section>
+
+  <!-- Avis -->
+  <section class="section section--alt" id="avis">
+    <div class="section__inner">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Avis</p>
+        <h2 class="section__title">Ils nous font confiance</h2>
+      </div>
+      <div class="reviews" id="reviewsList">
+        <!-- Rempli automatiquement depuis config.json -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Réservation -->
+  <section class="cta">
+    <div class="cta__inner reveal">
+      <h2 class="cta__title">Envie de changer de tête ?</h2>
+      <p class="cta__text">Réservez votre créneau en quelques secondes.</p>
+      <a href="#" class="btn btn--light" id="ctaReservation">Réserver maintenant</a>
+      <p class="cta__phone">ou appelez-nous au <a href="tel:{{TELEPHONE}}">{{TELEPHONE}}</a></p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="section__inner section__inner--split">
+      <div class="reveal">
+        <p class="section__eyebrow">Contact</p>
+        <h2 class="section__title">Venez nous voir</h2>
+        <ul class="contact-info">
+          <li><strong>Adresse</strong>{{ADRESSE}}, {{VILLE}}</li>
+          <li><strong>Téléphone</strong><a href="tel:{{TELEPHONE}}">{{TELEPHONE}}</a></li>
+          <li><strong>Horaires</strong>{{HORAIRES}}</li>
+        </ul>
+        <div class="socials" id="socials"></div>
+
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden"><label>Ne pas remplir : <input name="bot-field"></label></p>
+          <div class="form__row">
+            <label for="f-nom">Votre nom</label>
+            <input type="text" id="f-nom" name="nom" required autocomplete="name">
+          </div>
+          <div class="form__row">
+            <label for="f-tel">Votre téléphone ou email</label>
+            <input type="text" id="f-tel" name="contact" required>
+          </div>
+          <div class="form__row">
+            <label for="f-msg">Votre message</label>
+            <textarea id="f-msg" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Envoyer</button>
+        </form>
+      </div>
+      <div class="reveal reveal--delay">
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps?q={{ADRESSE_URL}}&output=embed"
+            title="Localisation de {{NOM}} à {{VILLE}}"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">{{NOM}}</p>
+        <p>{{ADRESSE}}, {{VILLE}}<br><a href="tel:{{TELEPHONE}}">{{TELEPHONE}}</a></p>
+      </div>
+      <div>
+        <p class="footer__heading">Horaires</p>
+        <p>{{HORAIRES}}</p>
+      </div>
+      <div>
+        <p class="footer__heading">Mentions légales</p>
+        <p class="footer__legal">
+          Site édité par {{NOM}} — {{ADRESSE}}, {{VILLE}}.<br>
+          Hébergement : Netlify, Inc. — 512 2nd Street, San Francisco, CA 94107, USA.<br>
+          Les informations recueillies via le formulaire sont utilisées uniquement pour répondre à votre demande et ne sont jamais transmises à des tiers.
+        </p>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> {{NOM}} — Tous droits réservés</p>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
