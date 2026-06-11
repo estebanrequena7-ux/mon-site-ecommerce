@@ -1,0 +1,16 @@
+# Sites générés pour les clients (trop volumineux, déployés sur Netlify)
+clients/*/
+!clients/.gitkeep
+
+# IDs de sites Netlify (spécifiques à chaque machine)
+.netlify-sites/
+
+# Node
+node_modules/
+
+# macOS
+.DS_Store
+
+# Editeurs
+.vscode/
+.idea/

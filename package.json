@@ -1,0 +1,14 @@
+{
+  "name": "agence-web-abonnement",
+  "version": "1.0.0",
+  "description": "Système d'automatisation pour sites vitrine en abonnement mensuel",
+  "private": true,
+  "scripts": {
+    "generate": "node scripts/generate.js",
+    "stats": "node scripts/stats.js",
+    "deploy": "bash scripts/deploy.sh"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
