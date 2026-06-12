@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maison Ellery — Atelier de Coiffure, Paris</title>
+  <meta name="description" content="Maison Ellery, atelier de coiffure haut de gamme au cœur de Paris. Coupes signature, colorations exclusives, savoir-faire artisanal.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400&display=swap" rel="stylesheet">
+
+  <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #f7f4ef;
+    --bg-alt:  #efeae2;
+    --bg-dark: #0d0b09;
+    --ink:     #0c0a07;
+    --mid:     #897f75;
+    --faint:   rgba(12,10,7,.08);
+    --line:    rgba(12,10,7,.1);
+    --gold:    #9e7848;
+    --gold-lt: rgba(158,120,72,.12);
+    --fd: 'Cormorant Garamond', Georgia, serif;
+    --fb: 'DM Sans', -apple-system, sans-serif;
+    --ease: cubic-bezier(.16,1,.3,1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--fb);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 5vw;
+    height: 62px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background .5s ease, border-color .5s ease;
+    border-bottom: .5px solid transparent;
+  }
+  .nav.sc {
+    background: rgba(247,244,239,.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-color: var(--line);
+  }
+  .nav__logo {
+    font-family: var(--fd); font-weight: 400; font-size: 1.05rem;
+    letter-spacing: .18em; text-transform: uppercase;
+    text-decoration: none; color: var(--ink);
+  }
+  .nav__links { display: flex; gap: 2.8rem; align-items: center; }
+  .nav__links a {
+    text-decoration: none; color: var(--ink);
+    font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+    font-weight: 300; transition: color .25s;
+  }
+  .nav__links a:hover { color: var(--gold); }
+  .nav__rdv {
+    border: .5px solid var(--ink) !important;
+    padding: .45rem 1.35rem;
+    transition: background .3s, color .3s !important;
+  }
+  .nav__rdv:hover { background: var(--ink) !important; color: var(--bg) !important; }
+  .nav__burger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 6px;
+  }
+  .nav__burger span {
+    display: block; width: 22px; height: .5px; background: var(--ink);
+    transition: transform .35s var(--ease), opacity .25s;
+  }
+  .nav__burger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav__burger.open span:nth-child(2) { opacity: 0; }
+  .nav__burger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 0 5vw;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* grain */
+  .hero::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+    background-size: 200px 200px; opacity: .7;
+  }
+
+  .hero__top {
+    flex: 1; display: flex; flex-direction: column; justify-content: center;
+    padding-top: 14vh;
+    position: relative; z-index: 1;
+  }
+  .hero__eyebrow {
+    font-size: .65rem; letter-spacing: .42em; text-transform: uppercase;
+    font-weight: 200; color: var(--gold); margin-bottom: 4vh;
+    opacity: 0; animation: fup .8s .2s var(--ease) both;
+  }
+
+  /* ── Curtain reveal wrapper ── */
+  .curtain { overflow: hidden; display: block; }
+  .curtain-inner {
+    display: block;
+    transform: translateY(108%);
+    transition: transform 1.3s var(--ease);
+  }
+  .curtain-inner.up { transform: translateY(0); }
+
+  .hero__title {
+    font-family: var(--fd); font-weight: 300; font-style: italic;
+    line-height: .88; letter-spacing: -.02em;
+    margin-bottom: 5vh;
+  }
+  .hero__title-l1 {
+    font-size: clamp(4.5rem, 13vw, 13rem);
+    color: var(--ink);
+  }
+  .hero__title-l2 {
+    font-size: clamp(3.2rem, 9.5vw, 9.5rem);
+    color: var(--mid);
+    padding-left: 7vw;
+  }
+
+  .hero__meta {
+    display: flex; align-items: center; gap: 1.6rem;
+    opacity: 0; animation: fup .7s 1.5s var(--ease) both;
+  }
+  .hero__meta-line { width: 36px; height: .5px; background: var(--gold); flex-shrink: 0; }
+  .hero__meta-text {
+    font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--mid); font-weight: 200;
+  }
+
+  .hero__cta-wrap {
+    margin-top: 5vh;
+    opacity: 0; animation: fup .7s 1.9s var(--ease) both;
+  }
+  .hero__cta {
+    display: inline-flex; align-items: center; gap: 1rem;
+    text-decoration: none; color: var(--ink);
+    font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+    font-weight: 300;
+    border-bottom: .5px solid var(--gold); padding-bottom: .45rem;
+    transition: gap .4s var(--ease), color .25s;
+  }
+  .hero__cta:hover { gap: 1.7rem; color: var(--gold); }
+  .hero__cta::after { content: '→'; font-size: .85rem; }
+
+  .hero__bottom {
+    padding: 2rem 0 3.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadein .8s 2.4s ease both;
+  }
+  .hero__scroll-label {
+    font-size: .6rem; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--mid); font-weight: 200;
+  }
+  .hero__scroll-line {
+    width: .5px; height: 48px; background: var(--gold);
+    transform-origin: top;
+    animation: grow 1.6s 2.6s var(--ease) both;
+  }
+
+  /* watermark */
+  .hero__wm {
+    position: absolute; bottom: 0; right: 4vw;
+    font-family: var(--fd); font-size: 32vw; font-weight: 300;
+    color: var(--ink); opacity: .022; line-height: .85;
+    pointer-events: none; user-select: none; letter-spacing: -.06em;
+    z-index: 0;
+  }
+
+  @keyframes fup    { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadein { from { opacity:0; } to { opacity:1; } }
+  @keyframes grow   { from { transform:scaleY(0); } to { transform:scaleY(1); } }
+
+  /* ─── LABELS ─── */
+  .label {
+    font-size: .62rem; letter-spacing: .42em; text-transform: uppercase;
+    font-weight: 200; color: var(--gold);
+    display: flex; align-items: center; gap: 1.1rem;
+    margin-bottom: 1.8rem;
+  }
+  .label::before {
+    content: ''; display: block; width: 24px; height: .5px;
+    background: var(--gold); flex-shrink: 0;
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  [data-r] {
+    opacity: 0; transform: translateY(26px);
+    transition: opacity .9s var(--ease), transform .9s var(--ease);
+  }
+  [data-r].on { opacity: 1; transform: translateY(0); }
+  [data-d="1"] { transition-delay: .12s; }
+  [data-d="2"] { transition-delay: .22s; }
+  [data-d="3"] { transition-delay: .34s; }
+  [data-d="4"] { transition-delay: .46s; }
+  [data-d="5"] { transition-delay: .58s; }
+
+  .section { padding: 12vmin 5vw; }
+  .section--alt { background: var(--bg-alt); }
+  .section--dark { background: var(--bg-dark); color: var(--bg); }
+
+  /* ─── SIGNATURE ─── */
+  .split { display: grid; grid-template-columns: 5fr 6fr; gap: 8vw; align-items: center; max-width: 1380px; margin: 0 auto; }
+
+  .visual { position: relative; }
+  .visual__frame {
+    aspect-ratio: 3/4;
+    background: linear-gradient(148deg, #e2d5c4 0%, #c4ad96 45%, #a8947e 100%);
+    overflow: hidden; position: relative;
+  }
+  .visual__frame::after {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E");
+    background-size: 180px; mix-blend-mode: multiply;
+  }
+  /* abstract silhouette */
+  .visual__sil {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 42%; height: 78%;
+    background: linear-gradient(180deg, transparent 0%, rgba(55,38,22,.28) 100%);
+    border-radius: 50% 50% 0 0 / 28% 28% 0 0;
+  }
+  .visual__num {
+    position: absolute; top: -1rem; right: -1.5rem;
+    font-family: var(--fd); font-size: 8rem; font-weight: 300;
+    color: var(--ink); opacity: .04; line-height: 1; pointer-events: none;
+  }
+  .visual__tag {
+    position: absolute; bottom: -2.2rem; left: 0;
+    font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--mid); font-weight: 200;
+  }
+
+  .copy h2 {
+    font-family: var(--fd); font-weight: 300; font-style: italic;
+    font-size: clamp(2rem, 3.8vw, 3.8rem); line-height: 1.12;
+    letter-spacing: -.01em; margin-bottom: 2.2rem;
+  }
+  .copy__rule { width: 32px; height: .5px; background: var(--gold); margin: 2rem 0; }
+  .copy p {
+    font-size: .87rem; color: var(--mid); line-height: 1.95;
+    font-weight: 200; margin-bottom: 1.1rem;
+  }
+  .copy p strong { color: var(--ink); font-weight: 300; }
+
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2.8rem; }
+  .stat {
+    padding: 1.3rem 1.5rem 1.3rem 0;
+    border-top: .5px solid var(--line);
+    border-right: .5px solid var(--line);
+  }
+  .stat:nth-child(even) { padding-right: 0; padding-left: 1.5rem; border-right: none; }
+  .stat:nth-child(3), .stat:nth-child(4) { border-bottom: .5px solid var(--line); }
+  .stat__n { font-family: var(--fd); font-size: 2.4rem; font-weight: 300; line-height: 1; margin-bottom: .2rem; }
+  .stat__l { font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mid); font-weight: 200; }
+
+  /* ─── SERVICES ─── */
+  .svc-inner { max-width: 860px; margin: 0 auto; }
+  .svc-header { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: end; margin-bottom: 5vmin; }
+  .svc-header h2 {
+    font-family: var(--fd); font-weight: 300; font-style: italic;
+    font-size: clamp(2.2rem, 4vw, 4rem); line-height: 1.1; letter-spacing: -.01em;
+  }
+  .svc-header p { font-size: .84rem; color: var(--mid); line-height: 1.9; font-weight: 200; }
+
+  .svc-list { border-top: .5px solid var(--line); }
+  .svc {
+    display: grid; grid-template-columns: 1fr auto; gap: 2.5rem;
+    align-items: baseline;
+    padding: 1.45rem 0;
+    border-bottom: .5px solid var(--line);
+    position: relative;
+    transition: padding-left .45s var(--ease);
+  }
+  .svc::before {
+    content: ''; position: absolute; inset: 0; left: -5vw; right: -5vw;
+    width: calc(100% + 10vw);
+    background: var(--gold-lt);
+    opacity: 0; transition: opacity .4s;
+  }
+  .svc:hover::before { opacity: 1; }
+  .svc:hover { padding-left: .8rem; }
+  .svc__name { font-family: var(--fd); font-size: 1.12rem; font-weight: 400; position: relative; }
+  .svc__desc { font-size: .73rem; color: var(--mid); margin-top: .18rem; font-weight: 200; letter-spacing: .04em; }
+  .svc__price {
+    font-family: var(--fd); font-size: 1rem; font-weight: 300;
+    color: var(--gold); font-variant-numeric: tabular-nums;
+    white-space: nowrap; position: relative;
+  }
+
+  /* ─── GALLERY ─── */
+  .gal-header { max-width: 1380px; margin: 0 auto 4vmin; }
+  .gal-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 12px;
+    max-width: 1380px; margin: 0 auto;
+  }
+  .gi { overflow: hidden; position: relative; cursor: pointer; }
+  .gi:nth-child(1) { grid-column: 1/6;  grid-row: 1/3; }
+  .gi:nth-child(2) { grid-column: 6/9;  grid-row: 1/2; }
+  .gi:nth-child(3) { grid-column: 9/13; grid-row: 1/2; }
+  .gi:nth-child(4) { grid-column: 6/10; grid-row: 2/3; }
+  .gi:nth-child(5) { grid-column: 10/13;grid-row: 2/3; }
+  .gi:nth-child(6) { grid-column: 1/5;  grid-row: 3/4; }
+  .gi:nth-child(7) { grid-column: 5/9;  grid-row: 3/4; }
+  .gi:nth-child(8) { grid-column: 9/13; grid-row: 3/4; }
+
+  .gi__img {
+    width: 100%; height: 100%; min-height: 220px; display: block;
+    transition: transform .85s cubic-bezier(.25,.46,.45,.94);
+  }
+  .gi:hover .gi__img { transform: scale(1.04); }
+  .gi:nth-child(1) .gi__img { background: linear-gradient(155deg,#ddd0bf 0%,#b89e88 55%,#9e8470 100%); min-height: 520px; }
+  .gi:nth-child(2) .gi__img { background: linear-gradient(125deg,#e8e0d3 0%,#c9b8a4 100%); }
+  .gi:nth-child(3) .gi__img { background: linear-gradient(205deg,#d2c6b5 0%,#ac9880 100%); }
+  .gi:nth-child(4) .gi__img { background: linear-gradient(170deg,#cac0b4 0%,#a08a72 100%); }
+  .gi:nth-child(5) .gi__img { background: linear-gradient(140deg,#e2d9ce 0%,#bca89a 100%); }
+  .gi:nth-child(6) .gi__img { background: linear-gradient(178deg,#d8d0c2 0%,#b9a894 100%); }
+  .gi:nth-child(7) .gi__img { background: linear-gradient(148deg,#e4dbd0 0%,#c4b0a0 100%); }
+  .gi:nth-child(8) .gi__img { background: linear-gradient(132deg,#cec2b4 0%,#a89082 100%); }
+
+  .gi__cap {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 2rem 1.2rem 1.1rem;
+    background: linear-gradient(transparent, rgba(10,8,5,.55));
+    color: #fff; font-size: .64rem; letter-spacing: .2em;
+    text-transform: uppercase; font-weight: 200;
+    transform: translateY(100%);
+    transition: transform .55s var(--ease);
+  }
+  .gi:hover .gi__cap { transform: translateY(0); }
+
+  /* grain on images */
+  .gi::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+    background-size: 160px; mix-blend-mode: multiply;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  .testi-inner { max-width: 880px; margin: 0 auto; text-align: center; padding: 0 2vw; }
+  .testi-pull {
+    font-family: var(--fd); font-weight: 300; font-style: italic;
+    font-size: clamp(1.7rem, 3.2vw, 3.4rem); line-height: 1.28;
+    color: var(--bg); letter-spacing: -.01em; margin-bottom: 5vmin;
+  }
+  .testi-pull em { color: var(--gold); font-style: normal; }
+
+  .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 3vmin; }
+  .rev {
+    padding: 2.4rem 2.2rem;
+    background: rgba(255,255,255,.03);
+    border: .5px solid rgba(255,255,255,.07);
+    text-align: left;
+    transition: background .35s;
+  }
+  .rev:hover { background: rgba(255,255,255,.06); }
+  .rev__stars { color: var(--gold); font-size: .7rem; letter-spacing: .18em; margin-bottom: 1.2rem; }
+  .rev__text {
+    font-family: var(--fd); font-style: italic; font-size: .98rem;
+    line-height: 1.75; color: rgba(240,236,228,.78); margin-bottom: 1.4rem;
+  }
+  .rev__author {
+    font-size: .64rem; letter-spacing: .2em; text-transform: uppercase;
+    color: rgba(240,236,228,.3); font-weight: 200;
+  }
+  .rev__dash { display: inline-block; width: 12px; height: .5px; background: var(--gold); vertical-align: middle; margin-right: .5rem; }
+
+  /* ─── CTA / CONTACT ─── */
+  .cta-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 55vh; }
+  .cta-l {
+    background: var(--bg-dark); padding: 9vmin 7vmin;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .cta-l .label { color: rgba(240,236,228,.3); }
+  .cta-l .label::before { background: rgba(240,236,228,.2); }
+  .cta-l h2 {
+    font-family: var(--fd); font-weight: 300; font-style: italic;
+    font-size: clamp(2.2rem, 3.8vw, 4.2rem); color: var(--bg);
+    line-height: 1.1; margin-bottom: 2rem;
+  }
+  .cta-l p { font-size: .82rem; color: rgba(240,236,228,.38); font-weight: 200; line-height: 1.95; max-width: 340px; margin-bottom: 2.8rem; }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: .7rem;
+    text-decoration: none; color: var(--bg);
+    font-size: .64rem; letter-spacing: .28em; text-transform: uppercase;
+    font-weight: 300; padding: .9rem 2rem;
+    border: .5px solid rgba(240,236,228,.25);
+    transition: background .35s, color .35s, border-color .35s;
+  }
+  .btn-outline:hover { background: var(--bg); color: var(--bg-dark); border-color: var(--bg); }
+
+  .cta-r {
+    background: var(--gold); padding: 9vmin 7vmin;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-r::before {
+    content: 'RÉSERVER';
+    position: absolute; font-family: var(--fd); font-size: 13vw;
+    font-weight: 300; color: rgba(255,255,255,.07);
+    line-height: 1; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap; letter-spacing: -.04em;
+    pointer-events: none;
+  }
+  .ci-list { position: relative; z-index: 1; list-style: none; }
+  .ci-list li { border-bottom: .5px solid rgba(255,255,255,.18); padding: 1.3rem 0; }
+  .ci-list li:last-child { border-bottom: none; }
+  .ci-lbl { font-size: .58rem; letter-spacing: .35em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 200; display: block; margin-bottom: .3rem; }
+  .ci-val { font-family: var(--fd); font-size: 1.15rem; color: #fff; font-weight: 300; text-decoration: none; }
+  a.ci-val:hover { text-decoration: underline; }
+
+  /* ─── FLOAT CTA ─── */
+  .float {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 50;
+    transform: translateY(70px); opacity: 0;
+    transition: transform .6s var(--ease), opacity .6s ease;
+    pointer-events: none;
+  }
+  .float.on { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .float a {
+    display: flex; align-items: center; gap: .65rem;
+    background: var(--bg-dark); color: var(--bg);
+    text-decoration: none; padding: .8rem 1.5rem;
+    font-size: .62rem; letter-spacing: .25em; text-transform: uppercase;
+    font-weight: 300; border: .5px solid rgba(255,255,255,.1);
+    box-shadow: 0 14px 44px rgba(0,0,0,.22);
+    transition: background .3s;
+  }
+  .float a:hover { background: var(--gold); border-color: var(--gold); }
+  .float-dot {
+    width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+    animation: blink 2s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(.65);} }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--bg-dark);
+    border-top: .5px solid rgba(255,255,255,.05);
+    padding: 6vmin 5vw 3vmin;
+  }
+  .footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 5vw; padding-bottom: 4vmin; border-bottom: .5px solid rgba(255,255,255,.05); margin-bottom: 2.5rem; }
+  .footer__logo { font-family: var(--fd); font-size: 1.3rem; font-weight: 300; color: var(--bg); letter-spacing: .12em; margin-bottom: .8rem; }
+  .footer p, .footer a { font-size: .76rem; color: rgba(240,236,228,.3); font-weight: 200; line-height: 1.9; text-decoration: none; }
+  .footer a:hover { color: var(--gold); }
+  .footer__h { font-size: .58rem; letter-spacing: .32em; text-transform: uppercase; color: rgba(240,236,228,.5); font-weight: 200; margin-bottom: 1.2rem; }
+  .footer__copy { font-size: .65rem; color: rgba(240,236,228,.18); font-weight: 200; letter-spacing: .08em; }
+
+  /* ─── REDUCED MOTION ─── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .curtain-inner, [data-r] { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1000px) {
+    .split { grid-template-columns: 1fr; gap: 6vw; }
+    .visual { order: -1; }
+    .gal-grid { grid-template-columns: 1fr 1fr; }
+    .gi { grid-column: auto !important; grid-row: auto !important; }
+    .gi:nth-child(1) .gi__img { min-height: 320px; }
+    .reviews { grid-template-columns: 1fr; gap: 1px; }
+    .cta-split { grid-template-columns: 1fr; }
+    .svc-header { grid-template-columns: 1fr; }
+    .footer__grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  @media (max-width: 680px) {
+    .nav__links { display: none; }
+    .nav__links.open {
+      display: flex; flex-direction: column; align-items: flex-start;
+      position: fixed; inset: 0; background: var(--bg); z-index: 99;
+      padding: 5rem 5vw; gap: 2.2rem;
+    }
+    .nav__links.open a { font-size: .9rem; letter-spacing: .1em; }
+    .nav__burger { display: flex; }
+    .hero__title-l1 { font-size: clamp(3.5rem, 17vw, 7rem); }
+    .hero__title-l2 { font-size: clamp(2.5rem, 12vw, 5rem); }
+    .gal-grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+  }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a href="#" class="nav__logo">Maison Ellery</a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#atelier">L'Atelier</a>
+      <a href="#prestations">Prestations</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#paroles">Paroles</a>
+      <a href="#contact" class="nav__rdv">Réserver</a>
+    </nav>
+    <button class="nav__burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- FLOAT CTA -->
+  <div class="float" id="floatCta">
+    <a href="#contact">
+      <span class="float-dot"></span>
+      Prendre rendez-vous
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__top">
+      <p class="hero__eyebrow">Atelier de coiffure · Paris VIII<sup>e</sup> · Fondé en 2009</p>
+
+      <h1 class="hero__title">
+        <span class="curtain"><span class="curtain-inner" id="hl1">Maison</span></span>
+        <span class="curtain"><span class="curtain-inner" id="hl2">Ellery</span></span>
+      </h1>
+
+      <div class="hero__meta">
+        <div class="hero__meta-line"></div>
+        <span class="hero__meta-text">L'art de révéler votre singularité</span>
+      </div>
+
+      <div class="hero__cta-wrap">
+        <a href="#contact" class="hero__cta">Prendre rendez-vous</a>
+      </div>
+    </div>
+
+    <div class="hero__bottom">
+      <span class="hero__scroll-label">Découvrir</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+
+    <div class="hero__wm" aria-hidden="true">M·E</div>
+  </section>
+
+  <!-- SIGNATURE / ATELIER -->
+  <section class="section" id="atelier">
+    <div class="split">
+      <div class="visual" data-r>
+        <div class="visual__frame">
+          <div class="visual__sil"></div>
+        </div>
+        <span class="visual__num" aria-hidden="true">01</span>
+        <span class="visual__tag">Paris, Rue du Faubourg Saint-Honoré</span>
+      </div>
+      <div class="copy">
+        <p class="label" data-r>L'atelier</p>
+        <div class="curtain" data-rc>
+          <h2 class="curtain-inner">Un espace pensé comme<br>un sanctuaire de style</h2>
+        </div>
+        <div class="copy__rule" data-r data-d="2"></div>
+        <p data-r data-d="2">
+          Au cœur du VIII<sup>e</sup> arrondissement, <strong>Maison Ellery</strong> est née
+          d'une conviction : la coiffure est un art à part entière. Chaque consultation
+          débute par une écoute attentive, chaque réalisation est pensée comme une pièce unique.
+        </p>
+        <p data-r data-d="3">
+          Notre équipe — formée dans les maisons les plus exigeantes — associe
+          <strong>techniques actuelles</strong> et sensibilité artisanale pour créer
+          des coiffures qui durent et qui vous ressemblent profondément.
+        </p>
+        <div class="stats" data-r data-d="4">
+          <div class="stat"><div class="stat__n">15+</div><div class="stat__l">Années d'excellence</div></div>
+          <div class="stat"><div class="stat__n">2 400</div><div class="stat__l">Clientes fidèles</div></div>
+          <div class="stat"><div class="stat__n">8</div><div class="stat__l">Coiffeurs experts</div></div>
+          <div class="stat"><div class="stat__n">100%</div><div class="stat__l">Produits certifiés</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section--alt" id="prestations">
+    <div class="svc-inner">
+      <div class="svc-header">
+        <div>
+          <p class="label" data-r>Prestations</p>
+          <div class="curtain" data-rc>
+            <h2 class="curtain-inner">L'atelier,<br>son savoir-faire</h2>
+          </div>
+        </div>
+        <p data-r data-d="2">
+          Des tarifs qui reflètent l'engagement de notre équipe.
+          Chaque prestation est une expérience complète — conseil, réalisation, finition.
+        </p>
+      </div>
+      <div class="svc-list" data-r data-d="2">
+        <div class="svc">
+          <div>
+            <div class="svc__name">Coupe &amp; Brushing</div>
+            <div class="svc__desc">Diagnostic, coupe personnalisée, finition au brushing ou en naturel</div>
+          </div>
+          <div class="svc__price">À partir de 85 €</div>
+        </div>
+        <div class="svc">
+          <div>
+            <div class="svc__name">Coloration Signature</div>
+            <div class="svc__desc">Couleur pleine, repousse ou balayage — formules exclusives Maison</div>
+          </div>
+          <div class="svc__price">À partir de 140 €</div>
+        </div>
+        <div class="svc">
+          <div>
+            <div class="svc__name">Mèches &amp; Balayage</div>
+            <div class="svc__desc">Babylights, airtouch, ombré hair — techniques actuelles</div>
+          </div>
+          <div class="svc__price">À partir de 180 €</div>
+        </div>
+        <div class="svc">
+          <div>
+            <div class="svc__name">Soin Profond</div>
+            <div class="svc__desc">Diagnostic capillaire, rituel de soin, massage crânien</div>
+          </div>
+          <div class="svc__price">65 €</div>
+        </div>
+        <div class="svc">
+          <div>
+            <div class="svc__name">Coiffure de Cérémonie</div>
+            <div class="svc__desc">Mariages, galas, événements — accompagnement personnalisé</div>
+          </div>
+          <div class="svc__price">Sur devis</div>
+        </div>
+        <div class="svc">
+          <div>
+            <div class="svc__name">Consultation &amp; Diagnostic</div>
+            <div class="svc__desc">30 minutes avec un expert — offerte pour tout nouveau rendez-vous</div>
+          </div>
+          <div class="svc__price">Offerte</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="section" id="galerie">
+    <div class="gal-header">
+      <p class="label" data-r>Galerie</p>
+      <div class="curtain" data-rc>
+        <h2 class="curtain-inner" style="font-family:var(--fd);font-weight:300;font-style:italic;font-size:clamp(2rem,3.8vw,3.8rem);letter-spacing:-.01em;">Nos réalisations</h2>
+      </div>
+    </div>
+    <div class="gal-grid" data-r data-d="2">
+      <div class="gi"><div class="gi__img"></div><div class="gi__cap">Balayage naturel · Charlotte M.</div></div>
+      <div class="gi"><div class="gi__img"></div><div class="gi__cap">Coupe courte structurée</div></div>
+      <div class="gi"><div class="gi__img"></div><div class="gi__cap">Coloration cuivrée profonde</div></div>
+      <div class="gi"><div class="gi__img"></div><div class="gi__cap">Babylights blond platine</div></div>
+      <div class="gi"><div class="gi__img"></div><div class="gi__cap">Ondulations estivales</div></div>
+      <div class="gi"><div class="gi__img"></div><div class="gi__cap">Coupe longue effilée</div></div>
+      <div class="gi"><div class="gi__img"></div><div class="gi__cap">Boucles cérémonie · Sofia L.</div></div>
+      <div class="gi"><div class="gi__img"></div><div class="gi__cap">Ombré hair caramel</div></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section--dark" id="paroles">
+    <div class="testi-inner">
+      <p class="label" data-r style="justify-content:center;color:rgba(240,236,228,.3);">
+        <span style="display:none">–</span>Paroles de clientes
+      </p>
+      <div class="curtain" data-rc>
+        <p class="testi-pull curtain-inner">« Un endroit où l'on prend <em>le temps</em>. Rare. »</p>
+      </div>
+      <div class="reviews">
+        <div class="rev" data-r>
+          <div class="rev__stars">★★★★★</div>
+          <p class="rev__text">« Maison Ellery, c'est bien plus qu'un salon. Chaque visite est une expérience à part entière. Je n'irais nulle part ailleurs. »</p>
+          <p class="rev__author"><span class="rev__dash"></span>Isabelle R. — Cliente depuis 6 ans</p>
+        </div>
+        <div class="rev" data-r data-d="2">
+          <div class="rev__stars">★★★★★</div>
+          <p class="rev__text">« Enfin un salon qui comprend ce que je veux sans que j'aie à m'expliquer. Le résultat est toujours au-delà de mes attentes. »</p>
+          <p class="rev__author"><span class="rev__dash"></span>Marine T. — Cliente depuis 4 ans</p>
+        </div>
+        <div class="rev" data-r data-d="3">
+          <div class="rev__stars">★★★★★</div>
+          <p class="rev__text">« La qualité des produits, la précision des coupes, l'ambiance feutrée... On ressort transformée et apaisée. Un vrai luxe. »</p>
+          <p class="rev__author"><span class="rev__dash"></span>Camille D. — Cliente depuis 3 ans</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + CONTACT -->
+  <section class="cta-split" id="contact">
+    <div class="cta-l">
+      <p class="label" data-r>Contact &amp; réservation</p>
+      <div class="curtain" data-rc>
+        <h2 class="curtain-inner">Prenez<br>rendez-vous</h2>
+      </div>
+      <p data-r data-d="2">
+        Notre équipe vous accueille du mardi au samedi, de 9h à 19h.
+        Réservez en ligne ou appelez-nous directement.
+      </p>
+      <div data-r data-d="3">
+        <a href="tel:+33142563748" class="btn-outline">
+          +33 (0)1 42 56 37 48
+        </a>
+      </div>
+    </div>
+    <div class="cta-r">
+      <ul class="ci-list" data-r>
+        <li>
+          <span class="ci-lbl">Adresse</span>
+          <span class="ci-val">42 Rue du Faubourg Saint-Honoré, 75008 Paris</span>
+        </li>
+        <li>
+          <span class="ci-lbl">Téléphone</span>
+          <a href="tel:+33142563748" class="ci-val">+33 (0)1 42 56 37 48</a>
+        </li>
+        <li>
+          <span class="ci-lbl">Horaires</span>
+          <span class="ci-val">Mar–Sam · 9h–19h</span>
+        </li>
+        <li>
+          <span class="ci-lbl">Réservation en ligne</span>
+          <a href="#" class="ci-val">Planity ↗</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__logo">Maison Ellery</p>
+        <p>42 Rue du Faubourg Saint-Honoré<br>75008 Paris<br><br>
+          <a href="tel:+33142563748">+33 (0)1 42 56 37 48</a>
+        </p>
+      </div>
+      <div>
+        <p class="footer__h">L'atelier</p>
+        <p>
+          <a href="#atelier">Notre histoire</a><br>
+          <a href="#prestations">Prestations &amp; tarifs</a><br>
+          <a href="#galerie">Galerie</a><br>
+          <a href="#contact">Nous trouver</a>
+        </p>
+      </div>
+      <div>
+        <p class="footer__h">Horaires</p>
+        <p>
+          Mardi — Vendredi<br>9h00 — 19h00<br><br>
+          Samedi<br>9h00 — 18h00<br><br>
+          <a href="#">Instagram</a> &nbsp;·&nbsp; <a href="#">Pinterest</a>
+        </p>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="yr"></span> Maison Ellery — Tous droits réservés · Mentions légales</p>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    /* Nav */
+    var nav      = document.getElementById('nav');
+    var floatCta = document.getElementById('floatCta');
+    function tick() {
+      nav.classList.toggle('sc', window.scrollY > 40);
+      floatCta.classList.toggle('on', window.scrollY > window.innerHeight * .55);
+    }
+    window.addEventListener('scroll', tick, { passive: true });
+    tick();
+
+    /* Burger */
+    var burger = document.getElementById('navBurger');
+    var links  = document.getElementById('navLinks');
+    burger.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', String(open));
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        links.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    /* Hero curtain lines */
+    setTimeout(function () { document.getElementById('hl1').classList.add('up'); }, 280);
+    setTimeout(function () { document.getElementById('hl2').classList.add('up'); }, 560);
+
+    /* IntersectionObserver — [data-r] and [data-rc] */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        if (el.hasAttribute('data-rc')) {
+          /* curtain: trigger child */
+          var child = el.querySelector('.curtain-inner');
+          if (child) {
+            var d = parseFloat(el.dataset.d || 0) * 0.12;
+            setTimeout(function () { child.classList.add('up'); }, d * 1000);
+          }
+        } else {
+          el.classList.add('on');
+        }
+        io.unobserve(el);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+
+    document.querySelectorAll('[data-r], [data-rc]').forEach(function (el) { io.observe(el); });
+
+  }());
+  </script>
+</body>
+</html>
