@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doseo — La cuillère qui pèse au gramme près</title>
+  <meta name="description" content="Cuillère-balance numérique Doseo. 500g · 0,1g de précision · 4 unités. Pour les passionnés de café, pâtisserie et nutrition. 24,90 €.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============================
+       DESIGN TOKENS
+    ============================ */
+    :root {
+      --sage: #7a9e7e;
+      --sage-light: #a8c5ac;
+      --sage-dark: #4f7553;
+      --cream: #f5f0e8;
+      --cream-dark: #e8e0d0;
+      --anthracite: #1e2022;
+      --anthracite-mid: #2d3135;
+      --anthracite-soft: #3d4347;
+      --amber: #d4a017;
+      --amber-glow: #e8b832;
+      --amber-dim: #8a6a10;
+      --white: #ffffff;
+      --text-muted: #8a9099;
+
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-mono: 'Courier New', 'Lucida Console', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 32px;
+
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================
+       RESET & BASE
+    ============================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--anthracite);
+      color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    :focus-visible {
+      outline: 3px solid var(--amber);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ============================
+       NAV
+    ============================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(30, 32, 34, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    .nav-brand span {
+      color: var(--sage-light);
+    }
+
+    .nav-cta {
+      background: var(--sage);
+      color: var(--anthracite);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      padding: 0.5rem 1.25rem;
+      border-radius: 100px;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .nav-cta:hover {
+      background: var(--sage-light);
+      transform: translateY(-1px);
+    }
+
+    /* ============================
+       HERO
+    ============================ */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding: 8rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(122, 158, 126, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(122, 158, 126, 0.12);
+      border: 1px solid rgba(122, 158, 126, 0.3);
+      color: var(--sage-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--sage);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--sage-light);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 42ch;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-sub strong {
+      color: var(--cream-dark);
+      font-weight: 500;
+    }
+
+    .hero-price-block {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .price-current {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: -0.03em;
+    }
+
+    .price-old {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .price-badge {
+      background: rgba(212, 160, 23, 0.15);
+      border: 1px solid rgba(212, 160, 23, 0.35);
+      color: var(--amber-glow);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .star {
+      color: var(--amber-glow);
+      font-size: 1rem;
+    }
+
+    .star.half { opacity: 0.5; }
+
+    .proof-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .proof-text strong {
+      color: var(--cream-dark);
+    }
+
+    .proof-sep {
+      width: 1px;
+      height: 14px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--sage);
+      color: var(--anthracite);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--sage-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(122, 158, 126, 0.3);
+    }
+
+    .btn-ghost {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color var(--transition);
+    }
+
+    .btn-ghost:hover { color: var(--cream); }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 32px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .img-caption {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ============================
+       LCD WIDGET
+    ============================ */
+    .lcd-widget {
+      background: var(--anthracite-mid);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .lcd-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .lcd-screen {
+      background: #1a2a1a;
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #2a3a2a;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4), 0 0 12px rgba(212,160,23,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lcd-value {
+      font-family: var(--font-mono);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--amber-glow);
+      text-shadow: 0 0 8px rgba(232, 184, 50, 0.5);
+      letter-spacing: 0.05em;
+      min-width: 5ch;
+    }
+
+    .lcd-unit {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--amber-dim);
+      text-align: right;
+    }
+
+    .lcd-unit-display {
+      font-size: 0.9rem;
+      color: var(--amber);
+    }
+
+    .lcd-indicators {
+      display: flex;
+      gap: 4px;
+    }
+
+    .lcd-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--amber-dim);
+      transition: background 0.2s;
+    }
+
+    .lcd-dot.active {
+      background: var(--amber-glow);
+      box-shadow: 0 0 4px var(--amber);
+    }
+
+    .lcd-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .lcd-btn {
+      flex: 1;
+      background: var(--anthracite-soft);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--cream-dark);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0.45rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), transform 0.1s;
+      text-align: center;
+    }
+
+    .lcd-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .lcd-btn:active {
+      transform: scale(0.95);
+    }
+
+    .lcd-btn.active-mode {
+      background: rgba(122, 158, 126, 0.15);
+      border-color: var(--sage);
+      color: var(--sage-light);
+    }
+
+    .lcd-status {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 0.75rem;
+      font-style: italic;
+      min-height: 1em;
+    }
+
+    /* ============================
+       SECTION LAYOUT
+    ============================ */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--sage-light);
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 52ch;
+      line-height: 1.7;
+    }
+
+    /* Divider */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.08) 70%, transparent);
+      margin: 0;
+    }
+
+    /* ============================
+       BENEFITS
+    ============================ */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .benefit-card {
+      background: var(--anthracite-mid);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .benefit-card:hover {
+      border-color: rgba(122, 158, 126, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--sage), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .benefit-card:hover::before { opacity: 1; }
+
+    .benefit-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(122, 158, 126, 0.1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .benefit-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .benefit-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ============================
+       PRODUCT IMAGE SPREAD
+    ============================ */
+    .spread {
+      background: var(--anthracite-mid);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .spread-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+      min-height: 420px;
+    }
+
+    .spread-img {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spread-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .spread-content {
+      padding: 4rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .precision-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-number {
+      font-family: var(--font-mono);
+      font-size: 3.5rem;
+      color: var(--amber-glow);
+      font-weight: 400;
+      text-shadow: 0 0 20px rgba(232, 184, 50, 0.2);
+      line-height: 1;
+    }
+
+    .stat-unit {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--amber-dim);
+      align-self: flex-end;
+      padding-bottom: 0.3rem;
+    }
+
+    /* ============================
+       SPECS
+    ============================ */
+    .specs-section {
+      background: linear-gradient(180deg, var(--anthracite) 0%, var(--anthracite-mid) 100%);
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .spec-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      gap: 1rem;
+    }
+
+    .spec-key {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .spec-val {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--cream-dark);
+      text-align: right;
+    }
+
+    .spec-highlight {
+      background: rgba(122, 158, 126, 0.05);
+      border-radius: var(--radius-sm);
+      border-bottom: 1px solid rgba(122, 158, 126, 0.15) !important;
+    }
+
+    .spec-highlight .spec-val {
+      color: var(--sage-light);
+    }
+
+    /* Dims image */
+    .dims-img-wrap {
+      margin-top: 3rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: #f5f0e8;
+    }
+
+    .dims-img-wrap img {
+      width: 100%;
+      height: 260px;
+      object-fit: contain;
+      padding: 1.5rem;
+    }
+
+    /* ============================
+       USE CASES
+    ============================ */
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 3.5rem;
+    }
+
+    .usecase-card {
+      background: var(--anthracite-mid);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      transition: border-color var(--transition);
+    }
+
+    .usecase-card:hover {
+      border-color: rgba(122, 158, 126, 0.2);
+    }
+
+    .usecase-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .usecase-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .usecase-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .usecase-tag {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--sage);
+      background: rgba(122, 158, 126, 0.08);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+    }
+
+    /* ============================
+       REVIEWS
+    ============================ */
+    .reviews-section {
+      background: var(--anthracite-mid);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .reviews-meta {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      flex-wrap: wrap;
+    }
+
+    .reviews-score {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .score-big {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .score-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .reviews-divider {
+      width: 1px;
+      height: 60px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .reviews-counts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .count-item {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .count-item strong {
+      color: var(--cream-dark);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .review-card {
+      background: var(--anthracite);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 0.75rem;
+    }
+
+    .review-text {
+      font-size: 0.9rem;
+      color: var(--cream-dark);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .review-text::before { content: '\201C'; }
+    .review-text::after { content: '\201D'; }
+
+    .review-author {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .review-use {
+      font-size: 0.75rem;
+      color: var(--sage);
+      margin-top: 0.2rem;
+    }
+
+    /* ============================
+       FAQ
+    ============================ */
+    .faq-list {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: var(--anthracite-mid);
+      border: none;
+      color: var(--cream);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: left;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: background var(--transition);
+    }
+
+    .faq-question:hover { background: var(--anthracite-soft); }
+
+    .faq-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      border-color: var(--sage);
+      color: var(--sage-light);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--anthracite-mid);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-top: 1rem;
+    }
+
+    .faq-answer-inner strong {
+      color: var(--cream-dark);
+    }
+
+    /* ============================
+       CTA FINAL
+    ============================ */
+    .cta-final {
+      background: linear-gradient(135deg, var(--sage-dark) 0%, var(--anthracite-mid) 100%);
+      border-top: 1px solid rgba(122, 158, 126, 0.2);
+    }
+
+    .cta-final section {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-final .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .cta-final .section-intro {
+      margin-bottom: 2.5rem;
+      max-width: 48ch;
+      text-align: center;
+    }
+
+    .cta-price-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--cream);
+      color: var(--anthracite);
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 1rem 2.5rem;
+      border-radius: 100px;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+      background: var(--white);
+    }
+
+    .cta-reassurance {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .reassurance-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: rgba(245,240,232,0.6);
+    }
+
+    .reassurance-item::before {
+      content: '✓';
+      color: var(--sage-light);
+      font-weight: 700;
+    }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    footer {
+      background: var(--anthracite);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer span { color: var(--sage); }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 4rem;
+        gap: 3rem;
+      }
+
+      .hero-visual { order: -1; }
+
+      .hero-img-wrap img { height: 280px; }
+
+      .lcd-widget { max-width: 100%; }
+
+      .spread-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .spread-img {
+        height: 300px;
+      }
+
+      .spread-content {
+        padding: 2.5rem 2rem;
+      }
+
+      .specs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .usecases-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.25rem; }
+
+      .nav { padding: 1rem 1.25rem; }
+
+      .hero-cta-group { flex-direction: column; align-items: flex-start; }
+
+      .reviews-meta { flex-direction: column; gap: 1rem; }
+
+      .reviews-divider { display: none; }
+    }
+
+    /* ============================
+       SCROLL REVEAL
+    ============================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Navigation principale">
+    <div class="nav-brand">doseo<span>.</span></div>
+    <a href="#commander" class="nav-cta">Commander — 24,90 €</a>
+  </nav>
+
+  <!-- HERO -->
+  <main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-content">
+      <div class="hero-badge">Offre de lancement</div>
+
+      <h1 class="hero-title" id="hero-title">
+        La cuillère qui<br>
+        <em>pèse vraiment.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Doseo intègre une balance numérique au cœur d'une cuillère.
+        <strong>0,1 g de précision</strong>, écran LCD ambré, 4 unités.
+        Pour ceux qui ne laissent rien au hasard.
+      </p>
+
+      <div class="hero-social-proof">
+        <div class="stars" aria-label="4,5 étoiles sur 5">
+          <span class="star" aria-hidden="true">★</span>
+          <span class="star" aria-hidden="true">★</span>
+          <span class="star" aria-hidden="true">★</span>
+          <span class="star" aria-hidden="true">★</span>
+          <span class="star half" aria-hidden="true">★</span>
+        </div>
+        <span class="proof-text"><strong>4,5/5</strong> · 6 665 avis</span>
+        <span class="proof-sep" aria-hidden="true"></span>
+        <span class="proof-text"><strong>50 000+</strong> vendues</span>
+      </div>
+
+      <div class="hero-price-block">
+        <span class="price-current">24,90 €</span>
+        <span class="price-old" aria-label="Prix barré : 34,90 euros">34,90 €</span>
+        <span class="price-badge">−28 %</span>
+      </div>
+
+      <div class="hero-cta-group">
+        <a href="#commander" class="btn-primary">
+          Commander maintenant
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="#benefices" class="btn-ghost">Voir comment ça fonctionne</a>
+      </div>
+    </div>
+
+    <!-- VISUAL -->
+    <div class="hero-visual">
+      <div class="hero-img-wrap reveal">
+        <img
+          src="../doseo/spoon-duo.png"
+          alt="Deux cuillères Doseo (blanche et noire) sur une planche en bois, entourées d'épices, avec graines dans la cuillère"
+          width="500"
+          height="420"
+          loading="eager"
+        >
+      </div>
+
+      <!-- LCD INTERACTIF -->
+      <div class="lcd-widget reveal" role="region" aria-label="Démonstration de la balance">
+        <div class="lcd-label">Essayez les boutons</div>
+        <div class="lcd-screen" aria-live="polite" aria-label="Affichage balance">
+          <div class="lcd-value" id="lcdValue">0.0</div>
+          <div class="lcd-unit">
+            <div class="lcd-unit-display" id="lcdUnit">g</div>
+            <div class="lcd-indicators">
+              <div class="lcd-dot active" id="dot0" aria-hidden="true"></div>
+              <div class="lcd-dot" id="dot1" aria-hidden="true"></div>
+              <div class="lcd-dot" id="dot2" aria-hidden="true"></div>
+              <div class="lcd-dot" id="dot3" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+        <div class="lcd-buttons">
+          <button class="lcd-btn active-mode" id="btnMode" aria-label="Changer l'unité de mesure">MODE</button>
+          <button class="lcd-btn" id="btnTare" aria-label="Remettre à zéro (tare)">TARE</button>
+          <button class="lcd-btn" id="btnHold" aria-label="Verrouiller la valeur (hold)">HOLD</button>
+        </div>
+        <div class="lcd-status" id="lcdStatus" aria-live="polite">Simulation en cours…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider"></div>
+
+  <!-- BENEFITS -->
+  <section id="benefices" aria-labelledby="benefits-title">
+    <div class="reveal">
+      <p class="section-tag">Pourquoi Doseo</p>
+      <h2 class="section-title" id="benefits-title">Une cuillère.<br><em>Une balance.</em> Un geste.</h2>
+      <p class="section-intro">Plus de va-et-vient entre la balance posée et la cuillère. Doseo réunit les deux : vous mesurez directement dans la cuillère, en tenant le manche.</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon" aria-hidden="true">⚡</div>
+        <h3 class="benefit-title">0,1 g — aucun compromis</h3>
+        <p class="benefit-desc">Capteur de précision à cellule de charge. Que ce soit 2,3 g d'extrait de café ou 0,5 g de sel, la lecture est immédiate et fiable.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon" aria-hidden="true">🔄</div>
+        <h3 class="benefit-title">4 unités en un clic</h3>
+        <p class="benefit-desc">Grammes · Onces · Carats · Grains. Changez d'unité en appuyant sur MODE. Idéal pour les recettes internationales et les filières pro.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon" aria-hidden="true">⏸</div>
+        <h3 class="benefit-title">Hold — valeur figée</h3>
+        <p class="benefit-desc">Appuyez sur HOLD pour verrouiller l'affichage. Utile quand vous versez un ingrédient et ne pouvez pas regarder l'écran en même temps.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon" aria-hidden="true">↩</div>
+        <h3 class="benefit-title">Tare instantanée</h3>
+        <p class="benefit-desc">Remettez à zéro en plein milieu d'une recette. Posez un filtre, appuyez sur TARE, pesez votre café. Simple comme bonjour.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon" aria-hidden="true">🍃</div>
+        <h3 class="benefit-title">ABS alimentaire</h3>
+        <p class="benefit-desc">Matière sans BPA, résistante aux chocs et facile à nettoyer. Cuillère amovible pour passer sous l'eau. Conforme aux normes alimentaires.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon" aria-hidden="true">🔋</div>
+        <h3 class="benefit-title">Pile CR2032 longue durée</h3>
+        <p class="benefit-desc">Autonomie de plusieurs mois en usage quotidien. Pas de rechargement USB à gérer — une pile disponible dans n'importe quel supermarché.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE SPREAD — PRÉCISION -->
+  <div class="spread">
+    <div class="spread-inner">
+      <div class="spread-img">
+        <img
+          src="../doseo/spoon-precision.png"
+          alt="Gros plan sur la précision Doseo : loupe montrant les repères 5g et 0,1g gravés dans la cuillère, main tenant le manche avec affichage LCD 5.1g"
+          loading="lazy"
+        >
+      </div>
+      <div class="spread-content reveal">
+        <p class="section-tag">Précision mesurable</p>
+        <div class="precision-stat">
+          <span class="stat-number">0.1</span>
+          <span class="stat-unit">g</span>
+        </div>
+        <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 0.75rem;">Gravé dans la cuillère,<br><em>affiché sur l'écran.</em></h2>
+        <p class="section-intro" style="font-size: 0.9rem;">Les repères physiques de 5 g et 0,1 g sont gravés à même la cuillère — un double repère visuel et numérique. L'écran LCD à rétroéclairage ambré est lisible même dans un environnement sombre.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPECS -->
+  <section class="specs-section" aria-labelledby="specs-title">
+    <div class="reveal">
+      <p class="section-tag">Fiche technique</p>
+      <h2 class="section-title" id="specs-title">Les chiffres qui<br><em>comptent.</em></h2>
+    </div>
+
+    <div class="specs-grid reveal">
+      <div>
+        <div class="spec-row spec-highlight">
+          <span class="spec-key">Capacité max</span>
+          <span class="spec-val">500 g</span>
+        </div>
+        <div class="spec-row spec-highlight">
+          <span class="spec-key">Précision</span>
+          <span class="spec-val">0,1 g</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Unités</span>
+          <span class="spec-val">g · oz · ct · gn</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Fonctions</span>
+          <span class="spec-val">Tare · Hold · Mode</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Affichage</span>
+          <span class="spec-val">LCD rétroéclairé</span>
+        </div>
+      </div>
+      <div>
+        <div class="spec-row">
+          <span class="spec-key">Longueur totale</span>
+          <span class="spec-val">23 cm</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Largeur cuillère</span>
+          <span class="spec-val">6 cm</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Poids</span>
+          <span class="spec-val">46 g</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Matériau</span>
+          <span class="spec-val">ABS alimentaire</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Alimentation</span>
+          <span class="spec-val">1× CR2032</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dims-img-wrap reveal">
+      <img
+        src="../doseo/spoon-dims.png"
+        alt="Schéma des dimensions Doseo : longueur 23 cm, largeur cuillère 6 cm, anneau de suspension 3 cm"
+        loading="lazy"
+      >
+    </div>
+
+    <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted); font-style: italic;">
+      ⚠ À tenir pendant la pesée : Doseo fonctionne en main levée — la cuillère ne se pose pas à plat sur une surface.
+    </p>
+  </section>
+
+  <!-- USE CASES -->
+  <section aria-labelledby="usecases-title">
+    <div class="reveal">
+      <p class="section-tag">Cas d'usage</p>
+      <h2 class="section-title" id="usecases-title">Une cuillère pour<br><em>toutes les précisions.</em></h2>
+      <p class="section-intro">Du café de spécialité à la pharmacopée maison, Doseo s'adapte à toutes les situations où le gramme fait la différence.</p>
+    </div>
+
+    <div class="usecases-grid">
+      <div class="usecase-card reveal">
+        <div class="usecase-icon" aria-hidden="true">☕</div>
+        <div>
+          <h3 class="usecase-title">Café de spécialité</h3>
+          <p class="usecase-desc">Respectez le ratio café/eau à la décimale. 15,3 g pour 250 ml ? Doseo affiche en temps réel pendant que vous moulez ou versez.</p>
+          <span class="usecase-tag">ratio 1:16</span>
+        </div>
+      </div>
+      <div class="usecase-card reveal">
+        <div class="usecase-icon" aria-hidden="true">🧁</div>
+        <div>
+          <h3 class="usecase-title">Pâtisserie de précision</h3>
+          <p class="usecase-desc">Levure, bicarbonate, extraits : les petites quantités changent tout. Doseo mesure là où une balance de cuisine atteint ses limites.</p>
+          <span class="usecase-tag">jusqu'à 0,1 g</span>
+        </div>
+      </div>
+      <div class="usecase-card reveal">
+        <div class="usecase-icon" aria-hidden="true">💪</div>
+        <div>
+          <h3 class="usecase-title">Nutrition & sport</h3>
+          <p class="usecase-desc">Créatine, protéines, électrolytes : dosage exact à chaque prise. Fini les approximations avec la "cuillère à café" du pot.</p>
+          <span class="usecase-tag">compléments</span>
+        </div>
+      </div>
+      <div class="usecase-card reveal">
+        <div class="usecase-icon" aria-hidden="true">🌿</div>
+        <div>
+          <h3 class="usecase-title">Épices & infusions</h3>
+          <p class="usecase-desc">Safran, cardamome, matcha : des ingrédients rares qui se dosent au dixième de gramme. Économisez vos épices précieuses.</p>
+          <span class="usecase-tag">0,1 g min</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <div class="reviews-section">
+  <section aria-labelledby="reviews-title">
+    <div class="reveal">
+      <p class="section-tag">Avis clients</p>
+      <h2 class="section-title" id="reviews-title"><em>6 665 avis.</em><br>Ce qu'ils en pensent.</h2>
+    </div>
+
+    <div class="reviews-meta">
+      <div class="reviews-score">
+        <span class="score-big">4,5</span>
+        <div class="stars" aria-hidden="true">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star half">★</span>
+        </div>
+        <span class="score-sub">sur 6 665 avis vérifiés</span>
+      </div>
+      <div class="reviews-divider" aria-hidden="true"></div>
+      <div class="reviews-counts">
+        <div class="count-item"><strong>50 000+</strong> cuillères vendues</div>
+        <div class="count-item"><strong>89 %</strong> d'avis 4 ou 5 étoiles</div>
+        <div class="count-item"><strong>Recommandé</strong> par des baristas pro</div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      <article class="review-card reveal">
+        <div class="review-stars" aria-label="5 étoiles">
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+        </div>
+        <p class="review-text">Je l'utilise tous les matins pour mon V60. La précision est bluffante, l'écran lisible même en cuisine sombre. Indispensable pour les amateurs de café sérieux.</p>
+        <div class="review-author">Thomas M.</div>
+        <div class="review-use">Café de spécialité · Paris</div>
+      </article>
+      <article class="review-card reveal">
+        <div class="review-stars" aria-label="4 étoiles">
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star half" aria-hidden="true">★</span>
+        </div>
+        <p class="review-text">Parfaite pour peser la levure et les arômes en pâtisserie. Un seul bémol : il faut tenir la cuillère — mais on s'y habitue vite et ça devient un réflexe.</p>
+        <div class="review-author">Amélie D.</div>
+        <div class="review-use">Pâtissière amateur · Lyon</div>
+      </article>
+      <article class="review-card reveal">
+        <div class="review-stars" aria-label="5 étoiles">
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+        </div>
+        <p class="review-text">Je dose ma créatine et mes compléments chaque jour. Rapide, précis, compact. La fonction Hold est vraiment bien pensée pour ne pas lâcher la cuillère.</p>
+        <div class="review-author">Julien R.</div>
+        <div class="review-use">Sport & nutrition · Bordeaux</div>
+      </article>
+    </div>
+  </section>
+  </div>
+
+  <!-- FAQ -->
+  <section aria-labelledby="faq-title">
+    <div class="reveal">
+      <p class="section-tag">Questions fréquentes</p>
+      <h2 class="section-title" id="faq-title">Tout ce que vous<br><em>voulez savoir.</em></h2>
+    </div>
+
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+          Doit-on vraiment tenir la cuillère en main pendant la pesée ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq1" role="region">
+          <div class="faq-answer-inner">
+            <strong>Oui, c'est la façon correcte d'utiliser Doseo.</strong> La cuillère-balance fonctionne en main levée : vous tenez le manche et posez l'ingrédient dans la partie cuillère. Elle ne se pose pas à plat comme une balance de cuisine. Une fois habitué, ce geste devient naturel et bien plus rapide qu'un aller-retour entre cuillère et balance.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+          Quelle est la précision réelle et jusqu'à quelle quantité ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq2" role="region">
+          <div class="faq-answer-inner">
+            Doseo affiche au <strong>0,1 g près</strong>, pour des quantités allant de quelques dixièmes de gramme jusqu'à <strong>500 g maximum</strong>. Idéale pour les très petites quantités (épices, arômes, levure) où les balances classiques affichent directement "0" ou "1 g" sans précision intermédiaire.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+          À quoi sert la fonction Hold exactement ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq3" role="region">
+          <div class="faq-answer-inner">
+            Hold <strong>fige la valeur à l'écran</strong> dès que vous appuyez sur le bouton. Pratique quand vous versez un ingrédient en mouvement et ne pouvez pas regarder l'écran simultanément. Vous posez ce que vous avez, appuyez sur Hold, et lisez le résultat tranquillement. Appuyez à nouveau pour revenir en mesure live.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+          Peut-on passer la cuillère sous l'eau ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq4" role="region">
+          <div class="faq-answer-inner">
+            La partie cuillère en ABS alimentaire peut être rincée sous l'eau courante. <strong>Ne pas immerger le manche</strong> qui contient l'électronique et la pile. Un simple chiffon humide suffit pour nettoyer la partie avec l'écran.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5">
+          Quelle pile utilise Doseo et combien de temps dure-t-elle ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq5" role="region">
+          <div class="faq-answer-inner">
+            Doseo fonctionne avec <strong>une pile CR2032</strong> (pile bouton, fournie). En usage quotidien raisonnable, l'autonomie dépasse généralement plusieurs mois. La CR2032 est disponible dans tous les supermarchés, pharmacies et magasins électroniques.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq6">
+          Quels sont les délais et conditions de livraison ?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq6" role="region">
+          <div class="faq-answer-inner">
+            Livraison <strong>en 7 à 14 jours</strong> en France métropolitaine. Suivi de commande inclus par e-mail. En cas de produit défectueux à réception, contactez-nous et nous assurons le remplacement ou le remboursement sans frais.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <div class="cta-final" id="commander">
+    <section aria-labelledby="cta-title">
+      <p class="section-tag">Commander</p>
+      <h2 class="section-title" id="cta-title">Prêt à peser<br><em>avec précision ?</em></h2>
+      <p class="section-intro">Offre de lancement limitée. Chaque gramme compte — autant avoir l'outil qui les compte tous.</p>
+
+      <div class="cta-price-row">
+        <span class="price-current" style="font-size: 2.2rem;">24,90 €</span>
+        <span class="price-old" style="font-size: 1rem; color: rgba(245,240,232,0.4);">34,90 €</span>
+        <span class="price-badge">Offre de lancement</span>
+      </div>
+
+      <button class="cta-btn" onclick="alert('Redirection vers la boutique...')">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        Commander Doseo
+      </button>
+
+      <div class="cta-reassurance">
+        <span class="reassurance-item">Paiement sécurisé</span>
+        <span class="reassurance-item">Livraison suivie</span>
+        <span class="reassurance-item">Satisfait ou remboursé</span>
+        <span class="reassurance-item">Pile CR2032 incluse</span>
+      </div>
+    </section>
+  </div>
+  </main>
+
+  <footer>
+    <p>© 2024 <span>Doseo</span> · Cuillère-balance numérique de précision</p>
+  </footer>
+
+  <script>
+    /* ============================
+       LCD SIMULATOR
+    ============================ */
+    const UNITS = ['g', 'oz', 'ct', 'gn'];
+    const UNIT_MAX = [500, 17.6, 2500, 7716];
+    const UNIT_NAMES = ['Grammes', 'Onces', 'Carats', 'Grains'];
+    const DEMO_VALUES_G = [0, 1.2, 5.0, 12.4, 25.0, 38.7, 50.0];
+
+    let currentUnit = 0;
+    let isHeld = false;
+    let isTared = false;
+    let liveValue = 0;
+    let holdValue = 0;
+    let demoIndex = 0;
+    let demoInterval = null;
+    let demoTarget = 0;
+    let animFrame = null;
+
+    const lcdVal = document.getElementById('lcdValue');
+    const lcdUnit = document.getElementById('lcdUnit');
+    const lcdStatus = document.getElementById('lcdStatus');
+    const dots = [0,1,2,3].map(i => document.getElementById('dot' + i));
+
+    function formatValue(v) {
+      if (currentUnit === 0) return v.toFixed(1);
+      if (currentUnit === 1) return v.toFixed(2);
+      if (currentUnit === 2) return v.toFixed(1);
+      if (currentUnit === 3) return Math.round(v).toString();
+    }
+
+    function convertFromG(g) {
+      if (currentUnit === 0) return g;
+      if (currentUnit === 1) return g * 0.035274;
+      if (currentUnit === 2) return g * 5;
+      if (currentUnit === 3) return g * 15.4324;
+    }
+
+    function updateDisplay(val) {
+      if (!isHeld) {
+        liveValue = val;
+        lcdVal.textContent = formatValue(convertFromG(val));
+      }
+    }
+
+    function setDots(index) {
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === index);
+      });
+    }
+
+    function setStatus(msg) {
+      lcdStatus.textContent = msg;
+    }
+
+    /* Demo animation — continuous weighing simulation */
+    const DEMO_SEQUENCE = [
+      { target: 0, delay: 800 },
+      { target: 15.3, delay: 1200 },
+      { target: 15.3, delay: 600 },
+      { target: 0, delay: 1000 },
+      { target: 42.7, delay: 1500 },
+      { target: 42.7, delay: 600 },
+      { target: 0, delay: 1200 },
+    ];
+    let demoSeqIdx = 0;
+    let demoTimer = null;
+    let currentAnimVal = 0;
+    let animTarget = 0;
+
+    function animateToValue(target, duration, onDone) {
+      const start = currentAnimVal;
+      const diff = target - start;
+      const startTime = performance.now();
+      if (animFrame) cancelAnimationFrame(animFrame);
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        currentAnimVal = start + diff * ease;
+        updateDisplay(currentAnimVal);
+        if (progress < 1) {
+          animFrame = requestAnimationFrame(step);
+        } else {
+          currentAnimVal = target;
+          updateDisplay(target);
+          if (onDone) onDone();
+        }
+      }
+      animFrame = requestAnimationFrame(step);
+    }
+
+    function runDemoStep() {
+      if (isHeld) {
+        demoTimer = setTimeout(runDemoStep, 500);
+        return;
+      }
+      const step = DEMO_SEQUENCE[demoSeqIdx];
+      const isWeighing = step.target > 0;
+
+      if (isWeighing) {
+        setStatus('Pesée en cours…');
+        animateToValue(step.target, 900, () => {
+          setStatus(`${formatValue(convertFromG(step.target))} ${UNITS[currentUnit]} — stable`);
+          demoTimer = setTimeout(() => {
+            demoSeqIdx = (demoSeqIdx + 1) % DEMO_SEQUENCE.length;
+            runDemoStep();
+          }, step.delay);
+        });
+      } else {
+        animateToValue(0, 500, () => {
+          setStatus('En attente…');
+          demoTimer = setTimeout(() => {
+            demoSeqIdx = (demoSeqIdx + 1) % DEMO_SEQUENCE.length;
+            runDemoStep();
+          }, step.delay);
+        });
+      }
+    }
+
+    function startDemo() {
+      if (demoTimer) clearTimeout(demoTimer);
+      demoSeqIdx = 0;
+      setStatus('Simulation en cours…');
+      setTimeout(runDemoStep, 600);
+    }
+
+    /* MODE button */
+    document.getElementById('btnMode').addEventListener('click', () => {
+      currentUnit = (currentUnit + 1) % 4;
+      setDots(currentUnit);
+      lcdUnit.textContent = UNITS[currentUnit];
+      updateDisplay(currentAnimVal);
+      setStatus(`Unité : ${UNIT_NAMES[currentUnit]}`);
+      document.getElementById('btnMode').classList.add('active-mode');
+
+      if (demoTimer) clearTimeout(demoTimer);
+      if (animFrame) cancelAnimationFrame(animFrame);
+      setTimeout(() => {
+        setStatus('');
+        runDemoStep();
+      }, 1200);
+    });
+
+    /* TARE button */
+    document.getElementById('btnTare').addEventListener('click', () => {
+      if (isHeld) return;
+      if (animFrame) cancelAnimationFrame(animFrame);
+      if (demoTimer) clearTimeout(demoTimer);
+
+      const prev = currentAnimVal;
+      currentAnimVal = 0;
+      updateDisplay(0);
+      setStatus('Tare — remise à zéro');
+
+      setTimeout(() => {
+        demoSeqIdx = 0;
+        runDemoStep();
+      }, 1000);
+    });
+
+    /* HOLD button */
+    const btnHold = document.getElementById('btnHold');
+    btnHold.addEventListener('click', () => {
+      isHeld = !isHeld;
+      btnHold.classList.toggle('active-mode', isHeld);
+
+      if (isHeld) {
+        holdValue = currentAnimVal;
+        setStatus(`Hold — ${formatValue(convertFromG(holdValue))} ${UNITS[currentUnit]} verrouillé`);
+      } else {
+        setStatus('Hold désactivé — mesure live');
+        setTimeout(() => setStatus('Simulation en cours…'), 800);
+      }
+    });
+
+    /* Start demo on load */
+    document.addEventListener('DOMContentLoaded', () => {
+      setDots(0);
+      startDemo();
+    });
+
+    /* ============================
+       SCROLL REVEAL
+    ============================ */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ============================
+       FAQ ACCORDION
+    ============================ */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
